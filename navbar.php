@@ -9,7 +9,7 @@
         <li><a href="./index.php">Home</a></li>
         <li><a href="#">Product</a></li>
         <li><a href="./service.php">Service</a></li>
-        <li><a href="#">Blog</a></li>
+        <li><a href="./blog.php">Blog</a></li>
         <li><a href="./contact.php">Contact</a></li>
         <li><a href="#">Login </a><span class="btnlogin-sign">|</span><a href="./signup.php">Sign up</a></li>
     </ul>

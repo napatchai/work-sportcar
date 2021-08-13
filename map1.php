@@ -9,9 +9,9 @@
 <style>
 /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
-#map {
+#map1 {
     height: 100%;
-    width: 98%
+    width: 95%
 }
 
 /* Optional: Makes the sample page fill the window. */
@@ -24,26 +24,26 @@ body {
 </style>
 
 <body>
-    <div id="map"></div>
+    <div id="map1"></div>
 
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script async
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmWJreJs9fLopVda-I58oItjMGw9GQep4&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmWJreJs9fLopVda-I58oItjMGw9GQep4&callback=initMap1">
     </script>
     </script>
     <script>
-    function initMap() {
-        const myLatLng = {
+    function initMap1() {
+        const myLatLng1 = {
             lat: 13.69975077955458,
             lng: 100.4586459446204
         };
-        const map = new google.maps.Map(document.getElementById("map"), {
+        const map1 = new google.maps.Map(document.getElementById("map1"), {
             zoom: 4,
-            center: myLatLng,
+            center: myLatLng1,
         });
         new google.maps.Marker({
-            position: myLatLng,
-            map,
+            position: myLatLng1,
+            map1,
             title: "Hello World!",
         });
     }

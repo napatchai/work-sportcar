@@ -14,7 +14,7 @@
 <!-- //? Start Contact -->
 <div style="margin-top: 50px">
     <div class="row">
-        <div class="col-6 Contact">
+        <div class="col-12 col-sm-6 Contact">
             <div class="contentContact">
                 <p> Lorem Ipsum is simply dummy text of the printing and Ipsum has been the industry’s</p>
                 <h1>Contact</h1>
@@ -31,14 +31,14 @@
             </div>
 
         </div>
-        <div class="col-6">
+        <div class="col-12 col-sm-6 mapfirst" style="height: 200px">
             <?php include('./map.php') ?>
         </div>
     </div>
 </div>
-<div class="container" style="margin-bottom:70px">
+<div class="container" style="margin-bottom:70px;margin-left: 10px">
     <div class="row">
-        <div class="col-6">
+        <div class="col-12 col-sm-6">
             <div class="row">
                 <div class="col-3 form">
                     Name
@@ -66,9 +66,11 @@
                 </div>
             </div>
         </div>
-        <div class="col-6" style="margin-top: 20px">
+        <div class="col-12 mapsec" style="height: 200px;margin-top: 40px;margin-bottom: 40px">
+            <?php include('./map1.php') ?>
+        </div>
+        <div class="col-12 col-sm-6" style="margin-top: 20px;padding: 0px">
             <div class="row">
-
                 <div class="col-6">
                     <img src="./img/headphones.png" width="50%" class="imgcontact" alt="">
                 </div>

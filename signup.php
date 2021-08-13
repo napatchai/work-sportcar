@@ -81,6 +81,9 @@
         </div>
     </div>
 </form>
+<!-- //? Start popup message -->
+<?php include('./message.php') ?>
+<!-- //? pop message -->
 <!-- //? End Content Sing up -->
 <?php include('./contentfooter.php') ?>
 <script>
