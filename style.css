@@ -193,10 +193,12 @@ nav ul li a {
 
 .carousel-caption h1 {
     font-size: 6vw;
+    text-shadow: 4px 4px rgb(88, 88, 88);
 }
 
 .carousel-caption h5 {
     font-size: 3vw;
+    text-shadow: 4px 4px rgb(88, 88, 88);
 }
 
 .readmore {
@@ -210,6 +212,7 @@ nav ul li a {
 }
 
 @media (max-width: 600px) {
+
     .carousel-caption {
         top: 2%;
         font-size: var(--bs-body-font-size);
@@ -224,12 +227,21 @@ nav ul li a {
     }
 
     .readmore {
-        margin-top: 10%;
+        margin-top: 35%;
         border: 1px solid #707070;
         padding: 5px;
-        width: 100px;
+        width: 120px;
         text-align: center;
         color: #fff;
+        font-size: 3vw;
+    }
+
+    .carousel-caption h1 {
+        font-size: 8vw;
+    }
+    
+    .carousel-caption h5 {
+        font-size: 5vw;
     }
 }
 
@@ -488,6 +500,10 @@ select {
     color: #707070;
 }
 
+.carousel-inner .carousel-item .imgmobile{
+    display: none !important;
+}
+
 @media (max-width: 1119px) {
     .productshownone {
         display: none;
@@ -516,6 +532,24 @@ select {
     .containerimglast {
         padding: 40px 2%;
         margin-left: 20px;
+    }
+}
+
+@media (max-width: 600px){
+    .imgfooterright{
+        padding-left: 5px;padding-top: 10px
+    }
+
+    .imgfooterleft{
+        padding-right: 5px;padding-top: 10px
+    }
+
+    .carousel-inner .carousel-item .imgdesktop{
+        display: none !important;
+    }
+
+    .carousel-inner .carousel-item .imgmobile{
+        display: block !important;
     }
 }
 

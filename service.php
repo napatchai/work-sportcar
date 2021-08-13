@@ -69,7 +69,7 @@ function setimg(size) {
         document.getElementById("changeimg").style.display = "block";
         document.getElementById("rightfirst12").style.display = "none";
         document.getElementById("rightfirst").src = "./img/aston-martin-vulcan-2918114_1920123.png";
-        document.getElementById("servicefirst").src = "./img/mc20-hero.png";
+        document.getElementById("servicefirst").src = "./img/Layer03_mobile.png";
         document.getElementById("servicesec").src = "./img/Layer01_mobile.png";
     } else {
         document.getElementById("changeimg").style.display = "none";

@@ -10,9 +10,11 @@
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
             aria-label="Slide 3"></button>
     </div>
+    <!-- //todo Start banner Desktop -->
     <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="3500">
-            <img src="./img/Firstbanner.png" class="d-block w-100 test" alt="...">
+            <img src="./img/Firstbanner.png" class="test d-block w-100 imgdesktop" alt="...">
+            <img src="./img/Hero_bannerMobile1.png" class="test d-block w-100 imgmobile" alt="...">
             <div class="carousel-caption  d-md-block">
                 <h1>BUGATTI CHIRON</h1>
                 <h5>The ultimate tourisme</h5>
@@ -37,7 +39,8 @@
             </div>
         </div>
         <div class="carousel-item" data-bs-interval="3500">
-            <img src="./img/thridbanner.png" class="d-block w-100" alt="...">
+            <img src="./img/thridbanner.png" class="d-block w-100 imgdesktop" alt="...">
+            <img src="./img/thridbannerMobile.png" class="d-block w-100 imgmobile" alt="...">
             <div class="carousel-caption d-none d-md-block">
                 <h1>BUGATTI CHIRON</h1>
                 <h5>The ultimate tourisme</h5>
@@ -49,6 +52,7 @@
             </div>
         </div>
     </div>
+    <!-- //todo End banner Desktop -->
 </div>
 <!-- //? End Image Slide -->
 <!-- //? Start Who -->
@@ -291,12 +295,21 @@
 <!-- //? end index product -->
 <!-- //? Start image before footer -->
 <div class="containerimglast">
-    <div class="row" style="border: 1px solid #707070">
-        <div class="col-6">
-            <img src="./img/car-1376083_1920.png" width="100%" alt=""><br>
-            <img src="./img/porsche-4795520_1920.png" width="100%" alt="">
+    <div class="row" style="border: 0px solid #707070">
+        <div class="col-12" id="rightclone" style="padding: 0px">
+            <img src="./img/car-5840866_192021.png" width="100%" height="100%" style="object-fit: cover;" alt="">
         </div>
-        <div class="col-6">
+        <div class="col-12 col-sm-6" style="padding: 0px">
+            <div class="row" style="padding: 0px;margin-left: 0px">
+                <div class="col-6 col-sm-12">
+                    <img src="./img/car-1376083_1920.png" width="100%" alt="" class="imgfooterleft">
+                </div>
+                <div class="col-6 col-sm-12">
+                    <img src="./img/porsche-4795520_1920.png" width="100%" alt="" class="imgfooterright">
+                </div>
+            </div>
+        </div>
+        <div class="col-6" id="rightimg">
             <img src="./img/car-5840866_1920.png" width="100%" height="100%" style="object-fit: cover;" alt="">
         </div>
     </div>
@@ -310,5 +323,22 @@
 <!-- //? Start popup message -->
 <?php include('./message.php') ?>
 <!-- //? pop message -->
+<script>
+var width1 = screen.width;
+setimg(width1);
 
+window.addEventListener("resize", function(event) {
+    setimg(document.body.clientWidth);
+})
+
+function setimg(size) {
+    if (size <= 600) {
+        document.getElementById("rightimg").style.display = "none";
+        document.getElementById("rightclone").style.display = "block";
+    } else {
+        document.getElementById("rightimg").style.display = "block";
+        document.getElementById("rightclone").style.display = "none";
+    }
+}
+</script>
 <?php include('./footer.php'); ?>
