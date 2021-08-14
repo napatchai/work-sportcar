@@ -67,9 +67,11 @@
                 handing, and comfort </p>
             <img src="./img/gh_front.png" width="100%" style="padding: 20px" alt=""> <br>
         </div>
-        <div class="discovermore">
-            Discover more
-        </div>
+        <a href="./productdetail.php">
+            <div class="discovermore">
+                Discover more
+            </div>
+        </a>
     </div>
     <div class="col-6 col-xl-3">
         <label for="" class="labelproduct">Ghibli</label> <br>
