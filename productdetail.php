@@ -22,6 +22,20 @@
     height: auto;
     max-height: 100%;
 }
+
+.carousel-slide .flickity-viewport .flickity-prev-next {
+    display: none !important;
+}
+
+.flickity-prev-next-button {
+    height: 0px !important
+}
+
+.flickity-page-dots .dot {
+    height: 3px !important;
+    width: 20px !important;
+    border-radius: 0px !important;
+}
 </style>
 <!-- //* End ref slide -->
 <?php include('./navbar.php') ?>
