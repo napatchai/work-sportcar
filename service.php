@@ -5,7 +5,6 @@
     <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="3500">
             <img src="./img/servicebanner.png" class="d-block w-100" alt="..." id="servicefirst">
-
         </div>
     </div>
 </div>
@@ -53,6 +52,7 @@
         </div>
     </div>
 </div>
+<?php include('./message.php') ?>
 <!-- //? End banner -->
 <?php include('./contentfooter.php') ?>
 

@@ -27,7 +27,8 @@
 
         </div>
         <div class="carousel-item" data-bs-interval="3500">
-            <img src="./img/Seconebanner.png" class="d-block w-100" alt="...">
+            <img src="./img/Seconebanner.png" class="test d-block w-100 imgdesktop" alt="...">
+            <img src="./img/Hero_bannerMobile1.png" class="test d-block w-100 imgmobile" alt="...">
             <div class="carousel-caption d-md-block">
                 <h1>BUGATTI CHIRON</h1>
                 <h5>The ultimate tourisme</h5>
@@ -40,8 +41,8 @@
         </div>
         <div class="carousel-item" data-bs-interval="3500">
             <img src="./img/thridbanner.png" class="d-block w-100 imgdesktop" alt="...">
-            <img src="./img/thridbannerMobile.png" class="d-block w-100 imgmobile" alt="...">
-            <div class="carousel-caption d-none d-md-block">
+            <img src="./img/Hero_bannerMobile1.png" class="test d-block w-100 imgmobile" alt="...">
+            <div class="carousel-caption d-md-block">
                 <h1>BUGATTI CHIRON</h1>
                 <h5>The ultimate tourisme</h5>
                 <a href="">
@@ -66,13 +67,19 @@
         <div class="content-iconwho">
             <div class="row">
                 <div class="col-4">
-                    <img src="./img/supercar.png" width="60%" class="iconwho" alt="">
+                    <a href="./product.php">
+                        <img src="./img/supercar.png" width="100%" class="iconwho" alt="">
+                    </a>
                 </div>
                 <div class="col-4">
-                    <img src="./img/fix.png" width="60%" class="iconwho" alt="">
+                    <a href="./service.php">
+                        <img src="./img/fix.png" width="100%" class="iconwho" alt="">
+                    </a>
                 </div>
                 <div class="col-4">
-                    <img src="./img/headphones.png" width="60%" class="iconwho" alt="">
+                    <a href="">
+                        <img src="./img/headphones.png" width="100%" class="iconwho" alt="">
+                    </a>
                 </div>
             </div>
         </div>
@@ -120,7 +127,7 @@
 
 <div id="carouselExampleControls" class="carousel slide slide1" data-bs-ride="carousel">
     <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="15000">
+        <div class="carousel-item active" data-bs-interval="5000">
             <div class="row indexproduct">
                 <div class="col-6 col-xl-3" style="padding-left: 20px">
                     <label for="" class="labelproduct">Ghibli</label> <br>
@@ -173,7 +180,7 @@
                 </div>
             </div>
         </div>
-        <div class="carousel-item" data-bs-interval="15000">
+        <div class="carousel-item" data-bs-interval="5000">
             <div class="row indexproduct">
                 <div class="col-6 col-xl-3" style="padding-left: 20px">
                     <label for="" class="labelproduct">Ghibli</label> <br>

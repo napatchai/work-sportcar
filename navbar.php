@@ -4,14 +4,16 @@
         <i class="fas fa-bars" id="first" style="line-height: 55px;"></i>
         <i class="fas fa-times" style="display:none;z-index: 99999999;margin-top: 13px" id="cancel1"></i>
     </label>
-    <label class="logo">Logo</label>
+    <a href="./">
+        <label class="logo">Logo</label>
+    </a>
     <ul>
         <li><a href="./index.php">Home</a></li>
         <li><a href="./product.php">Product</a></li>
         <li><a href="./service.php">Service</a></li>
         <li><a href="./blog.php">Blog</a></li>
         <li><a href="./contact.php">Contact</a></li>
-        <li><a href="#">Login </a><span class="btnlogin-sign">|</span><a href="./signup.php">Sign up</a></li>
+        <li><a href="./login.php">Login </a><span class="btnlogin-sign">|</span><a href="./signup.php">Sign up</a></li>
     </ul>
 </nav>
 

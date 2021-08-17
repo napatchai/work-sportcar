@@ -18,6 +18,12 @@
     transform: translateY(-50%)
 }
 
+@media (max-width: 600px) {
+    .carousel-image {
+        width: 100%
+    }
+}
+
 .carousel.is-fullscreen .carousel-image {
     height: auto;
     max-height: 100%;
@@ -55,7 +61,7 @@
 <!-- //? Start generation -->
 <div class="generation">
     <h2 class="bannertext">PORSCHE GT3</h2>
-    <h5 class="pricetext">CONDITION: NEW | PRICE: BAHT</h5>
+    <h5 class="pricetext">CONDITION: <span style="font-weight: bold;">NEW</span> | PRICE: BAHT</h5>
 </div>
 <!-- //? End deneration -->
 
@@ -89,7 +95,7 @@
 
 <!-- //? start textfooter -->
 <div class="generation">
-    <h2 class="footertext">EXTERIOR + INTERIOR</h2>
+    <h2 class="footertext">EQUIPMENT HIGHLIGHTS</h2>
 </div>
 <!-- //? End textfooter -->
 

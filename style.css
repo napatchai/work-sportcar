@@ -43,6 +43,7 @@ label.logo {
     line-height: 55px;
     padding: 0 100px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 nav ul {
@@ -252,7 +253,7 @@ nav ul li a {
     position: relative;
     text-align: center;
     color: white;
-    z-index: -1;
+    z-index: 0;
     font-size: 2vw;
 }
 
@@ -274,7 +275,7 @@ nav ul li a {
 }
 
 .iconwho {
-    max-width: 150px;
+    max-width: 200px;
     margin: auto !important;
 }
 
@@ -338,10 +339,12 @@ nav ul li a {
     border: 1px solid #707070;
 } */
 .form-select {
-    width: 130px !important;
+    width: 100px !important;
+    height: 31px !important;
     display: inline !important;
     background-image: url("./img/Polygon1.png") !important;
     background-size: 10px !important;
+    font-size: 13px !important;
 }
 
 select {
@@ -361,6 +364,7 @@ select {
 
     .form-select {
         width: 90px !important;
+        height: 28px !important;
         font-size: 12px !important;
     }
 }
@@ -376,6 +380,7 @@ select {
 
     .form-select {
         width: 100px !important;
+        height: 26px !important;
         font-size: 10px !important;
     }
 
@@ -389,6 +394,7 @@ select {
 .indexproduct {
     text-align: center !important;
     margin-top: 30px !important;
+    margin-bottom: 50px;
 }
 
 .labelproduct {
@@ -406,6 +412,7 @@ select {
     margin-top: 20px;
     font-size: 13px;
     font-weight: 300;
+    padding: 0px 0px;
 }
 
 .discovermore {
@@ -497,15 +504,21 @@ select {
 .carousel-control-next-icon:after {
     content: '>';
     font-size: 45px;
-    font-weight: lighter;
+    font-weight: border;
     color: #707070;
 }
 
 .carousel-control-prev-icon:after {
     content: '<';
     font-size: 45px;
-    font-weight: lighter;
+    font-weight: border;
     color: #707070;
+}
+
+@media (max-width: 600px){
+    .carousel-control-next-icon:after, .carousel-control-prev-icon:after{
+        content: '';
+    }
 }
 
 .carousel-inner .carousel-item .imgmobile {
@@ -597,6 +610,7 @@ select {
 
 .footerleft-content {
     padding: 0px 20px;
+    color: #fff;
 }
 
 .footerleft-content-social {
@@ -872,7 +886,7 @@ select {
 
 .formsubmit {
     text-align: center !important;
-    margin-top: 30px !important;
+    margin-top: 40px !important;
     margin-bottom: 30px !important;
 }
 
@@ -1100,6 +1114,23 @@ select {
     }
 }
 
+.btnsubmit{
+    margin: auto;
+    background-color: #505050;
+    width: 100px;
+    padding: 5px 5px;
+    border-radius: 10px;
+    color: #fff;
+    border: 1px solid #505050;
+    transition: .5s;
+}
+
+.btnsubmit:hover{
+    background-color: #fff;
+    border: 1px solid #505050;
+    color: #505050;
+}
+
 @media (max-width: 575px) {
     .container {
         padding-left: 25px !important;
@@ -1260,7 +1291,7 @@ select {
     width: 70%;
     position: absolute;
     left: 15%;
-    top: 45%;
+    top: 35%;
     display: table-cell;
     vertical-align: middle;
 
@@ -1292,14 +1323,29 @@ select {
 
 @media (max-width: 600px) {
     .image-angled--text .texttest {
-        top: 13%;
+        top: 30%;
+        font-size: 13px;
+        font-weight: 500;
+    }
+
+    .image-angled--text h1 {
+        font-size: 25px !important;
+        vertical-align: middle;
+        margin: auto 0px;
+        /* margin-top: -50px */
+    }
+}
+
+@media (max-width: 500px){
+    .image-angled--text .texttest {
+        top: 20%;
         font-size: 13px;
         font-weight: 500;
     }
 }
 
 .image-angled--text h1 {
-    font-size: 30px;
+    font-size: 60px;
     vertical-align: middle;
     margin: auto 0px;
     /* margin-top: -50px */
@@ -1335,10 +1381,171 @@ select {
 .pricetext{
     margin-top: 50px;
     margin-bottom: 80px;
+    font-weight: lighter;
 }
 
 .ref{
-    border-top: 1px solid #707070;
+    border-top: 1px solid #e2e2e2;
 }
 
 /* ? End Product detail */
+
+/* ? Start Login page */
+.bglogin{
+    margin-top: 50px;
+    width: 100%;
+    height: 85vh;
+}
+
+.centered-login {
+    position: absolute;
+    width: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #505050;
+    border-radius: 10px;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.formsubmit-login {
+    text-align: center !important;
+    margin-top: 40px !important;
+    margin-bottom: 30px !important;
+}
+
+.formsubmit-login .btn-dark {
+    background-color: #505050;
+}
+
+@media (max-width: 1000px) {
+
+    .centered-login {
+        width: 60%;
+    }
+}
+
+@media (max-width: 850px) {
+
+    .centered-login {
+        width: 80%;
+    }
+}
+
+/* ? End login page */
+
+
+
+
+
+
+
+
+.calendar{
+    width: 300px;
+    background-color: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.ui-datepicker-header{
+    height: 50px;
+    line-height: 50px;
+    color: #5ed1cc;
+    margin-bottom: 10px;
+}
+
+.ui-datepicker-prev, .ui-datepicker-next{
+    width: 20px;
+    height: 20px;
+    text-indent: 9999px;
+    /* border: 2px solid #b0aead; */
+    border-radius: 100%;
+    cursor: pointer;
+    overflow: hidden;
+    margin-top: 12px;
+}
+
+.ui-datepicker-prev{
+    float: left;
+    margin-left: 12px;
+}
+
+.ui-datepicker-prev::after{
+    transform: rotate(45deg);
+    margin: -43px 0px 0px 8px;
+}
+
+.ui-datepicker-next{
+    float: right;
+    margin-right: 12px;
+}
+
+.ui-datepicker-next::after{
+    transform: rotate(-135deg);
+    margin: -43px 0px 0px 6px;
+}
+
+.ui-datepicker-prev::after, .ui-datepicker-next::after{
+    content: '';
+    position: absolute;
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-left: 2px solid #000;
+    border-bottom: 2px solid #000;
+    
+}
+
+.ui-datepicker-prev:hover, .ui-datepicker-next:hover, .ui-datepicker-prev:hover::after, .ui-datepicker-next:hover::after{
+    border-color: #5ed1cc;
+}
+
+.ui-datepicker-title{
+    text-align: center;
+}
+
+.ui-datepicker-calendar{
+    width: 100%;
+    text-align: center;
+}
+
+.ui-datepicker-calendar thead tr th span{
+    display: block;
+    width: 40px;
+    color: #00a8b2;
+    margin-bottom: 5px;
+    font-size: 13px;
+}
+
+.ui-state-default{
+    display: block;
+    text-decoration: none;
+    color: #b5b5b5;
+    line-height: 40px;
+    font-size: 12px;
+}
+
+.ui-state-default:hover{
+    background: #c7dfe0;
+    border-radius: 100%;
+    
+}
+
+.ui-state-highlight{
+    color: #8dd391
+}
+
+.ui-state-active{
+    background-color: #00a8b2;
+    color: #fff;
+    border-radius: 100%;
+}
+
+.ui-datepicker-unselectable
+  .ui-state-default{
+      color: #eee;
+      border: 2px solid transparent;
+  }

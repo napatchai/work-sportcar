@@ -75,7 +75,7 @@
                 </div>
             </div>
             <div class="col-12 formsubmit">
-                <button type="button" class="btn btn-dark">Submit</button>
+                <button type="button" class="btn btn-dark" style="padding: 6px 22px">Submit</button>
 
             </div>
         </div>

@@ -1,10 +1,20 @@
 <div class="footer">
     <div class="footerleft">
-        <span class="footerleft-content footerleftfirst">Home</span>
-        <span class="footerleft-content">Product</span>
-        <span class="footerleft-content">Service</span>
-        <span class="footerleft-content">Blog</span>
-        <span class="footerleft-content">Contact</span>
+        <a href="./index.php">
+            <span class="footerleft-content footerleftfirst">Home</span>
+        </a>
+        <a href="./product.php">
+            <span class="footerleft-content">Product</span>
+        </a>
+        <a href="/service.php">
+            <span class="footerleft-content">Service</span>
+        </a>
+        <a href="./blog.php">
+            <span class="footerleft-content">Blog</span>
+        </a>
+        <a href="./contact.php">
+            <span class="footerleft-content">Contact</span>
+        </a>
         <br>
         <div class="copyright">
             Copyright@ 2021

@@ -14,7 +14,7 @@
     <h5>NEWS</h5>
     <div class="test">
         <div class="headernew">
-            <h2 style="margin-bottom: 20px;margin-top: 20px">V1 Around The World</h2>
+            <h2 style="margin-bottom: 20px;margin-top: 20px;font-size: 35px">V1 Around The World</h2>
             <img src="./img/newsimg.png" width="100%" alt="">
         </div>
         <div class="row">
@@ -89,7 +89,7 @@
         <!-- //? End News -->
     </div>
 </div>
-
+<?php include('./message.php') ?>
 <?php include('./contentfooter.php') ?>
 <script>
 var width1 = screen.width;

@@ -4,7 +4,7 @@
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="3500">
-            <img src="./img/bannerproduct.png" class="d-block w-100" alt="..." id="bannerblog">
+            <img src="./img/bannerproduct.png" class="d-block w-100" alt="..." id="bannerproduct">
         </div>
     </div>
 </div>
@@ -17,7 +17,7 @@
             <p>Lorem Ipsum is simply dummy
                 text of the printing and Ipsum
                 has been the industry’s</p>
-            <h1>
+            <h1 class="textproduct">
                 Product
             </h1>
         </div>
@@ -58,7 +58,7 @@
 </div>
 <!-- //? End Filter -->
 <!-- //? Start Product -->
-<div class="row indexproduct">
+<div class="row indexproduct" style="padding-left: 15px">
     <div class="col-6 col-xl-3" style="padding-left: 20px">
         <label for="" class="labelproduct">Ghibli</label> <br>
         <div class="product-content">
@@ -110,9 +110,23 @@
         </div>
         <!-- </div> -->
     </div>
-    <div class="col-6 col-xl-3 productshownone">
+    <div class="col-6 col-xl-3" style="padding-left: 20px">
         <label for="" class="labelproduct">Ghibli</label> <br>
         <div class="product-content">
+            <label for="" class="labelmed">You’re not like everyone else</label> <br>
+            <p class="pevent">The masterful combination of style, power, sporty,<br>
+                handing, and comfort </p>
+            <img src="./img/gh_front.png" width="100%" style="padding: 20px" alt=""> <br>
+        </div>
+        <a href="./productdetail.php">
+            <div class="discovermore">
+                Discover more
+            </div>
+        </a>
+    </div>
+    <div class="col-6 col-xl-3">
+        <label for="" class="labelproduct">Ghibli</label> <br>
+        <div class="product-contentend">
             <label for="" class="labelmed">You’re not like everyone else</label> <br>
             <p class="pevent">The masterful combination of style, power, sporty,<br>
                 handing, and comfort </p>
@@ -136,29 +150,34 @@
     </div>
     <div class="col-6 col-xl-3 productshownone">
         <label for="" class="labelproduct">Ghibli</label> <br>
-        <div class="product-content">
-            <label for="" class="labelmed">You’re not like everyone else</label> <br>
-            <p class="pevent">The masterful combination of style, power, sporty,<br>
-                handing, and comfort </p>
-            <img src="./img/gh_front.png" width="100%" style="padding: 20px" alt=""> <br>
-        </div>
-        <div class="discovermore">
-            Discover more
-        </div>
-    </div>
-    <div class="col-6 col-xl-3 productshownone">
-        <label for="" class="labelproduct">Ghibli</label> <br>
-        <div class="product-content">
-            <label for="" class="labelmed">You’re not like everyone else</label> <br>
-            <p class="pevent">The masterful combination of style, power, sporty,<br>
-                handing, and comfort </p>
-            <img src="./img/gh_front.png" width="100%" style="padding: 20px" alt=""> <br>
-        </div>
+        <label for="" class="labelmed">You’re not like everyone else</label> <br>
+        <p class="pevent">The masterful combination of style, power, sporty,<br>
+            handing, and comfort </p>
+        <img src="./img/gh_front.png" width="100%" style="padding: 20px" alt=""> <br>
         <div class="discovermore">
             Discover more
         </div>
     </div>
 </div>
+<!-- //? Start message -->
+<?php include('./message.php') ?>
+<!-- //? End message -->
 <!-- //? End Product -->
 <?php include('./contentfooter.php') ?>
+<script>
+var width1 = screen.width;
+setimg(width1);
+
+window.addEventListener("resize", function(event) {
+    setimg(document.body.clientWidth);
+})
+
+function setimg(size) {
+    if (size <= 600) {
+        document.getElementById("bannerproduct").src = "./img/mc20-hero.png";
+    } else {
+        document.getElementById("bannerproduct").src = "./img/bannerproduct.png";
+    }
+}
+</script>
 <?php include('./footer.php') ?>

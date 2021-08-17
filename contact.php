@@ -36,7 +36,8 @@
         </div>
     </div>
 </div>
-<div class="container" style="margin-bottom:70px;margin-left: 10px">
+
+<div class="" style="margin-bottom:70px;margin-left: 10px">
     <div class="row">
         <div class="col-12 col-sm-6">
             <div class="row">
@@ -63,6 +64,11 @@
                 </div>
                 <div class="col-12 form">
                     <textarea name="" id="" class="forminput" style="width: 100%" rows="5"></textarea>
+                </div>
+                <div class="col-12 form" style="text-align: center;">
+                    <div class="btnsubmit">
+                        Submit
+                    </div>
                 </div>
             </div>
         </div>
