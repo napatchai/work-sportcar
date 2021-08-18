@@ -77,7 +77,7 @@
                     </a>
                 </div>
                 <div class="col-4">
-                    <a href="">
+                    <a onclick="togglePopupBooking()">
                         <img src="./img/headphones.png" width="100%" class="iconwho" alt="">
                     </a>
                 </div>
@@ -323,6 +323,49 @@
 </div>
 <!-- //? End image before footer -->
 
+<!-- //? Start popup booking -->
+<div class="popupbooking" id="popup-1booking">
+    <div class="overlaybooking" onclick="togglePopupBooking()"></div>
+    <div class="contentbooking">
+        <div class="close-btn-dotbooking" onclick="togglePopupBooking()">...</div>
+        <div class="close-btnbooking" onclick="togglePopupBooking()">-</div>
+        <p style="margin-bottom: 15px;margin-top: 20px">Lorem Ipsum is simply dummy text of the printing
+            and typesetting industry.
+        </p>
+        <span class="footerleft-content-social"><img src="./img/viber.png" class="imgsocial" alt=""></span>
+        <span class="footerleft-content-social"><img src="./img/facebook-app-logo.png" class="imgsocial" alt=""></span>
+        <span class="footerleft-content-social"><img src="./img/line.png" class="imgsocial" alt=""></span>
+        <div class=calendarcenter>
+            <?php include('./testcalendar.php') ?>
+        </div>
+        <div class="row test1234">
+            <div class="col-6">
+                <input type="text" required placeholder="Name" class="inputbooking">
+            </div>
+            <div class="col-6">
+                <input type="text" required placeholder="Phone" class="inputbooking">
+            </div>
+            <div class="col-6" style="margin-top: 20px">
+                <select name="" id="" class="inputbooking">
+                    <option value=""></option>
+                    <option value="">one</option>
+                    <option value="">two</option>
+                </select>
+            </div>
+            <div class="col-6"></div>
+        </div>
+        <div class="col-12 formsubmit" style="margin-bottom: 0px">
+            <button type="button" class="btn btn-dark" style="padding: 6px 22px">Submit</button>
+
+        </div>
+    </div>
+</div>
+
+<div class="message">
+    <img src="./img/messenger.png" width=" 50px" alt="" style="cursor: pointer;" onclick="togglePopup()">
+</div>
+<!-- //? End popup booking -->
+
 <!-- //? Start footer -->
 <?php include('./contentfooter.php') ?>
 <!-- //? End footer -->
@@ -346,6 +389,12 @@ function setimg(size) {
         document.getElementById("rightimg").style.display = "block";
         document.getElementById("rightclone").style.display = "none";
     }
+}
+</script>
+
+<script>
+function togglePopupBooking() {
+    document.getElementById("popup-1booking").classList.toggle("active");
 }
 </script>
 <?php include('./footer.php'); ?>

@@ -1,6 +1,6 @@
 * {
     padding: 0;
-    margin: 0;
+    margin: auto;
     text-decoration: none !important;
     list-style: none;
     box-sizing: border-box;
@@ -515,8 +515,10 @@ select {
     color: #707070;
 }
 
-@media (max-width: 600px){
-    .carousel-control-next-icon:after, .carousel-control-prev-icon:after{
+@media (max-width: 600px) {
+
+    .carousel-control-next-icon:after,
+    .carousel-control-prev-icon:after {
         content: '';
     }
 }
@@ -1114,7 +1116,7 @@ select {
     }
 }
 
-.btnsubmit{
+.btnsubmit {
     margin: auto;
     background-color: #505050;
     width: 100px;
@@ -1125,7 +1127,7 @@ select {
     transition: .5s;
 }
 
-.btnsubmit:hover{
+.btnsubmit:hover {
     background-color: #fff;
     border: 1px solid #505050;
     color: #505050;
@@ -1336,7 +1338,7 @@ select {
     }
 }
 
-@media (max-width: 500px){
+@media (max-width: 500px) {
     .image-angled--text .texttest {
         top: 20%;
         font-size: 13px;
@@ -1369,29 +1371,29 @@ select {
     text-align: center;
 }
 
-.bannertext{
+.bannertext {
     margin-top: 80px;
 }
 
-.footertext{
+.footertext {
     margin-bottom: 80px;
     margin-top: 80px;
 }
 
-.pricetext{
+.pricetext {
     margin-top: 50px;
     margin-bottom: 80px;
     font-weight: lighter;
 }
 
-.ref{
+.ref {
     border-top: 1px solid #e2e2e2;
 }
 
 /* ? End Product detail */
 
 /* ? Start Login page */
-.bglogin{
+.bglogin {
     margin-top: 50px;
     width: 100%;
     height: 85vh;
@@ -1436,28 +1438,25 @@ select {
 
 /* ? End login page */
 
-
-
-
-
-
-
-
-.calendar{
-    width: 300px;
+/* ? Start calender */
+.calendar {
+    width: 60%;
     background-color: #fff;
     border-radius: 4px;
     overflow: hidden;
+    margin-top: 15px;
+    margin-bottom: 15px
 }
 
-.ui-datepicker-header{
+.ui-datepicker-header {
     height: 50px;
     line-height: 50px;
-    color: #5ed1cc;
+    color: #000;
     margin-bottom: 10px;
 }
 
-.ui-datepicker-prev, .ui-datepicker-next{
+.ui-datepicker-prev,
+.ui-datepicker-next {
     width: 20px;
     height: 20px;
     text-indent: 9999px;
@@ -1468,27 +1467,28 @@ select {
     margin-top: 12px;
 }
 
-.ui-datepicker-prev{
+.ui-datepicker-prev {
     float: left;
     margin-left: 12px;
 }
 
-.ui-datepicker-prev::after{
+.ui-datepicker-prev::after {
     transform: rotate(45deg);
     margin: -43px 0px 0px 8px;
 }
 
-.ui-datepicker-next{
+.ui-datepicker-next {
     float: right;
     margin-right: 12px;
 }
 
-.ui-datepicker-next::after{
+.ui-datepicker-next::after {
     transform: rotate(-135deg);
     margin: -43px 0px 0px 6px;
 }
 
-.ui-datepicker-prev::after, .ui-datepicker-next::after{
+.ui-datepicker-prev::after,
+.ui-datepicker-next::after {
     content: '';
     position: absolute;
     display: block;
@@ -1496,56 +1496,252 @@ select {
     height: 6px;
     border-left: 2px solid #000;
     border-bottom: 2px solid #000;
-    
+
 }
 
-.ui-datepicker-prev:hover, .ui-datepicker-next:hover, .ui-datepicker-prev:hover::after, .ui-datepicker-next:hover::after{
+.ui-datepicker-prev:hover,
+.ui-datepicker-next:hover,
+.ui-datepicker-prev:hover::after,
+.ui-datepicker-next:hover::after {
     border-color: #5ed1cc;
 }
 
-.ui-datepicker-title{
+.ui-datepicker-title {
     text-align: center;
 }
 
-.ui-datepicker-calendar{
+.ui-datepicker-calendar {
     width: 100%;
     text-align: center;
 }
 
-.ui-datepicker-calendar thead tr th span{
+.ui-datepicker-calendar thead tr th span {
     display: block;
     width: 40px;
-    color: #00a8b2;
+    color: #000;
     margin-bottom: 5px;
     font-size: 13px;
 }
 
-.ui-state-default{
+.ui-state-default {
     display: block;
     text-decoration: none;
-    color: #b5b5b5;
+    color: #000;
     line-height: 40px;
     font-size: 12px;
 }
 
-.ui-state-default:hover{
-    background: #c7dfe0;
+.ui-state-default:hover {
+    background: #0075e23f;
     border-radius: 100%;
-    
+
 }
 
-.ui-state-highlight{
+.ui-state-highlight {
     color: #8dd391
 }
 
-.ui-state-active{
-    background-color: #00a8b2;
+.ui-state-active {
+    background-color: #0076E2;
     color: #fff;
     border-radius: 100%;
 }
 
-.ui-datepicker-unselectable
-  .ui-state-default{
-      color: #eee;
-      border: 2px solid transparent;
-  }
+.ui-datepicker-unselectable .ui-state-default {
+    color: #eee;
+    border: 2px solid transparent;
+}
+
+/* ? End calendar */
+
+/* ? Start popup booking */
+.popupbooking .overlaybooking {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+    display: none;
+}
+
+.popupbooking .contentbooking {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: #fff;
+    width: 40%;
+    height: auto;
+    z-index: 2;
+    text-align: left;
+    padding: 20px;
+    box-sizing: border-box;
+    color: #000;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.btn-primarybooking {
+    border-radius: 7px !important;
+}
+
+@media (max-width: 1300px) {
+    .popupbooking .contentbooking {
+        width: 50%;
+    }
+}
+
+@media (max-width: 1000px) {
+    .popupbooking .contentbooking {
+        width: 53%;
+    }
+}
+
+@media (max-width: 900px) {
+    .popupbooking .contentbooking {
+        width: 65%;
+    }
+}
+
+@media (max-width: 800px) {
+    .popupbooking .contentbooking {
+        width: 70%;
+    }
+    .calendar {
+        width: 70% !important;
+    }
+    .test1234{
+        width: 70% !important;
+    }
+}
+
+@media (max-width: 630px) {
+    .popupbooking .contentbooking {
+        width: 80%;
+    }
+}
+
+@media (max-width: 550px) {
+    .popupbooking .contentbooking {
+        width: 80%;
+    }
+    .calendar {
+        width: 80% !important;
+    }
+    .test1234{
+        width: 80% !important;
+    }
+}
+
+@media (max-width: 500px) {
+    .popupbooking .contentbooking {
+        width: 90%;
+    }
+    .calendar {
+        width: 80% !important;
+    }
+    .test1234{
+        width: 80% !important;
+    }
+}
+
+@media (max-width: 435px) {
+    .popupbooking .contentbooking {
+        width: 80%;
+    }
+    .calendar {
+        width: 90% !important;
+    }
+    .test1234{
+        width: 90% !important;
+    }
+}
+
+
+@media (max-width: 400px) {
+    .popupbooking .contentbooking {
+        width: 80%;
+    }
+    .calendar {
+        width: 100% !important;
+    }
+    .test1234{
+        width: 100% !important;
+    }
+}
+
+.popupbooking .close-btnbooking {
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 20px;
+    height: 20px;
+    /* background: #222222; */
+    border: 1px solid #707070;
+    color: #707070;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 16px;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.popupbooking .close-btn-dotbooking {
+    cursor: pointer;
+    position: absolute;
+    right: 50px;
+    top: 20px;
+    width: 20px;
+    height: 20px;
+    /* background: #222222; */
+    border: 1px solid #707070;
+    color: #707070;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 12px;
+    text-align: center;
+    border-radius: 50%;
+}
+
+
+.popupbooking.active .overlaybooking {
+    display: block;
+}
+
+.contentbooking h1 {
+    font-size: 45px;
+}
+
+.contentbooking p {
+    font-size: 20px;
+    color: #000;
+}
+
+.popupbooking.active .contentbooking {
+    transition: all 300ms ease-in-out;
+    transform: translate(-50%, -50%) scale(1);
+    padding: 30px 30px;
+}
+
+.calendarcenter {
+    display: block;
+    margin: auto;
+}
+
+.test1234 {
+    width: 60%;
+    margin: auto;
+    text-align: left;
+}
+
+.inputbooking {
+    border-radius: 20px;
+    padding: 2px 5px;
+    width: 90%;
+    border: 1px solid #aaaaaa;
+}
+
+/* ? End popup booking */
