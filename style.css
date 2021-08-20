@@ -1,6 +1,6 @@
 * {
     padding: 0;
-    margin: auto;
+    margin: 0;
     text-decoration: none !important;
     list-style: none;
     box-sizing: border-box;
@@ -1440,7 +1440,7 @@ select {
 
 /* ? Start calender */
 .calendar {
-    width: 60%;
+    width: 100%;
     background-color: #fff;
     border-radius: 4px;
     overflow: hidden;
@@ -1729,6 +1729,7 @@ select {
 .calendarcenter {
     display: block;
     margin: auto;
+    width: 60%;
 }
 
 .test1234 {

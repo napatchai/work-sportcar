@@ -335,7 +335,7 @@
         <span class="footerleft-content-social"><img src="./img/viber.png" class="imgsocial" alt=""></span>
         <span class="footerleft-content-social"><img src="./img/facebook-app-logo.png" class="imgsocial" alt=""></span>
         <span class="footerleft-content-social"><img src="./img/line.png" class="imgsocial" alt=""></span>
-        <div class=calendarcenter>
+        <div class="calendarcenter">
             <?php include('./testcalendar.php') ?>
         </div>
         <div class="row test1234">
