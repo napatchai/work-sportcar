@@ -1192,6 +1192,14 @@ select {
     cursor: pointer;
 }
 
+#headerlink{
+    display: none;
+}
+
+#headerunlink{
+    display: block;
+}
+
 .discriptionnew {
     width: 60%;
     margin-top: 20px
@@ -1228,6 +1236,23 @@ select {
         margin-bottom: 10px;
         width: 100%;
         margin-top: 10px;
+    }
+
+    .readmoreblognews{
+        display: none;
+    }
+
+    #headerlink{
+        display: block;
+        color: #000;
+    }
+
+    #headerunlink{
+        display: none;
+    }
+
+    .readmoreblog{
+        display: none;
     }
 }
 

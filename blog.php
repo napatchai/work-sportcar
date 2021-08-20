@@ -22,7 +22,10 @@
                 <h5 style="margin-top: 20px">28 JULY 2020</h5>
             </div>
             <div class="col-12 col-sm-10">
-                <h4 style="margin-top: 20px">MUDETEC: IN SEARCH OF THE FUTURE</h4>
+                <a href="" id="headerlink">
+                    <h4 style="margin-top: 20px">MUDETEC: IN SEARCH OF THE FUTURE</h4>
+                </a>
+                <h4 style="margin-top: 20px" id="headerunlink">MUDETEC: IN SEARCH OF THE FUTURE</h4>
                 <p class="discriptionnew">The Lamborghini Museum has been updated to become Museum
                     of Technologies, where fascinating history, the iconic models and
                     tours of the production lines tell the story of over 50 years of
@@ -66,7 +69,11 @@
             </div>
             <div class="col-sm-6 paddingnews">
                 <h5 class="newdescription">28 JULY 2020</h5>
-                <h2 class="newssub">MUDETEC: IN SEARCH OF
+                <a href="" id="headerlink">
+                    <h2 class="newssub">MUDETEC: IN SEARCH OF
+                        THE FUTURE</h2>
+                </a>
+                <h2 class="newssub" id="headerunlink">MUDETEC: IN SEARCH OF
                     THE FUTURE</h2>
                 <div class="readmoreblognews">
                     Read more
@@ -79,7 +86,11 @@
             </div>
             <div class="col-sm-6 paddingnews">
                 <h5 class="newdescription">28 JULY 2020</h5>
-                <h2 class="newssub">MUDETEC: IN SEARCH OF
+                <a href="" id="headerlink">
+                    <h2 class="newssub">MUDETEC: IN SEARCH OF
+                        THE FUTURE</h2>
+                </a>
+                <h2 class="newssub" id="headerunlink">MUDETEC: IN SEARCH OF
                     THE FUTURE</h2>
                 <div class="readmoreblognews">
                     Read more
