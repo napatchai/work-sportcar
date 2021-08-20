@@ -1746,3 +1746,28 @@ select {
 }
 
 /* ? End popup booking */
+
+/* ? Start Blog Detail */
+.blogdetail{
+    margin-top: 100px;
+    margin-bottom: 70px;
+    text-align: center;
+}
+
+.blogimgheader{
+    margin-top: 40px
+}
+
+.textheader{
+    text-align: left;
+    margin-top: 20px;
+}
+
+.textheader h3{
+    margin-top: 20px;
+}
+
+.textheader p{
+    margin-top: 20px;
+}
+/* ? End Blog Detail */
