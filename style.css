@@ -1225,7 +1225,7 @@ select {
     }
 
     .newdescription {
-        margin-top: 10px
+        margin-top: 20px
     }
 
     .paddingnews {
@@ -1635,10 +1635,10 @@ select {
         width: 70%;
     }
     .calendar {
-        width: 70% !important;
+        width: 100% !important;
     }
     .test1234{
-        width: 70% !important;
+        width: 100% !important;
     }
 }
 
@@ -1653,10 +1653,10 @@ select {
         width: 80%;
     }
     .calendar {
-        width: 80% !important;
+        width: 100% !important;
     }
     .test1234{
-        width: 80% !important;
+        width: 100% !important;
     }
 }
 
@@ -1665,22 +1665,22 @@ select {
         width: 90%;
     }
     .calendar {
-        width: 80% !important;
+        width: 100% !important;
     }
     .test1234{
-        width: 80% !important;
+        width: 100% !important;
     }
 }
 
 @media (max-width: 435px) {
     .popupbooking .contentbooking {
-        width: 80%;
+        width: 90%;
     }
     .calendar {
-        width: 90% !important;
+        width: 100% !important;
     }
     .test1234{
-        width: 90% !important;
+        width: 100% !important;
     }
 }
 
@@ -1764,7 +1764,7 @@ select {
 }
 
 .inputbooking {
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 2px 5px;
     width: 90%;
     border: 1px solid #aaaaaa;
