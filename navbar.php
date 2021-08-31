@@ -5,7 +5,7 @@
         <i class="fas fa-times" style="display:none;z-index: 99999999;margin-top: 13px" id="cancel1"></i>
     </label>
     <a href="./">
-        <label class="logo"><img src="./img/logo.png" width="35px" alt=""></label>
+        <label class="logo"><img src="./img/logo.png" width="45px" alt=""></label>
     </a>
     <ul>
         <li><a href="./index.php">Home</a></li>

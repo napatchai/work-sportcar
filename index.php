@@ -172,7 +172,8 @@ $result = mysqli_query($conn, $query);
                 <div class="col-6 col-xl-3" style="padding-left: 20px">
                     <label for="" class="labelproduct">Ghibli</label> <br>
                     <div class="product-content">
-                        <label for="" class="labelmed">You’re not like everyone else</label> <br>
+                        <label for="" class="labelmed">You’re not like everyone</label>
+                        <br>
                         <p class="pevent">The masterful combination of style, power, sporty,<br>
                             handing, and comfort </p>
                         <img src="./img/gh_front.png" width="100%" style="padding: 20px" alt=""> <br>
