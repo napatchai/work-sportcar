@@ -1,0 +1,65 @@
+.managerbanner{
+    width: 100%;
+    border: 1px solid #000;
+    border-radius: 20px;
+    height: 200px;
+    position: relative;
+}
+
+.imgbanner{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    transition: .5s;
+}
+
+.imgbanner:hover{
+    opacity: .5;
+}
+
+.detailbanner{
+    position: absolute;
+    top: 20px;
+    left: 15px;
+    color: #ffffff;
+}
+
+.detailbanner h1{
+    font-size: 30px;
+    text-shadow: 2px 2px #000;
+}
+
+.detailbanner h3{
+    font-size: 25px;
+    text-shadow: 2px 2px #000;
+}
+
+.test{
+    margin-top: 30px !important;
+}
+
+.modal, .fade{
+    width: 100% !important;
+}
+
+.Addbanner{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #000;
+}
+
+.Addbanner h1{
+    font-size: 80px;
+}
+
+.added{
+    transition: .5s;
+}
+
+.added:hover{
+    background-color: rgb(182, 181, 181);
+    opacity: .5;
+}

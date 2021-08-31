@@ -60,7 +60,7 @@ function showResult(result) {
             icon: "success",
         });
         setTimeout(function() {
-            window.location = "./admin"
+            window.location = "./index.php"
         }, 1500);
     } else if (result == 2) {
         swal({

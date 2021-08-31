@@ -5,7 +5,7 @@
         <i class="fas fa-times" style="display:none;z-index: 99999999;margin-top: 13px" id="cancel1"></i>
     </label>
     <a href="./">
-        <label class="logo">Logo</label>
+        <label class="logo"><img src="./img/logo.png" width="35px" alt=""></label>
     </a>
     <ul>
         <li><a href="./index.php">Home</a></li>
@@ -18,7 +18,11 @@
         if(!@$_SESSION["mem_id"]){ 
         ?>
         <li><a href="./login.php">Login </a><span class="btnlogin-sign">|</span><a href="./signup.php">Sign up</a></li>
-        <?php }else{ ?>
+        <?php }else{ 
+            if($_SESSION['level'] == 1){    
+        ?>
+        <li><a href="./admin">Back End</a></li>
+        <?php } ?>
         <li><a href="./signOut.php">Sign out</a></li>
         <?php } ?>
     </ul>

@@ -873,7 +873,7 @@ select {
 }
 
 .forminput {
-    width: 100%;
+    width: 80%;
     border: 1px solid #aaaaaa;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
@@ -1083,7 +1083,7 @@ select {
 
 .contentContact {
     max-width: 400px;
-    margin: 0px auto;
+    margin: auto auto;
     padding: 0px 10px;
     padding-left: 20px;
 }
@@ -1796,3 +1796,4 @@ select {
     margin-top: 20px;
 }
 /* ? End Blog Detail */
+

@@ -1,6 +1,3 @@
-<?php 
-include('../header.php');
-?>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
@@ -196,9 +193,9 @@ a {
         <nav class="nav">
             <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span
                         class="nav_logo-name">Logo</span> </a>
-                <div class="nav_list"> <a href="./banner.php" class="nav_link active"> <i
+                <div class="nav_list"> <a href="./banner.php" id="banner" class="nav_link"> <i
                             class='bx bx-grid-alt nav_icon'></i>
-                        <span class="nav_name">Banner</span> </a> <a href="#" class="nav_link"> <i
+                        <span class="nav_name">Banner</span> </a> <a href="./user.php" id="user" class="nav_link"> <i
                             class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span> </a> <a href="#"
                         class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span
                             class="nav_name">Messages</span> </a> <a href="#" class="nav_link"> <i
@@ -211,14 +208,6 @@ a {
                     class="nav_name">SignOut</span> </a>
         </nav>
     </div>
-    <!--Container Main start-->
-    <div class="height-100 bg-light">
-        <h4>Main Components</h4>
-    </div>
-    <!--Container Main end-->
-    <?php
-include('../footer.php');
-?>
 
     <script>
     document.addEventListener("DOMContentLoaded", function(event) {
