@@ -13,7 +13,14 @@
         <li><a href="./service.php">Service</a></li>
         <li><a href="./blog.php">Blog</a></li>
         <li><a href="./contact.php">Contact</a></li>
+        <?php 
+        session_start();
+        if(!@$_SESSION["mem_id"]){ 
+        ?>
         <li><a href="./login.php">Login </a><span class="btnlogin-sign">|</span><a href="./signup.php">Sign up</a></li>
+        <?php }else{ ?>
+        <li><a href="./signOut.php">Sign out</a></li>
+        <?php } ?>
     </ul>
 </nav>
 

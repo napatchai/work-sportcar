@@ -11,7 +11,8 @@
 <!-- //? End banner -->
 
 <!-- //? Start Content Sing up -->
-<form action="">
+<form name="frmMain" method="post" action="./signUpSql.php" target="iframe_target">
+    <iframe id="iframe_target" name="iframe_target" src="#" style="width:0;height:0;border:0px solid #fff;"></iframe>
     <div class="singup">
         <div class="row">
             <div class="col-12 form headsignup">
@@ -21,31 +22,31 @@
                 Name
             </div>
             <div class="col-8 col-sm-4 form">
-                <input type="text" class="forminput">
+                <input name="Fname" type="text" class="forminput" required>
             </div>
-            <div class="col-4 col-sm-2 form surname">
+            <div class="col-4 col-sm-2 form surname" required>
                 Surname
             </div>
             <div class="col-8 col-sm-4 form">
-                <input type="text" class="forminput">
+                <input name="Lname" type="text" class="forminput" required>
             </div>
             <div class="col-4 col-sm-2 form">
                 Phone
             </div>
             <div class="col-8 col-sm-10 form">
-                <input type="text" class="forminput">
+                <input name="phone" type="text" class="forminput" required>
             </div>
             <div class="col-4 col-sm-2 form">
                 Email
             </div>
             <div class="col-8 col-sm-10 form">
-                <input type="text" class="forminput">
+                <input name="email" type="email" class="forminput" required>
             </div>
             <div class="col-4 col-sm-2 form">
                 Password
             </div>
             <div class="col-8 col-sm-10 form">
-                <input type="text" class="forminput">
+                <input name="password" type="password" class="forminput" required>
             </div>
             <div class="col-4 col-sm-2 form">
                 Objective for <br>
@@ -55,19 +56,19 @@
                 <div class="flex_container">
                     <div class="current_items">
                         <div class="wrapper_input">
-                            <input type="radio" name="type-use" id="radio1" checked="checked" value="ใช้รถส่วนบุคคล">
+                            <input type="radio" name="type-use" id="radio1" checked="checked" value="Purchase Car">
                             <label for="radio1" class="labelradio">Purchase Car</label>
                         </div>
                         <div class="wrapper_input">
-                            <input type="radio" name="type-use" id="radio2" value="ใช้รถเพื่อการพาณิชย์">
+                            <input type="radio" name="type-use" id="radio2" value="Offer for sale">
                             <label for="radio2" class="labelradio">Offer for sale</label>
                         </div>
                         <div class="wrapper_input">
-                            <input type="radio" name="type-use" id="radio3" value="ใช้รถเพื่อการพาณิชย์">
+                            <input type="radio" name="type-use" id="radio3" value="Dealer">
                             <label for="radio3" class="labelradio">Dealer</label>
                         </div>
                         <div class="wrapper_input">
-                            <input type="radio" name="type-use" id="radio4" value="ใช้รถเพื่อการพาณิชย์">
+                            <input type="radio" name="type-use" id="radio4" value="Other">
                             <label for="radio4" class="labelradio">Other</label>
                             <span><input type="text" class="forminputother"></span>
                         </div>
@@ -75,7 +76,7 @@
                 </div>
             </div>
             <div class="col-12 formsubmit">
-                <button type="button" class="btn btn-dark" style="padding: 6px 22px">Submit</button>
+                <button type="submit" class="btn btn-dark" style="padding: 6px 22px">Submit</button>
 
             </div>
         </div>
@@ -100,6 +101,23 @@ function setimg(size) {
         document.getElementById("bannersignup").style.height = "auto";
     } else {
         document.getElementById("bannersignup").src = "./img/Hero_Banner.png";
+    }
+}
+
+function showResult(result) {
+    if (result == 1) {
+        swal({
+            title: "Singup Success",
+            type: "success",
+            icon: "success",
+        });
+        setTimeout(function() {
+            window.location = "./login.php"
+        }, 1500);
+    } else if (result == 2) {
+        swal("Error", "Email has been used", "error");
+    } else if (result == 3) {
+        swal("Error", "Eomething weaning", "error");
     }
 }
 </script>
