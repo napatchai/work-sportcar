@@ -1,20 +1,44 @@
 <?php include('./header.php'); ?>
 <?php include('./navbar.php') ?>
+<?php 
+include('./condb.php');
+$query = "SELECT * FROM banner ORDER BY number ASC";
+$result = mysqli_query($conn, $query);
+?>
 <!-- //? Start Image Slide -->
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class=" active"
+        <!-- <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class=" active"
             aria-current="true" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
             aria-label="Slide 2"></button>
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-            aria-label="Slide 3"></button>
+            aria-label="Slide 3"></button> -->
+        <?php 
+        $count = 0;
+        foreach($result as $row){ 
+            if($count == 0)
+            {
+            ?>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="<?php echo $count ?>"
+            class=" active" aria-current="true" aria-label="Slide 1"></button>
+        <?php }else{ ?>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="<?php echo $count ?>"
+            aria-current="true" aria-label="Slide 1"></button>
+        <?php } $count = $count + 1;?>
+        <?php } ?>
     </div>
     <!-- //todo Start banner Desktop -->
     <div class="carousel-inner">
+        <?php 
+        $count = 0;
+        foreach($result as $row){ 
+            if($count == 0)
+            {
+            ?>
         <div class="carousel-item active" data-bs-interval="3500">
-            <img src="./img/Firstbanner.png" class="test d-block w-100 imgdesktop" alt="...">
-            <img src="./img/Hero_bannerMobile1.png" class="test d-block w-100 imgmobile" alt="...">
+            <img src="./banner/<?php echo $row['banner_desktop'] ?>" class="test d-block w-100 imgdesktop" alt="...">
+            <img src="./banner/<?php echo $row['banner_mobile'] ?>" class="test d-block w-100 imgmobile" alt="...">
             <div class="carousel-caption  d-md-block">
                 <h1>BUGATTI CHIRON</h1>
                 <h5>The ultimate tourisme</h5>
@@ -26,7 +50,23 @@
             </div>
 
         </div>
+        <?php }else{ ?>
         <div class="carousel-item" data-bs-interval="3500">
+            <img src="./banner/<?php echo $row['banner_desktop'] ?>" class="test d-block w-100 imgdesktop" alt="...">
+            <img src="./banner/<?php echo $row['banner_mobile'] ?>" class="test d-block w-100 imgmobile" alt="...">
+            <div class="carousel-caption  d-md-block">
+                <h1>BUGATTI CHIRON</h1>
+                <h5>The ultimate tourisme</h5>
+                <a href="">
+                    <div class="readmore">
+                        Read more
+                    </div>
+                </a>
+            </div>
+
+        </div>
+        <?php }$count = $count + 1;} ?>
+        <!-- <div class="carousel-item" data-bs-interval="3500">
             <img src="./img/Seconebanner.png" class="test d-block w-100 imgdesktop" alt="...">
             <img src="./img/Hero_bannerMobile1.png" class="test d-block w-100 imgmobile" alt="...">
             <div class="carousel-caption d-md-block">
@@ -51,7 +91,7 @@
                     </div>
                 </a>
             </div>
-        </div>
+        </div> -->
     </div>
     <!-- //todo End banner Desktop -->
 </div>

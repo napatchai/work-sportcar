@@ -2,7 +2,7 @@
 include('./header.php');
 include('./slidebar.php');
 include('../condb.php');
-$sql = "SELECT * FROM banner";
+$sql = "SELECT * FROM banner ORDER BY number asc";
 $result = mysqli_query($conn, $sql);
 ?>
 <!-- //?Start pop up add -->
