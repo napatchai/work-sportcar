@@ -47,6 +47,11 @@ label.logo {
     margin-left: -60px
 }
 
+@media (max-width: 955px){
+    label.logo {
+        margin-left: -20px;
+    }
+}
 nav ul {
     float: right;
     margin-right: 20px;
@@ -876,7 +881,7 @@ select {
 }
 
 .forminput {
-    width: 80%;
+    width: 100%;
     border: 1px solid #aaaaaa;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
@@ -1802,4 +1807,5 @@ select {
     margin-top: 20px;
 }
 /* ? End Blog Detail */
+
 

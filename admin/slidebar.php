@@ -197,10 +197,10 @@ a {
                 <a href="#" class="nav_logo"> <img src="../img/logo.png" width="25px" alt=""> <span
                         class="nav_logo-name"></span>
                 </a>
-                <div class="nav_list"> <a href="./banner.php" id="banner" class="nav_link"> <i
+                <div class="nav_list"> <a href="./index.php" id="banner" class="nav_link"> <i
                             class='bx bx-grid-alt nav_icon'></i>
-                        <span class="nav_name">Banner</span> </a> <a href="./user.php" id="user" class="nav_link"> <i
-                            class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span> </a> <a href="#"
+                        <span class="nav_name">Banner</span> </a> <a href="./product.php" id="product" class="nav_link">
+                        <i class='bx bx-car nav_icon'></i> <span class="nav_name">Product</span> </a> <a href="#"
                         class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span
                             class="nav_name">Messages</span> </a> <a href="#" class="nav_link"> <i
                             class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Bookmark</span> </a> <a href="#"
