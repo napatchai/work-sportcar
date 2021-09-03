@@ -200,19 +200,35 @@ i.material-icons {
 
 </head>
 
+<script>
+function setBackgroundproduct(id, url) {
+    path = "../product/" + url;
+    document.getElementById(id).style.backgroundImage = "url(" + path + ")";
+}
+</script>
+
 <body>
-    <form name="add_product" method="post" action="./productsql.php?type=add" id="add_product"
-        enctype="multipart/form-data" name="frmMain" target="iframe_target">
+    <?php 
+        include('../condb.php');
+        $productID = $_POST['productID'];
+        $sql = "SELECT * FROM product WHERE productID = '$productID'";
+        $result = mysqli_query($conn, $sql) or die ("Error sql = $sql " . mysqli_error());
+        $row = mysqli_fetch_array($result);
+    ?>
+    <form name="add_product" method="post" action="./productsql.php?type=edit" id="add_product" name="frmMain"
+        target="iframe_target5" enctype="multipart/form-data">
         <iframe id="iframe_target" name="iframe_target" src="#"
             style="width:0;height:0;border:0px solid #fff;"></iframe>
         <div class="wrapper">
             <div class="box" style="height: 80vh">
                 <h4 style="margin-top: 20px;margin-left: 10px">Banner Desktop</h4>
-                <div class="js--image-preview"></div>
+                <div class="js--image-preview" id="bannerDesktop"></div>
+                <!-- //Todo set background -->
+                <?php echo '<script>setBackgroundproduct("bannerDesktop","' . $row['product_desktop'] .'")</script>' ?>
+                <!-- //Todo set background -->
                 <div class="upload-options" style="margin-top: 20px;">
                     <label>
-                        <input type="file" name="bannerDesktop" class="image-upload form-control" accept="image/*"
-                            required />
+                        <input type="file" name="bannerDesktop" class="image-upload form-control" accept="image/*" />
                         <br><br>
                         <br>
                     </label>
@@ -220,11 +236,13 @@ i.material-icons {
             </div>
             <div class="box" style="height: 80vh">
                 <h4 style="margin-top: 20px;margin-left: 10px">Banner Mobile</h4>
-                <div class="js--image-preview"></div>
+                <div class="js--image-preview" id="bannerMobile"></div>
+                <!-- //Todo set background -->
+                <?php echo '<script>setBackgroundproduct("bannerMobile","' . $row['product_Mobile'] .'")</script>' ?>
+                <!-- //Todo set background -->
                 <div class="upload-options" style="margin-top: 20px;">
                     <label>
-                        <input type="file" name="bannerMobile" class="image-upload form-control" accept="image/*"
-                            required />
+                        <input type="file" name="bannerMobile" class="image-upload form-control" accept="image/*" />
                         <br><br>
                         <br>
                     </label>
@@ -233,14 +251,14 @@ i.material-icons {
         </div>
         <div class="price">
             <h2 class="bannertext"><input type="text" class="inputbannertext" placeholder="Model" name="model" id=""
-                    required></h2>
+                    value="<?php echo $row['model'] ?>" required></h2>
             <h5 class="pricetext">CONDITION: <span style="font-weight: bold;">
                     <select name="condition" id="" required>
                         <option value="New">New</option>
                         <option value="New">New</option>
                     </select></span> |
                 PRICE:
-                <input type="number" style="width: 120px" name="price" required>
+                <input type="number" style="width: 120px" name="price" required value="<?php echo $row['price'] ?>">
                 BAHT
             </h5>
         </div>
@@ -250,31 +268,50 @@ i.material-icons {
                     <div class="addproducr">+</div>
                 </div>
             </div>
-            <div class="box" style="height: 80vh">
-                <h4 style="margin-top: 20px;margin-left: 10px">Image more </h4>
-                <div class="js--image-preview"></div>
+            <?php 
+                $query = "SELECT * FROM product_image WHERE productID = '$productID' ORDER BY productDesID";
+                $resultproductimg = mysqli_query($conn, $query) or die ("Error $sql" . mysqli_error());
+                $z = 0;
+                foreach($resultproductimg as $rs){
+                    $z++;
+            ?>
+            <div class="box" style="height: 80vh" id="row1<?php echo $rs['productID'].$rs['productDesID']  ?>">
+                <h4 style="margin-top: 20px;margin-left: 10px">Image more <span
+                        style="float: right;padding-right: 15px;font-size: 20px;cursor: pointer;"> <i
+                            class="far fa-trash-alt btn_remove btn_removeimg"
+                            id="<?php echo $rs['productID'].$rs['productDesID'] ?>"></i></span></h4>
+                <div class="js--image-preview" id="imgloop<?php echo $z ?>"></div>
+                <!-- //Todo set background -->
+                <?php echo '<script>setBackgroundproduct("imgloop'.$z.'","' . $rs['imageProDes'] .'")</script>' ?>
+                <!-- //Todo set background -->
                 <div class="upload-options" style="margin-top: 20px;">
                     <label>
-                        <input type="file" class="image-upload form-control" name="imageproduct[]" accept="image/*"
-                            required />
+                        <input type="file" class="image-upload form-control"
+                            name="imageproduct<?php echo $rs['productDesID'] ?>" accept="image/*" />
                         <br><br>
                         <br>
                     </label>
                 </div>
             </div>
+            <input type="hidden" name="Delete<?php echo $rs['productDesID'] ?>" value=""
+                id="delete<?php echo $rs['productID'].$rs['productDesID'] ?>">
+            <?php } ?>
         </div>
         <div class="price">
             <h2 class="bannertext">EXTERIOR + INTERIOR</h2>
-            <p class="pricetext"><input type="text" name="exterior" style="width: 80%;text-align: center" id=""></p>
+            <p class="pricetext"><input type="text" name="exterior" style="width: 80%;text-align: center" id=""
+                    value="<?php echo $row['detail'] ?>"></p>
         </div>
         <div class="wrapper">
             <div class="box" style="height: 80vh">
                 <h4 style="margin-top: 20px;margin-left: 10px">Banner Desktop</h4>
-                <div class="js--image-preview"></div>
+                <div class="js--image-preview" id="detail_Desktop"></div>
+                <!-- //Todo set background -->
+                <?php echo '<script>setBackgroundproduct("detail_Desktop","' . $row['detail_Desktop'] .'")</script>' ?>
+                <!-- //Todo set background -->
                 <div class="upload-options" style="margin-top: 20px;">
                     <label>
-                        <input type="file" name="bannerDesktopDes" class="image-upload form-control" accept="image/*"
-                            required />
+                        <input type="file" name="bannerDesktopDes" class="image-upload form-control" accept="image/*" />
                         <br><br>
                         <br>
                     </label>
@@ -282,11 +319,13 @@ i.material-icons {
             </div>
             <div class="box" style="height: 80vh">
                 <h4 style="margin-top: 20px;margin-left: 10px">Banner Mobile</h4>
-                <div class="js--image-preview"></div>
+                <div class="js--image-preview" id="detail_Mobile"></div>
+                <!-- //Todo set background -->
+                <?php echo '<script>setBackgroundproduct("detail_Mobile","' . $row['detail_Mobile'] .'")</script>' ?>
+                <!-- //Todo set background -->
                 <div class="upload-options" style="margin-top: 20px;">
                     <label>
-                        <input type="file" name="bannerMobileDes" class="image-upload form-control" accept="image/*"
-                            required />
+                        <input type="file" name="bannerMobileDes" class="image-upload form-control" accept="image/*" />
                         <br><br>
                         <br>
                     </label>
@@ -306,12 +345,22 @@ i.material-icons {
                         + Add New
                     </div>
                 </div>
-                <div class="col-md-6 ">
+                <?php 
+                 $queryhig = "SELECT * FROM productHigh WHERE productID = '$productID' ORDER BY proHighID";
+                 $resulthig = mysqli_query($conn, $queryhig) or die ("Error $sql" . mysqli_error());
+                 foreach($resulthig as $rsh){
+                ?>
+                <div class="col-md-6" id="row<?php echo $rsh['productID'].$rsh['proHighID'] ?>">
                     <div class="ref" style="padding-top: 5px">
-                        <input type="text" name="equipment[]" style="height: 20px;width: 90%" id="" required>
+                        <input type="text" name="equipment<?php echo $rsh['proHighID'] ?>"
+                            style="height: 20px;width: 90%" id="" required value="<?php echo $rsh['highlight'] ?>"><span
+                            style="margin-left: 10px"><i class="far fa-trash-alt btn_removeDes btn_removeDes2"
+                                id="<?php echo $rsh['productID'].$rsh['proHighID'] ?>"></i></span>
                     </div>
                 </div>
-
+                <input type="hidden" name="Deletetext<?php echo $rsh['proHighID'] ?>" value=""
+                    id="deletetext<?php echo $rsh['productID'].$rsh['proHighID'] ?>">
+                <?php } ?>
             </div>
         </div>
         <!-- //? End ref -->
@@ -319,6 +368,7 @@ i.material-icons {
         <div class="col-12">
             <div class="btnsave">
                 <input type="submit" id="submit" class="btn btn-success"></input>
+                <input type="hidden" name="productID" value="<?php echo $row['productID'] ?>">
             </div>
         </div>
         <br>
@@ -446,6 +496,10 @@ function initDropEffect(box) {
 
     }
 }
+
+function setBackgroundproduct(id, url) {
+    document.getElementById("bannerDesktop").style.backgroundImage = "url('../product/11089989220210903_054349.png')";
+}
 </script>
 
 <script>
@@ -458,13 +512,18 @@ $(document).ready(function() {
             '<div id="row1' + i +
             '" class="box" style="height: 80vh"><h4 style="margin-top: 20px;margin-left: 10px">Image more <span style = "float: right;padding-right: 15px;font-size: 20px;cursor: pointer;" > <i class ="far fa-trash-alt btn_remove" id = "' +
             i +
-            '"></i></span></h4><div class="js--image-preview"></div><div class="upload-options" style="margin-top: 20px;"><label><input type="file" class="image-upload form-control" name="imageproduct[]" accept="image/*" required /><br><br><br></label></div></div>'
+            '"></i></span></h4><div class="js--image-preview"></div><div class="upload-options" style="margin-top: 20px;"><label><input type="file" class="image-upload form-control" name="imageproductTest[]" accept="image/*" required /><br><br><br></label></div></div>'
         );
         test();
     });
     $(document).on('click', '.btn_remove', function() {
         var button_id = $(this).attr("id");
         $('#row1' + button_id + '').remove();
+    });
+
+    $(document).on('click', '.btn_removeimg', function() {
+        var button_id = $(this).attr("id");
+        $('#delete' + button_id + '').val("Delete");
     });
 
 
@@ -480,6 +539,10 @@ $(document).ready(function() {
     $(document).on('click', '.btn_removeDes', function() {
         var button_id = $(this).attr("id");
         $('#row' + button_id + '').remove();
+    });
+    $(document).on('click', '.btn_removeDes2', function() {
+        var button_id = $(this).attr("id");
+        $('#deletetext' + button_id + '').val("Delete");
     });
 });
 

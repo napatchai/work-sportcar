@@ -14,13 +14,18 @@ $result = mysqli_query($conn, $sql);
                 <h5 class="modal-title" id="exampleModalLabel">Edit Banner</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <!-- <form name="frmMain" method="post" action="./bannersql.php?type=edit" target="iframe_target"
-                enctype="multipart/form-data"> -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <a3 type="button" class="btn btn-danger" data-bs-dismiss="modal"
-                    onclick="document.getElementById('formdelete').submit();">Delete</a3>
-                <a href="./productAdd.php" type="submit" class="btn btn-primary">Edit</a>
+                <iframe id="iframe_target" name="iframe_target" src="#"
+                    style="width:0;height:0;border:0px solid #fff;"></iframe>
+                <form action="./productsql.php?type=delete" method="post" target="iframe_target">
+                    <input type="hidden" name="productID" id="productID">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+                <form action="./productEdit.php" method="post">
+                    <input type="hidden" name="productID" id="productID1">
+                    <button type="submit" class="btn btn-primary">Edit</button>
+                </form>
             </div>
             <!-- </form> -->
         </div>
@@ -40,13 +45,10 @@ $result = mysqli_query($conn, $sql);
     <h4>Manage Product</h4>
     <div class="row">
         <?php foreach($result as $row){  
-            //  $subject = "'" . $row['subject'] . "'";
-            //  $description = "'" . $row['description'] . "'";
-            //  $banner_id = "'" . $row['banner_id'] . "'";
+             $product_id = "'" . $row['productID'] . "'";
             ?>
         <div class="col-md-4 test">
-            <a href="#" data-bs-toggle="modal"
-                onclick="setinput(<?php echo  $banner_id . ',' . $subject . ',' . $description . ',' . $row['number'] ?>)"
+            <a href="#" data-bs-toggle="modal" onclick="setinput(<?php echo  $product_id ?>)"
                 data-bs-target="#exampleModal1">
                 <div class="managerbanner">
                     <img src="../product/<?php echo $row['product_desktop'] ?>" class="imgbanner" alt="">
@@ -84,18 +86,15 @@ function showResult(result) {
             icon: "success",
         });
         setTimeout(function() {
-            window.location = "./index.php"
+            window.location = "./product.php"
         }, 1500);
     } else if (result == 2) {
         swal("Error", "Some Thing Warnning", "error");
     }
 }
 
-function setinput(banner_id, subject, description, number) {
-    document.getElementById('subject1').value = subject;
-    document.getElementById('description1').value = description;
-    document.getElementById('banner_id2').value = banner_id;
-    document.getElementById('banner_id').value = banner_id;
-    document.getElementById('number').value = number;
+function setinput(productID) {
+    document.getElementById('productID').value = productID;
+    document.getElementById('productID1').value = productID;
 }
 </script>
