@@ -216,7 +216,7 @@ function setBackgroundproduct(id, url) {
         $row = mysqli_fetch_array($result);
     ?>
     <form name="add_product" method="post" action="./productsql.php?type=edit" id="add_product" name="frmMain"
-        target="iframe_target5" enctype="multipart/form-data">
+        target="iframe_target" enctype="multipart/form-data">
         <iframe id="iframe_target" name="iframe_target" src="#"
             style="width:0;height:0;border:0px solid #fff;"></iframe>
         <div class="wrapper">

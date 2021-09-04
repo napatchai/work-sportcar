@@ -194,21 +194,18 @@ a {
             <div>
                 <!-- <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span
                         class="nav_logo-name"></span> </a> -->
-                <a href="#" class="nav_logo"> <img src="../img/logo.png" width="25px" alt=""> <span
+                <a href="../index.php" class="nav_logo"> <img src="../img/logo.png" width="25px" alt=""> <span
                         class="nav_logo-name"></span>
                 </a>
                 <div class="nav_list"> <a href="./index.php" id="banner" class="nav_link"> <i
                             class='bx bx-grid-alt nav_icon'></i>
                         <span class="nav_name">Banner</span> </a> <a href="./product.php" id="product" class="nav_link">
-                        <i class='bx bx-car nav_icon'></i> <span class="nav_name">Product</span> </a> <a href="#"
-                        class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span
-                            class="nav_name">Messages</span> </a> <a href="#" class="nav_link"> <i
-                            class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Bookmark</span> </a> <a href="#"
-                        class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Files</span> </a>
-                    <a href="#" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span
-                            class="nav_name">Stats</span> </a>
+                        <i class='bx bx-car nav_icon'></i> <span class="nav_name">Product</span> </a> <a
+                        href="./blog.php" id="blog" class="nav_link"> <i class='bx bx-news nav_icon'></i> <span
+                            class="nav_name">Blog</span> </a> <a href="#" class="nav_link"> <i
+                            class='bx bx-show-alt nav_icon'></i> <span class="nav_name">Preview</span> </a>
                 </div>
-            </div> <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span
+            </div> <a href="../signOut.php" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span
                     class="nav_name">SignOut</span> </a>
         </nav>
     </div>

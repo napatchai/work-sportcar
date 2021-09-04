@@ -160,6 +160,11 @@ print_r($_POST);
 
             $insert = "UPDATE product SET model = '$model', conditionPro = '$condition', price = '$price', detail = '$exterior' $sqlmore";
             $resultinsert = mysqli_query($conn, $insert) or die ("Error $insert". mysqli_error());
+            if($resultinsert){
+                echo "<script>window.top.window.showResult('1');</script>";
+            }else{
+                echo "<script>window.top.window.showResult('2');</script>";
+            }
         }
     }
 
