@@ -202,7 +202,7 @@ a {
                         <span class="nav_name">Banner</span> </a> <a href="./product.php" id="product" class="nav_link">
                         <i class='bx bx-car nav_icon'></i> <span class="nav_name">Product</span> </a> <a
                         href="./blog.php" id="blog" class="nav_link"> <i class='bx bx-news nav_icon'></i> <span
-                            class="nav_name">Blog</span> </a> <a href="#" class="nav_link"> <i
+                            class="nav_name">Blog</span> </a> <a href="../index.php" class="nav_link"> <i
                             class='bx bx-show-alt nav_icon'></i> <span class="nav_name">Preview</span> </a>
                 </div>
             </div> <a href="../signOut.php" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span

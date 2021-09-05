@@ -22,7 +22,7 @@ $result = mysqli_query($conn, $sql);
                     <input type="hidden" name="blogID" id="blogID">
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
-                <form action="./productEdit.php" method="post">
+                <form action="./blogEdit.php" method="post">
                     <input type="hidden" name="productID" id="blogID1">
                     <button type="submit" class="btn btn-primary">Edit</button>
                 </form>

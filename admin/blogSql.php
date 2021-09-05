@@ -36,6 +36,86 @@ if($type == 'add'){
     }else{
         echo "<script>window.top.window.showResult('2');</script>";
     }
+}else if($type == 'edit'){
+    $Subject = $_POST['Subject'];
+    $blogID = $_POST['blogID'];
+    $query = "UPDATE blog SET subject = '$Subject' WHERE blogID = '$blogID'";
+    mysqli_query($conn, $query) or die ('ERROR $sql ' . mysqli_error());
+    $querycheck = "SELECT * FROM blog_detail WHERE blogID = '$blogID'";
+    $resultcheck = mysqli_query($conn, $querycheck) or die ("Error $sql " . mysqli_error());
+        if(mysqli_num_rows($resultcheck) > 0){
+            foreach($resultcheck as $rsc){
+                $postCheckImgDesktop = 'bannerDesktop'. $rsc['blogDesID']; 
+                $postCheckImgMobile = 'bannerMobile'. $rsc['blogDesID']; 
+                $postCheckSubject = 'subject'. $rsc['blogDesID']; 
+                $postCheckDescription = 'description'. $rsc['blogDesID']; 
+                $postCheckDelete = 'deletetext'. $rsc['blogDesID'];
+                if($_POST[$postCheckDelete] == 'Delete'){
+                    $blogDesID = $rsc['blogDesID'];
+                    $sqlDelete = "DELETE FROM blog_detail WHERE blogID = '$blogID' AND blogDesID = '$blogDesID'";
+                    $result = mysqli_query($conn, $sqlDelete);
+                }else{
+                    $newNameImgDesktop = img($postCheckImgDesktop);
+                    $newNameImgMobile = img($postCheckImgMobile);
+                    $subjectDes1 = $_POST[$postCheckSubject];
+                    $description1 = $_POST[$postCheckDescription];
+                    $blogDesID = $rsc['blogDesID'];
+                    $sqlmode = '';
+                    if(Strlen($newNameImgDesktop) > 5){
+                        $sqlmode = $sqlmode . ", blog_desktop = '$newNameImgDesktop'";
+                    }
+                    if(Strlen($newNameImgMobile) > 5){
+                        $sqlmode = $sqlmode . ", blog_mobile = '$newNameImgMobile'";
+                    }
+                        $sqlUpdate = "UPDATE blog_detail SET subjectDes = '$subjectDes1', description = '$description1' $sqlmode  WHERE blogID = '$blogID' AND blogDesID = '$blogDesID'";
+                        $result = mysqli_query($conn, $sqlUpdate) or die ("Error $sql " . mysqli_error() );
+                }
+            }
+            if(is_array(@$_FILES['bannerDesktop'])){
+                foreach ($_FILES['bannerDesktop']['name'] as $name => $value)  
+                {
+                      $newNameBannerDesktop1 = imgarray('bannerDesktop', $name);
+                      $newNameBannerMobile1 = imgarray('bannerMobile', $name);
+                      $subject1 = $_POST["subject"][$name];
+                      $description1 = $_POST["description"][$name];
+                       if(strlen($newNameBannerDesktop1) > 5){
+                        $queryTopID = "SELECT MAX(blogDesID) as maxTop FROM blog_detail WHERE blogID = '$blogID'";
+                        $resultTopID = mysqli_query($conn, $queryTopID);
+                        $rowTopID = mysqli_fetch_array($resultTopID);
+                        $maxID = $rowTopID['maxTop'] + 1;
+                        $sql = "INSERT INTO blog_detail (blogID, blogDesID, blog_desktop, blog_mobile, subjectDes, description) VALUE ('$blogID', '$maxID', '$newNameBannerDesktop1', '$newNameBannerMobile1', '$subject1', '$description1')";
+                        $result = mysqli_query($conn, $sql) or die ("Error sql = $sql" . mysqli_error());
+                        if($result){
+                            echo "<script>window.top.window.showResult('1');</script>";
+                        }else{
+                            echo "<script>window.top.window.showResult('2');</script>";
+                        }
+                       }
+                }
+            }
+        }
+}
+
+function img($file){
+    $date1 = date("Ymd_His");
+    //สร้างตัวแปรสุ่มตัวเลขเพื่อเอาไปตั้งชื่อไฟล์ที่อัพโหลด
+    $numrand = (mt_rand());
+    $p_img = (isset($_POST[$file]) ? $_POST[$file] : '');
+    @$upload=$_FILES[$file]['name'];
+    if($upload != '') {
+        //โฟลเดอร์เก็บไฟล์
+        $path= "../blog/";
+        //แยกชื่อและนามสกุลของไฟล์ออกจากกัน
+        $type = strrchr($_FILES[$file]['name'], ".");
+        //ตั้งชื่อไฟล์ใหม่
+        $newname = $numrand.$date1.$type;
+        $path_copy = $path.$newname;
+        $path_link = "../blog/".$newname;
+        //คัดลอกไฟล์ไปยังโฟลเดอร์
+        move_uploaded_file($_FILES[$file]['tmp_name'], $path_copy);
+        return $newname;
+    }
+    return false;
 }
 
 function imgarray($file, $name){

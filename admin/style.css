@@ -160,3 +160,23 @@
     text-align: center !important;
 }
 /* ? End Blog Add */
+
+/* ? Start blog Edit */
+.deleteBlog{
+    text-align: center;
+    width: 100%;
+    margin-top: 30px;
+    border: 1px solid red;
+    height: 50px;
+    line-height: 50px;
+    color: red;
+    border-radius: 10px;
+    transition: .5s;
+    cursor: pointer;
+}
+
+.deleteBlog:hover{
+    background-color: red;
+    color: #fff;
+}
+/* ? End blog Edit */

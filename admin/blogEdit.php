@@ -199,48 +199,83 @@ i.material-icons {
 
 
 </head>
+<script>
+function setBackgroundproduct(id, url) {
+    path = "../blog/" + url;
+    document.getElementById(id).style.backgroundImage = "url(" + path + ")";
+}
+</script>
+<?php 
+include('../condb.php');
+$productID = $_POST['productID'];
+$query = "SELECT * FROM blog WHERE blogID = '$productID'";
+$result = mysqli_query($conn, $query) or die ("Error sql = $query " . mysqli_error());
+$row = mysqli_fetch_array($result);
+$querymore = "SELECT * FROM blog_detail WHERE blogID = '$productID'";
+$resultmore = mysqli_query($conn, $querymore) or die ("Error sql = $quequerymorery " . mysqli_error());
+?>
 
 <body>
-    <form name="add_product" method="post" action="./blogSql.php?type=add" enctype="multipart/form-data"
-        id="add_product" name="frmMain" target="iframe_target">
+    <form name="add_product" method="post" action="./blogSql.php?type=edit" id="add_product" name="frmMain"
+        target="iframe_target" enctype="multipart/form-data">
         <div class="price">
             <h3 class="bannertext"><input type="text" class="inputbannertext" placeholder="Subject" name="Subject" id=""
-                    required></h3>
+                    required value="<?php echo $row['subject'] ?>"></h3>
         </div>
         <div id="addmore">
-            <div class="wrapper" style="margin-top: 30px">
-                <div class="box" style="height: 80vh">
-                    <h4 style="margin-top: 20px;margin-left: 10px">Banner Desktop</h4>
-                    <div class="js--image-preview"></div>
-                    <div class="upload-options" style="margin-top: 20px;">
-                        <label>
-                            <input type="file" name="bannerDesktop[]" class="image-upload form-control" accept="image/*"
-                                required />
-                            <br><br>
-                            <br>
-                        </label>
+            <?php 
+            $z = 0;
+            foreach($resultmore as $rs){
+                $z++;
+        ?>
+            <div id="row1<?php echo $rs['blogID'].$rs['blogDesID'] ?>">
+                <div class="wrapper" style="margin-top: 30px">
+                    <div class="box" style="height: 80vh">
+                        <h4 style="margin-top: 20px;margin-left: 10px">Banner Desktop</h4>
+                        <div class="js--image-preview" id="BannerDesktop<?php echo $z ?>"></div>
+                        <!-- //Todo set background -->
+                        <?php echo '<script>setBackgroundproduct("BannerDesktop'.$z.'","' . $rs['blog_desktop'] .'")</script>' ?>
+                        <!-- //Todo set background -->
+                        <div class="upload-options" style="margin-top: 20px;">
+                            <label>
+                                <input type="file" name="bannerDesktop<?php echo $rs['blogDesID'] ?>"
+                                    class="image-upload form-control" accept="image/*" />
+                                <br><br>
+                                <br>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="box" style="height: 80vh">
+                        <h4 style="margin-top: 20px;margin-left: 10px">Banner Mobile</h4>
+                        <div class="js--image-preview" id="BannerMobile<?php echo $z ?>"></div>
+                        <!-- //Todo set background -->
+                        <?php echo '<script>setBackgroundproduct("BannerMobile'.$z.'","' . $rs['blog_mobile'] .'")</script>' ?>
+                        <!-- //Todo set background -->
+                        <div class="upload-options" style="margin-top: 20px;">
+                            <label>
+                                <input type="file" name="bannerMobile<?php echo $rs['blogDesID'] ?>"
+                                    class="image-upload form-control" accept="image/*" />
+                                <br><br>
+                                <br>
+                            </label>
+                        </div>
                     </div>
                 </div>
-                <div class="box" style="height: 80vh">
-                    <h4 style="margin-top: 20px;margin-left: 10px">Banner Mobile</h4>
-                    <div class="js--image-preview"></div>
-                    <div class="upload-options" style="margin-top: 20px;">
-                        <label>
-                            <input type="file" name="bannerMobile[]" class="image-upload form-control" accept="image/*"
-                                required />
-                            <br><br>
-                            <br>
-                        </label>
+                <div class="subjectblog">
+                    <input type="text" name="subject<?php echo $rs['blogDesID'] ?>" class="subject"
+                        placeholder="Subject" required value="<?php echo $rs['subjectDes'] ?>">
+
+                    <br>
+                    <textarea name="description<?php echo $rs['blogDesID'] ?>" rows="5"
+                        class="textareaBlog"><?php echo $rs['description'] ?></textarea>
+                    <div class="deleteBlog btn_remove btn_removeimg" id="<?php echo $rs['blogID'].$rs['blogDesID'] ?>">
+                        Delete <i class="bx bx-up-arrow-alt "></i>
                     </div>
                 </div>
             </div>
-            <div class="subjectblog">
-                <input type="text" name="subject[]" class="subject" placeholder="Subject" required>
-
-                <br>
-                <textarea name="description[]" rows="5" class="textareaBlog"></textarea>
-
-            </div>
+            <input type="hidden" name="deletetext<?php echo $rs['blogDesID'] ?>" value=""
+                id="deletetext<?php echo $rs['blogID'].$rs['blogDesID'] ?>">
+            <?php } ?>
         </div>
 
         <div class="addBlogMore" id="added">
@@ -251,6 +286,7 @@ i.material-icons {
         <div class="col-12">
             <div class="btnsave">
                 <input type="submit" id="submit" class="btn btn-success"></input>
+                <input type="hidden" name="blogID" value="<?php echo $row['blogID'] ?>">
             </div>
         </div>
         <br>
@@ -398,6 +434,10 @@ $(document).ready(function() {
     $(document).on('click', '.btn_remove', function() {
         var button_id = $(this).attr("id");
         $('#row1' + button_id + '').remove();
+    });
+    $(document).on('click', '.btn_removeimg', function() {
+        var button_id = $(this).attr("id");
+        $('#deletetext' + button_id + '').val("Delete");
     });
 });
 </script>
