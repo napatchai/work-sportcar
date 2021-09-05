@@ -154,4 +154,9 @@
     display: block;
     margin: auto;
 }
+
+.addicon{
+    width: 100%;
+    text-align: center !important;
+}
 /* ? End Blog Add */

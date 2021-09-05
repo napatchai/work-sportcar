@@ -12,8 +12,11 @@ print_r($_POST);
         $newNameBannerMo = img('bannerMobile');
         $newNameBannerDesDes = img('bannerDesktopDes');
         $newNameBannerMoDes = img('bannerMobileDes');
+        $newNameIconProduct = img('iconProduct');
+        $textHeadIcon = $_POST['headTexticon'];
+        $descriptionIcon = $_POST['descriptionicon'];
 
-        $sql = "INSERT INTO product (productID, product_desktop, product_Mobile, model, conditionPro, price, detail, detail_Desktop, detail_Mobile) VALUE ('$productID', '$newNameBannerDes', '$newNameBannerMo', '$model', '$condition', '$price', '$exterior', '$newNameBannerDesDes', '$newNameBannerMoDes')";
+        $sql = "INSERT INTO product (productID, product_desktop, product_Mobile, model, conditionPro, price, detail, detail_Desktop, detail_Mobile, textHeadIcon, descriptionIcon, iconproduct) VALUE ('$productID', '$newNameBannerDes', '$newNameBannerMo', '$model', '$condition', '$price', '$exterior', '$newNameBannerDesDes', '$newNameBannerMoDes', '$textHeadIcon', '$descriptionIcon', '$newNameIconProduct')";
         $result = mysqli_query($conn, $sql) or die ("Error sql = $sql" . mysqli_error());
 
         if(is_array($_FILES)){
@@ -144,6 +147,7 @@ print_r($_POST);
                     } 
                 }
             }
+            $newNameIconProduct = img('iconProduct');
             $sqlmore = '';
             if($newNameBannerDes != ''){
                 $sqlmore = $sqlmore . ", product_desktop = '" . $newNameBannerDes . "'";
@@ -157,8 +161,12 @@ print_r($_POST);
             if($newNameBannerMoDes != ''){
                 $sqlmore = $sqlmore . ", detail_Mobile = '" . $newNameBannerMoDes . "'";
             }
-
-            $insert = "UPDATE product SET model = '$model', conditionPro = '$condition', price = '$price', detail = '$exterior' $sqlmore";
+            if($newNameIconProduct != ''){
+                $sqlmore = $sqlmore . ", iconproduct = '" . $newNameIconProduct . "'";
+            }
+            $textHeadIcon = $_POST['headTexticon'];
+            $descriptionIcon = $_POST['descriptionicon'];
+            $insert = "UPDATE product SET model = '$model', conditionPro = '$condition', price = '$price', detail = '$exterior', textHeadIcon = '$textHeadIcon', descriptionIcon = '$descriptionIcon'  $sqlmore";
             $resultinsert = mysqli_query($conn, $insert) or die ("Error $insert". mysqli_error());
             if($resultinsert){
                 echo "<script>window.top.window.showResult('1');</script>";

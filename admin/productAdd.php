@@ -232,8 +232,8 @@ i.material-icons {
             </div>
         </div>
         <div class="price">
-            <h2 class="bannertext"><input type="text" class="inputbannertext" placeholder="Model" name="model" id=""
-                    required></h2>
+            <h2 class="bannertext"><input type="text" class="inputbannertext" placeholder="Model" name="model"
+                    onkeyup="setModelIcon()" id="model" required></h2>
             <h5 class="pricetext">CONDITION: <span style="font-weight: bold;">
                     <select name="condition" id="" required>
                         <option value="New">New</option>
@@ -316,6 +316,25 @@ i.material-icons {
         </div>
         <!-- //? End ref -->
         <br>
+        <div class="addicon">
+            <h4 id="modelIcon"></h4>
+            <h5 style="margin-top: 30px"><input type="text" name="headTexticon" required id=""></h5>
+            <p style="margin-top: 30px"><input type="text" name="descriptionicon" required id=""></p>
+            <div class="wrapper">
+                <div class="box" style="height: 300px">
+                    <h5 style="margin-top: 20px;margin-left: 10px">Icon Car</h5>
+                    <div class="js--image-preview" style="height: 65%" id="iconProduct"></div>
+                    <div class="upload-options" style="margin-top: 20px;">
+                        <label>
+                            <input type="file" name="iconProduct" class="image-upload form-control" accept="image/*" />
+                            <br><br>
+                            <br>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
         <div class="col-12">
             <div class="btnsave">
                 <input type="submit" id="submit" class="btn btn-success"></input>
@@ -331,6 +350,11 @@ i.material-icons {
 document.addEventListener("DOMContentLoaded", function(event) {
     document.getElementById("product").classList.add('active')
 })
+
+function setModelIcon() {
+    var model = document.getElementById("model").value;
+    document.getElementById("modelIcon").innerHTML = model
+}
 
 function showResult(result) {
     if (result == 1) {

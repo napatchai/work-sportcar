@@ -2,7 +2,7 @@
 include('./header.php');
 include('./slidebar.php');
 include('../condb.php');
-$sql = "SELECT * FROM product ORDER BY date asc";
+$sql = "SELECT * FROM product ORDER BY date desc";
 $result = mysqli_query($conn, $sql);
 ?>
 
