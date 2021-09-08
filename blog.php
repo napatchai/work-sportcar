@@ -1,5 +1,11 @@
 <?php include('./header.php') ?>
 <?php include('./navbar.php') ?>
+<?php 
+include('./condb.php');
+$query = "SELECT * FROM blog b inner join blog_detail d on d.blogID = b.blogID group by d.blogID ORDER by d.blogDesID asc ";
+$resule = mysqli_query($conn, $query);
+
+?>
 <!-- //? Start Banner -->
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
@@ -12,29 +18,35 @@
 <div class="container" style="margin-top: 50px">
     <!-- //? Start New header -->
     <h5>NEWS</h5>
-    <div class="test">
+    <?php 
+    $z = 0;
+    foreach($resule as $row) { 
+        if($z == 0){    
+    ?>
+    <div class="test" style="margin-bottom: 50px">
         <div class="headernew">
-            <h2 style="margin-bottom: 20px;margin-top: 20px;font-size: 35px">V1 Around The World</h2>
-            <img src="./img/newsimg.png" width="100%" alt="">
+            <h2 style="margin-bottom: 20px;margin-top: 20px;font-size: 35px"><?php echo $row['subject'] ?></h2>
+            <img src="./blog/<?php echo $row['blog_desktop'] ?>" width="100%" alt="">
         </div>
         <div class="row">
             <div class="col-12">
-                <h5 style="margin-top: 20px">28 JULY 2020</h5>
+                <h5 style="margin-top: 20px">
+                    <?php echo strtoupper(date('d M Y', strtotime($row['date']))); ?>
+                </h5>
             </div>
             <div class="col-12 col-sm-10">
-                <a href="" id="headerlink">
-                    <h4 style="margin-top: 20px">MUDETEC: IN SEARCH OF THE FUTURE</h4>
+                <a href="./blogDetail.php?ID=<?php echo $row['blogID'] ?>" id="headerlink">
+                    <h4 style="margin-top: 20px"><?php echo strtoupper($row['subjectDes']) ?></h4>
                 </a>
-                <h4 style="margin-top: 20px" id="headerunlink">MUDETEC: IN SEARCH OF THE FUTURE</h4>
-                <p class="discriptionnew">The Lamborghini Museum has been updated to become Museum
-                    of Technologies, where fascinating history, the iconic models and
-                    tours of the production lines tell the story of over 50 years of
-                    innovation that project Lamborghini into the future.</p>
+                <h4 style="margin-top: 20px" id="headerunlink"><?php echo strtoupper($row['subjectDes']) ?></h4>
+                <p class="discriptionnew"><?php echo $row['description'] ?></p>
             </div>
             <div class="col-sm-2">
-                <div class="readmoreblog">
-                    Read more
-                </div>
+                <a href="./blogDetail.php?ID=<?php echo $row['blogID'] ?>">
+                    <div class="readmoreblog">
+                        Read more
+                    </div>
+                </a>
             </div>
         </div>
         <!-- //? End New header -->
@@ -61,43 +73,28 @@
             </div>
         </div>
         <!-- //? End filter -->
-
+        <?php }else { ?>
         <!-- //? Start News -->
         <div class="row" style="margin-top: 30px">
             <div class="col-sm-6">
-                <img src="./img/bannerblog.png" width="100%" alt="">
+                <img src="./blog/<?php echo $row['blog_desktop'] ?>" width="100%" alt="">
             </div>
             <div class="col-sm-6 paddingnews">
-                <h5 class="newdescription">28 JULY 2020</h5>
-                <a href="" id="headerlink">
-                    <h2 class="newssub">MUDETEC: IN SEARCH OF
-                        THE FUTURE</h2>
+                <h5 class="newdescription"><?php echo strtoupper(date('d M Y', strtotime($row['date']))); ?></h5>
+                <a href="./blogDetail.php?ID=<?php echo $row['blogID'] ?>" id="headerlink">
+                    <h2 class="newssub"><?php echo strtoupper($row['subjectDes']) ?></h2>
                 </a>
-                <h2 class="newssub" id="headerunlink">MUDETEC: IN SEARCH OF
-                    THE FUTURE</h2>
-                <div class="readmoreblognews">
-                    Read more
-                </div>
+                <h2 class="newssub" id="headerunlink"><?php echo strtoupper($row['subjectDes']) ?></h2>
+                <a href="./blogDetail.php?ID=<?php echo $row['blogID'] ?>">
+                    <div class="readmoreblognews">
+                        Read more
+                    </div>
+                </a>
             </div>
         </div>
-        <div class="row" style="margin-top: 30px;margin-bottom: 30px">
-            <div class="col-sm-6">
-                <img src="./img/bannerblog.png" width="100%" alt="">
-            </div>
-            <div class="col-sm-6 paddingnews">
-                <h5 class="newdescription">28 JULY 2020</h5>
-                <a href="" id="headerlink">
-                    <h2 class="newssub">MUDETEC: IN SEARCH OF
-                        THE FUTURE</h2>
-                </a>
-                <h2 class="newssub" id="headerunlink">MUDETEC: IN SEARCH OF
-                    THE FUTURE</h2>
-                <div class="readmoreblognews">
-                    Read more
-                </div>
-            </div>
-        </div>
+        <?php  } $z++ ?>
         <!-- //? End News -->
+        <?php } ?>
     </div>
 </div>
 <?php include('./message.php') ?>

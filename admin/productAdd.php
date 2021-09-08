@@ -318,8 +318,10 @@ i.material-icons {
         <br>
         <div class="addicon">
             <h4 id="modelIcon"></h4>
-            <h5 style="margin-top: 30px"><input type="text" name="headTexticon" required id=""></h5>
-            <p style="margin-top: 30px"><input type="text" name="descriptionicon" required id=""></p>
+            <h5 style="margin-top: 30px"><input type="text" name="headTexticon" style="text-align: center;" required
+                    id=""></h5>
+            <p style="margin-top: 30px"><input type="text" name="descriptionicon" style="text-align: center;" required
+                    id=""></p>
             <div class="wrapper">
                 <div class="box" style="height: 300px">
                     <h5 style="margin-top: 20px;margin-left: 10px">Icon Car</h5>

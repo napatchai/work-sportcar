@@ -85,13 +85,13 @@ if($type == 'add'){
                         $maxID = $rowTopID['maxTop'] + 1;
                         $sql = "INSERT INTO blog_detail (blogID, blogDesID, blog_desktop, blog_mobile, subjectDes, description) VALUE ('$blogID', '$maxID', '$newNameBannerDesktop1', '$newNameBannerMobile1', '$subject1', '$description1')";
                         $result = mysqli_query($conn, $sql) or die ("Error sql = $sql" . mysqli_error());
-                        if($result){
-                            echo "<script>window.top.window.showResult('1');</script>";
-                        }else{
-                            echo "<script>window.top.window.showResult('2');</script>";
-                        }
                        }
                 }
+            }
+            if($result){
+                echo "<script>window.top.window.showResult('1');</script>";
+            }else{
+                echo "<script>window.top.window.showResult('2');</script>";
             }
         }
 }

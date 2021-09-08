@@ -166,7 +166,7 @@ print_r($_POST);
             }
             $textHeadIcon = $_POST['headTexticon'];
             $descriptionIcon = $_POST['descriptionicon'];
-            $insert = "UPDATE product SET model = '$model', conditionPro = '$condition', price = '$price', detail = '$exterior', textHeadIcon = '$textHeadIcon', descriptionIcon = '$descriptionIcon'  $sqlmore";
+            $insert = "UPDATE product SET model = '$model', conditionPro = '$condition', price = '$price', detail = '$exterior', textHeadIcon = '$textHeadIcon', descriptionIcon = '$descriptionIcon'  $sqlmore WHERE productID = '$productID'";
             $resultinsert = mysqli_query($conn, $insert) or die ("Error $insert". mysqli_error());
             if($resultinsert){
                 echo "<script>window.top.window.showResult('1');</script>";

@@ -1,33 +1,32 @@
 <?php include('./header.php') ?>
 <?php include('./navbar.php') ?>
+<?php include('./condb.php'); ?>
+<?php 
+$blogID = $_GET['ID'];
+$query = "SELECT * FROM blog b INNER JOIN blog_detail d ON d.blogID = b.blogID WHERE b.blogID = '$blogID'";
+$result = mysqli_query($conn, $query);
+?>
 <div class="blogdetail">
     <div class="container">
-        <h2>V1 Around The World</h2>
+        <?php 
+        $z = 0;
+        foreach($result as $rs) { 
+        if($z == 0) {
+        ?>
+        <h2><?php echo $rs['subject'] ?></h2>
+        <?php }  ?>
         <div class="blogimgheader">
-            <img src="./img/newsimg.png" width="100%" alt="">
+            <img src="./blog/<?php echo $rs['blog_desktop'] ?>" width="100%" alt="">
         </div>
         <div class="textheader">
-            <h5>28 JULY 2020</h5>
-            <h3>MUDETEC: IN SEARCH OF THE FUTURE</h3>
-            <p>The Lamborghini Museum has been updated to become Museum of Technologies, where
-                fascinating history, the iconic models and tours of the production lines tell the story of over 50
-                years of innovation that project Lamborghini into the future. The Lamborghini Museum has been
-                updated to become Museum of Technologies, where fascinating history, the iconic models and
-                tours of the production lines tell the story of over 50 years of innovation that project Lamborghini
-                into the future.</p>
+            <?php if($z == 0) { ?>
+            <h5><?php echo strtoupper(date('d M Y', strtotime($rs['date']))); ?></h5>
+            <?php } ?>
+            <h3><?php echo $rs['subjectDes'] ?></h3>
+            <p><?php echo $rs['description'] ?></p>
         </div>
-        <div class="blogimgheader">
-            <img src="./img/newsimg.png" width="100%" alt="">
-        </div>
-        <div class="textheader">
-            <h3>MUDETEC: IN SEARCH OF THE FUTURE</h3>
-            <p>The Lamborghini Museum has been updated to become Museum of Technologies, where
-                fascinating history, the iconic models and tours of the production lines tell the story of over 50
-                years of innovation that project Lamborghini into the future. The Lamborghini Museum has been
-                updated to become Museum of Technologies, where fascinating history, the iconic models and
-                tours of the production lines tell the story of over 50 years of innovation that project Lamborghini
-                into the future.</p>
-        </div>
+        <?php $z++ ?>
+        <?php } ?>
     </div>
 </div>
 <?php include('./message.php') ?>

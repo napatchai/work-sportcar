@@ -216,7 +216,7 @@ $resultmore = mysqli_query($conn, $querymore) or die ("Error sql = $quequerymore
 ?>
 
 <body>
-    <form name="add_product" method="post" action="./blogSql.php?type=edit" id="add_product" name="frmMain"
+    <form name="add_product" method="post" action="./blogsql.php?type=edit" id="add_product" name="frmMain"
         target="iframe_target" enctype="multipart/form-data">
         <div class="price">
             <h3 class="bannertext"><input type="text" class="inputbannertext" placeholder="Subject" name="Subject" id=""

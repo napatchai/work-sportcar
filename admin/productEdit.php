@@ -367,10 +367,10 @@ function setBackgroundproduct(id, url) {
         <br>
         <div class="addicon">
             <h4 id="modelIcon"><?php echo $row['model'] ?></h4>
-            <h5 style="margin-top: 30px"><input type="text" name="headTexticon" required id=""
-                    value="<?php echo $row['textHeadIcon'] ?>"></h5>
-            <p style="margin-top: 30px"><input type="text" name="descriptionicon" required id=""
-                    value="<?php echo $row['descriptionIcon'] ?>"></p>
+            <h5 style="margin-top: 30px"><input type="text" name="headTexticon" style="text-align: center;" required
+                    id="" value="<?php echo $row['textHeadIcon'] ?>"></h5>
+            <p style="margin-top: 30px"><input type="text" name="descriptionicon" style="text-align: center;" required
+                    id="" value="<?php echo $row['descriptionIcon'] ?>"></p>
             <div class="wrapper">
                 <div class="box" style="height: 300px">
                     <h5 style="margin-top: 20px;margin-left: 10px">Icon Car</h5>

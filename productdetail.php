@@ -2,6 +2,13 @@
 <!-- //* Start ref slide -->
 <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.css">
 <link rel="stylesheet" href="https://unpkg.com/flickity-fullscreen@1/fullscreen.css">
+<?php include('./condb.php'); ?>
+<?php 
+$productID = $_GET['id'];
+$sqlProduct = "SELECT * FROM product WHERE productID = '$productID'";
+$resultProduct = mysqli_query($conn, $sqlProduct);
+$rowProduct = mysqli_fetch_array($resultProduct);
+?>
 <style>
 .carousel-slide {
     background: #EEE;
@@ -50,8 +57,9 @@
 <!-- <div class="carousel-inner"> -->
 <!-- <div class="carousel-item active" data-bs-interval="3500"> -->
 <div style="margin-top: 50px">
-    <img src="./img/bannerporsche.png" class="imgdesktop" style="width: 100%" alt="...">
-    <img src="./img/bannerporscheMobile.png" class="imgmobile" style="width: 100%" alt="...">
+    <img src="./product/<?php echo $rowProduct['product_desktop'] ?>" class="imgdesktop" style="width: 100%" alt="...">
+    <img src="./product/<?php echo $rowProduct['product_Mobile'] ?>" class="imgmobile" style="width: 100%" alt="...">
+
 </div>
 <!-- </div> -->
 <!-- </div> -->
@@ -60,25 +68,28 @@
 
 <!-- //? Start generation -->
 <div class="generation">
-    <h2 class="bannertext">PORSCHE GT3</h2>
-    <h5 class="pricetext">CONDITION: <span style="font-weight: bold;">NEW</span> | PRICE: BAHT</h5>
+    <h2 class="bannertext"><?php echo $rowProduct['model'] ?></h2>
+    <h5 class="pricetext">CONDITION: <span style="font-weight: bold;"><?php echo $rowProduct['conditionPro'] ?></span> |
+        PRICE: <?php echo $rowProduct['price'] ?> BAHT</h5>
 </div>
 <!-- //? End deneration -->
 
 <!-- //todo start product slide -->
 <div class="carousel-slide" data-flickity='{ "fullscreen": true, "lazyLoad": 2 }'>
-    <img class="carousel-image" data-flickity-lazyload="./img/productdetail1.png" />
-    <img class="carousel-image" data-flickity-lazyload="./img/productdetail2.png" />
-    <img class="carousel-image" data-flickity-lazyload="./img/productdetail3.png" />
-    <img class="carousel-image" data-flickity-lazyload="./img/productdetail4.png" />
-    <img class="carousel-image" data-flickity-lazyload="./img/productdetail5.png" />
+    <?php 
+    $sqlProductImg = "SELECT * FROM product_image WHERE productID = '$productID' ORDER BY productDesID asc";
+    $resultProductImg = mysqli_query($conn, $sqlProductImg);
+    foreach($resultProductImg as $rpi){
+    ?>
+    <img class="carousel-image" data-flickity-lazyload="./product/<?php echo $rpi['imageProDes'] ?>" />
+    <?php } ?>
 </div>
 <!-- //todo End product slide -->
 
 <!-- //? Start product detail -->
 <div class="generation">
     <h2 class="bannertext">EXTERIOR + INTERIOR</h2>
-    <p class="pricetext">Racing Yellow | Leather / Alcantara seats Black with contrast stitching seams in Red</p>
+    <p class="pricetext"><?php echo $rowProduct['detail'] ?></p>
 </div>
 <!-- //? End product detail -->
 
@@ -86,8 +97,10 @@
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="3500">
-            <img src="./img/bannerfooterproduct.png" class=" test d-block w-100 imgdesktop" alt="...">
-            <img src="./img/bannerfooterproductMobile.png" class="test d-block w-100 imgmobile" alt="...">
+            <img src="./product/<?php echo $rowProduct['detail_Desktop'] ?>" class=" test d-block w-100 imgdesktop"
+                alt="...">
+            <img src="./product/<?php echo $rowProduct['detail_Mobile'] ?>" class="test d-block w-100 imgmobile"
+                alt="...">
         </div>
     </div>
 </div>
@@ -102,146 +115,17 @@
 <!-- //? Start ref -->
 <div class="container" style="margin-bottom: 100px">
     <div class="row">
+        <?php 
+    $sqlProhigh = "SELECT * FROM productHigh WHERE productID = '$productID' ORDER BY proHighID asc";
+    $resulthigh = mysqli_query($conn, $sqlProhigh);
+    foreach($resulthigh as $rsh){
+    ?>
         <div class="col-md-6 ">
             <div class="ref">
-                Clubsport package
+                <?php echo $rsh['highlight'] ?>
             </div>
         </div>
-        <div class="col-md-6 ">
-            <div class="ref">
-                Carbon interior package with leather interior
-            </div>
-        </div>
-        <div class="col-md-6 ">
-            <div class="ref">
-                Porsche Carbon Ceramic Brakes PCCB
-            </div>
-        </div>
-        <div class="col-md-6 ">
-            <div class="ref">
-                Full Buckets seats
-            </div>
-        </div>
-        <div class="col-md-6 ">
-            <div class="ref">
-                Clubsport package
-            </div>
-        </div>
-        <div class="col-md-6 ">
-            <div class="ref">
-                Carbon interior package with leather interior
-            </div>
-        </div>
-        <div class="col-md-6 ">
-            <div class="ref">
-                Porsche Carbon Ceramic Brakes PCCB
-            </div>
-        </div>
-        <div class="col-md-6 ">
-            <div class="ref">
-                Full Buckets seats
-            </div>
-        </div>
-        <div class="col-md-6 ">
-            <div class="ref">
-                Clubsport package
-            </div>
-        </div>
-        <div class="col-md-6 ">
-            <div class="ref">
-                Carbon interior package with leather interior
-            </div>
-        </div>
-        <div class="col-md-6 ">
-            <div class="ref">
-                Porsche Carbon Ceramic Brakes PCCB
-            </div>
-        </div>
-        <div class="col-md-6 ">
-            <div class="ref">
-                Full Buckets seats
-            </div>
-        </div>
-        <div class="col-md-6 ">
-            <div class="ref">
-                Clubsport package
-            </div>
-        </div>
-        <div class="col-md-6 ">
-            <div class="ref">
-                Carbon interior package with leather interior
-            </div>
-        </div>
-        <div class="col-md-6 ">
-            <div class="ref">
-                Porsche Carbon Ceramic Brakes PCCB
-            </div>
-        </div>
-        <div class="col-md-6 ">
-            <div class="ref">
-                Full Buckets seats
-            </div>
-        </div>
-        <div class="col-md-6 ">
-            <div class="ref">
-                Clubsport package
-            </div>
-        </div>
-        <div class="col-md-6 ">
-            <div class="ref">
-                Carbon interior package with leather interior
-            </div>
-        </div>
-        <div class="col-md-6 ">
-            <div class="ref">
-                Porsche Carbon Ceramic Brakes PCCB
-            </div>
-        </div>
-        <div class="col-md-6 ">
-            <div class="ref">
-                Full Buckets seats
-            </div>
-        </div>
-        <div class="col-md-6 ">
-            <div class="ref">
-                Clubsport package
-            </div>
-        </div>
-        <div class="col-md-6 ">
-            <div class="ref">
-                Carbon interior package with leather interior
-            </div>
-        </div>
-        <div class="col-md-6 ">
-            <div class="ref">
-                Porsche Carbon Ceramic Brakes PCCB
-            </div>
-        </div>
-        <div class="col-md-6 ">
-            <div class="ref">
-                Full Buckets seats
-            </div>
-        </div>
-        <div class="col-md-6 ">
-            <div class="ref">
-                Clubsport package
-            </div>
-        </div>
-        <div class="col-md-6 ">
-            <div class="ref">
-                Carbon interior package with leather interior
-            </div>
-        </div>
-        <div class="col-md-6 ">
-            <div class="ref">
-                Porsche Carbon Ceramic Brakes PCCB
-            </div>
-        </div>
-        <div class="col-md-6 ">
-            <div class="ref">
-                Full Buckets seats
-            </div>
-        </div>
+        <?php } ?>
     </div>
 </div>
 <!-- //? End ref -->

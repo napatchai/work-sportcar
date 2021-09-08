@@ -4,7 +4,16 @@
 include('./condb.php');
 $query = "SELECT * FROM banner ORDER BY number ASC";
 $result = mysqli_query($conn, $query);
+$queryProduct = "SELECT * FROM product ORDER BY RAND() LIMIT 10";
+$resultProduct = mysqli_query($conn, $queryProduct);
+$numresult = mysqli_num_rows($resultProduct);
 ?>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    document.cookie = "cookieName=" + screen.width;
+});
+</script>
 <!-- //? Start Image Slide -->
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
@@ -167,61 +176,52 @@ $result = mysqli_query($conn, $query);
 
 <div id="carouselExampleControls" class="carousel slide slide1" data-bs-ride="carousel">
     <div class="carousel-inner">
+        <?php 
+                    $widthScreen =  (int)$_COOKIE['cookieName'];
+                    $setNumPro;
+                    if($widthScreen > 1200){
+                        $setNumPro = 4;
+                    } elseif($widthScreen <= 1200){
+                        $setNumPro = 2;
+                    }
+                    $check = 0;
+        ?>
+        <?php foreach($resultProduct as $rsp) {
+            if($check == 0) {
+        ?>
         <div class="carousel-item active" data-bs-interval="5000">
             <div class="row indexproduct">
-                <div class="col-6 col-xl-3" style="padding-left: 20px">
-                    <label for="" class="labelproduct">Ghibli</label> <br>
-                    <div class="product-content">
-                        <label for="" class="labelmed">You’re not like everyone</label>
-                        <br>
-                        <p class="pevent">The masterful combination of style, power, sporty,<br>
-                            handing, and comfort </p>
-                        <img src="./img/gh_front.png" width="100%" style="padding: 20px" alt=""> <br>
+                <?php }elseif($check%$setNumPro==0) { ?>
+                <div class="carousel-item" data-bs-interval="5000">
+                    <div class="row indexproduct">
+                        <?php }  ?>
+                        <div class="col-6 col-xl-3" style="padding-left: 20px">
+                            <label for="" class="labelproduct"><?php echo $rsp['model'] ?></label> <br>
+                            <?php if(($check+1)%$setNumPro == 0) { ?>
+                            <div class="product-contentend">
+                                <?php }else{ ?>
+                                <div class="product-content">
+                                    <?php } ?>
+                                    <label for="" class="labelmed"><?php echo $rsp['textHeadIcon'] ?></label>
+                                    <br>
+                                    <p class="pevent"><?php echo $rsp['descriptionIcon'] ?> </p>
+                                    <img src="./product/<?php echo $rsp['iconproduct'] ?>" width="100%"
+                                        style="padding: 20px" alt="">
+                                    <br>
+                                </div>
+                                <a href="./productdetail.php?id=<?php echo $rsp['productID'] ?>">
+                                    <div class="discovermore">
+                                        Discover more
+                                    </div>
+                                </a>
+                            </div>
+                            <?php if(($check+1)%$setNumPro == 0 || $check+1 == $numresult) { ?>
+                        </div>
                     </div>
-                    <div class="discovermore">
-                        Discover more
-                    </div>
-                </div>
-                <div class="col-6 col-xl-3">
-                    <label for="" class="labelproduct">Ghibli</label> <br>
-                    <div class="product-contentend">
-                        <label for="" class="labelmed">You’re not like everyone else</label> <br>
-                        <p class="pevent">The masterful combination of style, power, sporty,<br>
-                            handing, and comfort </p>
-                        <img src="./img/gh_front.png" width="100%" style="padding: 20px" alt=""> <br>
-                    </div>
-                    <div class="discovermore">
-                        Discover more
-                    </div>
-                </div>
-                <div class="col-6 col-xl-3 productshownone">
-                    <label for="" class="labelproduct">Ghibli</label> <br>
-                    <div class="product-content">
-                        <label for="" class="labelmed">You’re not like everyone else</label> <br>
-                        <p class="pevent">The masterful combination of style, power, sporty,<br>
-                            handing, and comfort </p>
-                        <img src="./img/gh_front.png" width="100%" style="padding: 20px" alt=""> <br>
-                    </div>
-                    <div class="discovermore">
-                        Discover more
-                    </div>
-                </div>
-                <div class="col-6 col-xl-3 productshownone">
-                    <label for="" class="labelproduct">Ghibli</label> <br>
-                    <!-- <div class="product-content"> -->
-                    <label for="" class="labelmed">You’re not like everyone else</label> <br>
-                    <p class="pevent">The masterful combination of style, power, sporty,<br>
-                        handing, and comfort </p>
-                    <img src="./img/gh_front.png" width="100%" style="padding: 20px" alt=""> <br>
-
-                    <div class="discovermore">
-                        Discover more
-                    </div>
-                    <!-- </div> -->
-                </div>
-            </div>
-        </div>
-        <div class="carousel-item" data-bs-interval="5000">
+                    <?php } ?>
+                    <?php $check++; ?>
+                    <?php }   ?>
+                    <!-- <div class="carousel-item" data-bs-interval="5000">
             <div class="row indexproduct">
                 <div class="col-6 col-xl-3" style="padding-left: 20px">
                     <label for="" class="labelproduct">Ghibli</label> <br>
@@ -261,7 +261,6 @@ $result = mysqli_query($conn, $query);
                 </div>
                 <div class="col-6 col-xl-3 productshownone">
                     <label for="" class="labelproduct">Ghibli</label> <br>
-                    <!-- <div class="product-content"> -->
                     <label for="" class="labelmed">You’re not like everyone else</label> <br>
                     <p class="pevent">The masterful combination of style, power, sporty,<br>
                         handing, and comfort </p>
@@ -270,24 +269,25 @@ $result = mysqli_query($conn, $query);
                     <div class="discovermore">
                         Discover more
                     </div>
-                    <!-- </div> -->
                 </div>
             </div>
-        </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-</div>
+        </div> -->
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
 
 
 
-<!-- 
+            <!-- 
 <div class="row indexproduct">
     <div class="col-6 col-xl-3" style="padding-left: 20px">
         <label for="" class="labelproduct">Ghibli</label> <br>
@@ -340,102 +340,105 @@ $result = mysqli_query($conn, $query);
         </div>
     </div>
 </div> -->
-<!-- //? end index product -->
-<!-- //? Start image before footer -->
-<div class="containerimglast">
-    <div class="row" style="border: 0px solid #707070">
-        <div class="col-12" id="rightclone" style="padding: 0px">
-            <img src="./img/car-5840866_192021.png" width="100%" height="100%" style="object-fit: cover;" alt="">
-        </div>
-        <div class="col-12 col-sm-6" style="padding: 0px">
-            <div class="row" style="padding: 0px;margin-left: 0px">
-                <div class="col-6 col-sm-12">
-                    <img src="./img/car-1376083_1920.png" width="100%" alt="" class="imgfooterleft">
+            <!-- //? end index product -->
+            <!-- //? Start image before footer -->
+            <div class="containerimglast">
+                <div class="row" style="border: 0px solid #707070">
+                    <div class="col-12" id="rightclone" style="padding: 0px">
+                        <img src="./img/car-5840866_192021.png" width="100%" height="100%" style="object-fit: cover;"
+                            alt="">
+                    </div>
+                    <div class="col-12 col-sm-6" style="padding: 0px">
+                        <div class="row" style="padding: 0px;margin-left: 0px">
+                            <div class="col-6 col-sm-12">
+                                <img src="./img/car-1376083_1920.png" width="100%" alt="" class="imgfooterleft">
+                            </div>
+                            <div class="col-6 col-sm-12">
+                                <img src="./img/porsche-4795520_1920.png" width="100%" alt="" class="imgfooterright">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6" id="rightimg">
+                        <img src="./img/car-5840866_1920.png" width="100%" height="100%" style="object-fit: cover;"
+                            alt="">
+                    </div>
                 </div>
-                <div class="col-6 col-sm-12">
-                    <img src="./img/porsche-4795520_1920.png" width="100%" alt="" class="imgfooterright">
+            </div>
+            <!-- //? End image before footer -->
+
+            <!-- //? Start popup booking -->
+            <div class="popupbooking" id="popup-1booking">
+                <div class="overlaybooking" onclick="togglePopupBooking()"></div>
+                <div class="contentbooking">
+                    <div class="close-btn-dotbooking" onclick="togglePopupBooking()">...</div>
+                    <div class="close-btnbooking" onclick="togglePopupBooking()">-</div>
+                    <p style="margin-bottom: 15px;margin-top: 20px">Lorem Ipsum is simply dummy text of the printing
+                        and typesetting industry.
+                    </p>
+                    <span class="footerleft-content-social"><img src="./img/viber.png" class="imgsocial" alt=""></span>
+                    <span class="footerleft-content-social"><img src="./img/facebook-app-logo.png" class="imgsocial"
+                            alt=""></span>
+                    <span class="footerleft-content-social"><img src="./img/line.png" class="imgsocial" alt=""></span>
+                    <div class="calendarcenter">
+                        <?php include('./testcalendar.php') ?>
+                    </div>
+                    <div class="row test1234">
+                        <div class="col-6">
+                            <input type="text" required placeholder="Name" class="inputbooking">
+                        </div>
+                        <div class="col-6">
+                            <input type="text" required placeholder="Phone" class="inputbooking">
+                        </div>
+                        <div class="col-6" style="margin-top: 20px">
+                            <select name="" id="" class="inputbooking">
+                                <option value=""></option>
+                                <option value="">one</option>
+                                <option value="">two</option>
+                            </select>
+                        </div>
+                        <div class="col-6"></div>
+                    </div>
+                    <div class="col-12 formsubmit" style="margin-bottom: 0px">
+                        <button type="button" class="btn btn-dark" style="padding: 6px 22px">Submit</button>
+
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-6" id="rightimg">
-            <img src="./img/car-5840866_1920.png" width="100%" height="100%" style="object-fit: cover;" alt="">
-        </div>
-    </div>
-</div>
-<!-- //? End image before footer -->
 
-<!-- //? Start popup booking -->
-<div class="popupbooking" id="popup-1booking">
-    <div class="overlaybooking" onclick="togglePopupBooking()"></div>
-    <div class="contentbooking">
-        <div class="close-btn-dotbooking" onclick="togglePopupBooking()">...</div>
-        <div class="close-btnbooking" onclick="togglePopupBooking()">-</div>
-        <p style="margin-bottom: 15px;margin-top: 20px">Lorem Ipsum is simply dummy text of the printing
-            and typesetting industry.
-        </p>
-        <span class="footerleft-content-social"><img src="./img/viber.png" class="imgsocial" alt=""></span>
-        <span class="footerleft-content-social"><img src="./img/facebook-app-logo.png" class="imgsocial" alt=""></span>
-        <span class="footerleft-content-social"><img src="./img/line.png" class="imgsocial" alt=""></span>
-        <div class="calendarcenter">
-            <?php include('./testcalendar.php') ?>
-        </div>
-        <div class="row test1234">
-            <div class="col-6">
-                <input type="text" required placeholder="Name" class="inputbooking">
+            <div class="message">
+                <img src="./img/messenger.png" width=" 50px" alt="" style="cursor: pointer;" onclick="togglePopup()">
             </div>
-            <div class="col-6">
-                <input type="text" required placeholder="Phone" class="inputbooking">
-            </div>
-            <div class="col-6" style="margin-top: 20px">
-                <select name="" id="" class="inputbooking">
-                    <option value=""></option>
-                    <option value="">one</option>
-                    <option value="">two</option>
-                </select>
-            </div>
-            <div class="col-6"></div>
-        </div>
-        <div class="col-12 formsubmit" style="margin-bottom: 0px">
-            <button type="button" class="btn btn-dark" style="padding: 6px 22px">Submit</button>
+            <!-- //? End popup booking -->
 
-        </div>
-    </div>
-</div>
+            <!-- //? Start footer -->
+            <?php include('./contentfooter.php') ?>
+            <!-- //? End footer -->
 
-<div class="message">
-    <img src="./img/messenger.png" width=" 50px" alt="" style="cursor: pointer;" onclick="togglePopup()">
-</div>
-<!-- //? End popup booking -->
+            <!-- //? Start popup message -->
+            <?php include('./message.php') ?>
+            <!-- //? pop message -->
+            <script>
+            var width1 = screen.width;
+            setimg(width1);
 
-<!-- //? Start footer -->
-<?php include('./contentfooter.php') ?>
-<!-- //? End footer -->
+            window.addEventListener("resize", function(event) {
+                setimg(document.body.clientWidth);
+            })
 
-<!-- //? Start popup message -->
-<?php include('./message.php') ?>
-<!-- //? pop message -->
-<script>
-var width1 = screen.width;
-setimg(width1);
+            function setimg(size) {
+                if (size <= 600) {
+                    document.getElementById("rightimg").style.display = "none";
+                    document.getElementById("rightclone").style.display = "block";
+                } else {
+                    document.getElementById("rightimg").style.display = "block";
+                    document.getElementById("rightclone").style.display = "none";
+                }
+            }
+            </script>
 
-window.addEventListener("resize", function(event) {
-    setimg(document.body.clientWidth);
-})
-
-function setimg(size) {
-    if (size <= 600) {
-        document.getElementById("rightimg").style.display = "none";
-        document.getElementById("rightclone").style.display = "block";
-    } else {
-        document.getElementById("rightimg").style.display = "block";
-        document.getElementById("rightclone").style.display = "none";
-    }
-}
-</script>
-
-<script>
-function togglePopupBooking() {
-    document.getElementById("popup-1booking").classList.toggle("active");
-}
-</script>
-<?php include('./footer.php'); ?>
+            <script>
+            function togglePopupBooking() {
+                document.getElementById("popup-1booking").classList.toggle("active");
+            }
+            </script>
+            <?php include('./footer.php'); ?>
