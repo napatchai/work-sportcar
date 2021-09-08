@@ -70,8 +70,14 @@
     text-align: center;
 }
 
-.bannertext {
+.brand{
+    width: 50%;
+    margin: auto;
     margin-top: 80px;
+}
+
+.bannertext {
+    margin-top: 40px;
 }
 
 .pricetext {

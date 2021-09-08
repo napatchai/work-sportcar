@@ -250,6 +250,75 @@ function setBackgroundproduct(id, url) {
             </div>
         </div>
         <div class="price">
+            <h3 class="brand">
+                <select name="brand" class="form-select" aria-label="Default select example" id="">
+                    <option value="<?php echo $row['brand'] ?>"><?php echo $row['brand'] ?></option>
+                    <option value="Geo">Geo</option>
+                    <option value="VOLKSWAGEN">VOLKSWAGEN</option>
+                    <option value="Volvo">Volvo</option>
+                    <option value="Mercedes-Benz">Mercedes-Benz</option>
+                    <option value="Mazda">Mazda</option>
+                    <option value="MINI">MINI</option>
+                    <option value="LOTUS">LOTUS</option>
+                    <option value="Suzuki">Suzuki</option>
+                    <option value="Nissan">Nissan</option>
+                    <option value="Triumph">Triumph</option>
+                    <option value="LEXUS">LEXUS</option>
+                    <option value="Porsche">Porsche</option>
+                    <option value="Lamborghini">Lamborghini</option>
+                    <option value="Thairung">Thairung</option>
+                    <option value="TATA Motors">TATA Motors</option>
+                    <option value="SUBARU">SUBARU</option>
+                    <option value="TOYOTA">TOYOTA</option>
+                    <option value="GMC">GMC</option>
+                    <option value="Hillman">Hillman</option>
+                    <option value="JEEP">JEEP</option>
+                    <option value="Jaguar">Jaguar</option>
+                    <option value="Hudson">Hudson</option>
+                    <option value="Hyundai">Hyundai</option>
+                    <option value="Isuzu">Isuzu</option>
+                    <option value="Infiniti">Infiniti</option>
+                    <option value="KIA">KIA</option>
+                    <option value="HUMMER">HUMMER</option>
+                    <option value="Hino">Hino</option>
+                    <option value="Honda">Honda</option>
+                    <option value="Holden">Holden</option>
+                    <option value="Ferrari">Ferrari</option>
+                    <option value="Fiat">Fiat</option>
+                    <option value="Eagle">Eagle</option>
+                    <option value="Ford">Ford</option>
+                    <option value="Daimler">Daimler</option>
+                    <option value="Alpine">Alpine</option>
+                    <option value="De Tomaso">De Tomaso</option>
+                    <option value="Edsel">Edsel</option>
+                    <option value="Dodge">Dodge</option>
+                    <option value="Daihatsu">Daihatsu</option>
+                    <option value="DAF Trucks">DAF Trucks</option>
+                    <option value="Daewoo">Daewoo</option>
+                    <option value="Chrysler">Chrysler</option>
+                    <option value="Bugatti">Bugatti</option>
+                    <option value="Dacia">Dacia</option>
+                    <option value="Buick">Buick</option>
+                    <option value="Citroen">Citroen</option>
+                    <option value="Chevrolet">Chevrolet</option>
+                </select>
+                <br>
+                <select id="" class="form-select" name="year" style="width: 150px;margin: auto" required>
+                    <option value="<?php echo $row['year'] ?>"><?php echo $row['year'] ?></option>
+                    <?php 
+                    $now=date("Y")+543; 
+                    $start = $now - 100;
+                    echo $start;
+                    echo $now;
+                    for($i = $now; $i >= $start; $i--){
+                        ?>
+                    <option value="<?php echo $i ?>"><?php echo $i ?></option>
+                    <?php  }
+                    ?>
+
+                </select>
+            </h3>
+
             <h2 class="bannertext"><input type="text" class="inputbannertext" onkeyup="setModelIcon()"
                     placeholder="Model" name="model" id="model" value="<?php echo $row['model'] ?>" required></h2>
             <h5 class="pricetext">CONDITION: <span style="font-weight: bold;">

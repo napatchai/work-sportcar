@@ -15,8 +15,10 @@ print_r($_POST);
         $newNameIconProduct = img('iconProduct');
         $textHeadIcon = $_POST['headTexticon'];
         $descriptionIcon = $_POST['descriptionicon'];
+        $brand = $_POST['brand'];
+            $year = $_POST['year'];
 
-        $sql = "INSERT INTO product (productID, product_desktop, product_Mobile, model, conditionPro, price, detail, detail_Desktop, detail_Mobile, textHeadIcon, descriptionIcon, iconproduct) VALUE ('$productID', '$newNameBannerDes', '$newNameBannerMo', '$model', '$condition', '$price', '$exterior', '$newNameBannerDesDes', '$newNameBannerMoDes', '$textHeadIcon', '$descriptionIcon', '$newNameIconProduct')";
+        $sql = "INSERT INTO product (productID, product_desktop, product_Mobile, model, conditionPro, price, detail, detail_Desktop, detail_Mobile, textHeadIcon, descriptionIcon, iconproduct, brand, year) VALUE ('$productID', '$newNameBannerDes', '$newNameBannerMo', '$model', '$condition', '$price', '$exterior', '$newNameBannerDesDes', '$newNameBannerMoDes', '$textHeadIcon', '$descriptionIcon', '$newNameIconProduct', '$brand', '$year')";
         $result = mysqli_query($conn, $sql) or die ("Error sql = $sql" . mysqli_error());
 
         if(is_array($_FILES)){
@@ -166,7 +168,9 @@ print_r($_POST);
             }
             $textHeadIcon = $_POST['headTexticon'];
             $descriptionIcon = $_POST['descriptionicon'];
-            $insert = "UPDATE product SET model = '$model', conditionPro = '$condition', price = '$price', detail = '$exterior', textHeadIcon = '$textHeadIcon', descriptionIcon = '$descriptionIcon'  $sqlmore WHERE productID = '$productID'";
+            $brand = $_POST['brand'];
+            $year = $_POST['year'];
+            $insert = "UPDATE product SET model = '$model', conditionPro = '$condition', price = '$price', detail = '$exterior', textHeadIcon = '$textHeadIcon', descriptionIcon = '$descriptionIcon' , brand = '$brand', year = '$year'  $sqlmore WHERE productID = '$productID'";
             $resultinsert = mysqli_query($conn, $insert) or die ("Error $insert". mysqli_error());
             if($resultinsert){
                 echo "<script>window.top.window.showResult('1');</script>";
