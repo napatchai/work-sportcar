@@ -1275,6 +1275,15 @@ select {
     height: 90vh;
 }
 
+.pageNavigation{
+    margin-bottom: 0px;
+    margin-top: 20px
+}
+
+.page-item{
+    margin-right: 20px;
+}
+
 @media (max-width: 600px) {
     .container1 {
         height: 25vh;
