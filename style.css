@@ -353,6 +353,10 @@ nav ul li a {
     font-size: 13px !important;
 }
 
+.selectprice{
+    width: 137px !important;
+}
+
 select {
     text-align: center !important;
     text-align-last: center !important;

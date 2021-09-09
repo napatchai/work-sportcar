@@ -126,9 +126,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     </a>
                 </div>
                 <div class="col-4">
+                    <?php if(isset($_SESSION['mem_id'])) { ?>
                     <a onclick="togglePopupBooking()">
-                        <img src="./img/headphones.png" width="100%" class="iconwho" alt="">
-                    </a>
+                        <?php }else { ?>
+                        <a onclick="pleaselogin()">
+                            <?php } ?>
+                            <img src="./img/headphones.png" width="100%" class="iconwho" alt="">
+                        </a>
                 </div>
             </div>
         </div>
@@ -439,6 +443,17 @@ document.addEventListener("DOMContentLoaded", () => {
             <script>
             function togglePopupBooking() {
                 document.getElementById("popup-1booking").classList.toggle("active");
+            }
+
+            function pleaselogin() {
+                swal({
+                    title: "Please Login",
+                    type: "info",
+                    icon: "warning",
+                });
+                setTimeout(function() {
+                    window.location = "./login.php"
+                }, 1500);
             }
             </script>
             <?php include('./footer.php'); ?>

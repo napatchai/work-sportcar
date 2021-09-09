@@ -1,8 +1,42 @@
 <link rel="stylesheet" href="style.css">
 <?php
+// print_r($_POST);
 $output = '';
 include('./condb.php');
-$queryProduct = "SELECT * FROM product ORDER BY date asc";
+$queryMore = '';
+if(Strlen($_POST['brand']) >= 1 || Strlen($_POST['yearcar']) >= 1 || Strlen($_POST['price']) >= 1){
+    $queryMore .= 'WHERE ';
+}
+if(Strlen($_POST['brand']) >= 1){
+    $brand = $_POST['brand'];
+    $queryMore .= "brand = '$brand' ";
+}
+if(Strlen($_POST['yearcar']) >= 1){
+    $year = $_POST['yearcar'];
+    if(Strlen($_POST['brand']) >= 1){
+        $queryMore .= " AND ";
+    }
+    $queryMore .= "year = '$year' ";
+}
+if(Strlen($_POST['price']) >= 1){
+    $price = $_POST['price'];
+    if(Strlen($_POST['brand']) >= 1 || Strlen($_POST['yearcar']) >= 1){
+        $queryMore .= " AND ";
+    }
+    if($_POST['price'] == 1000000){
+        $endprice = 10000000;
+        $queryMore .= "price BETWEEN $price AND $endprice";
+    }elseif($_POST['price'] == 10000000){
+        $endprice = 20000000;
+        $queryMore .= "price BETWEEN $price AND $endprice";
+    }else{
+        $endprice = 20000000;
+        $queryMore .= "price >= 20000000";
+    }
+}
+
+
+$queryProduct = "SELECT * FROM product $queryMore ORDER BY date asc";
 $resultProduct = mysqli_query($conn, $queryProduct);
 $numresult = mysqli_num_rows($resultProduct);
 
@@ -32,6 +66,7 @@ if($page=="" || $page == 1){
             $setNumPro = 2;
         }
         $check = 1;
+        if($numresult2 > 0){
         foreach($query2 as $rs) {
             $output .= 
             '<div class="col-6 col-xl-3" style="padding-left: 20px">
@@ -85,4 +120,12 @@ $output .= '<a class=" page-link" onclick="load_data('.($page+1) .')">Next</a>
 </div>';
 
 echo $output;
+        }
+        else{
+            echo "<div style='width: 100%;text-align: center'>Data Not Found</div>";
+        }
 ?>
+
+<script>
+var test = '<?php echo $page ?>';
+</script>

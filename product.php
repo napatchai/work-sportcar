@@ -67,30 +67,39 @@ if(@$_GET['page']==""){
 <div class="content-filter" id="product">
     <div class="filter">
         Filter > <span class="inputfilter">
+            <?php 
+        $queryBrand = "SELECT brand FROM product GROUP BY brand";
+        $resultBrand = mysqli_query($conn, $queryBrand);
+        ?>
             <span class="inputfilter">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Brand</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                <select class="form-select" aria-label="Default select example" id="brand" onchange="load_data(1)">
+                    <option value="">Brand</option>
+                    <?php foreach($resultBrand as $rsb) { ?>
+                    <option value="<?php echo $rsb['brand'] ?>"><?php echo $rsb['brand'] ?></option>
+                    <?php } ?>
                 </select>
             </span>
             <span class="inputfilter">/</span>
             <span class="inputfilter">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Year</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                <?php 
+        $queryBrand = "SELECT year FROM product GROUP BY year";
+        $resultBrand = mysqli_query($conn, $queryBrand);
+        ?>
+                <select class="form-select" aria-label="Default select example" id="yearcar" onchange="load_data(1)">
+                    <option value="">Year</option>
+                    <?php foreach($resultBrand as $rsb) { ?>
+                    <option value="<?php echo $rsb['year'] ?>"><?php echo $rsb['year'] ?></option>
+                    <?php } ?>
                 </select>
             </span>
             <span class="inputfilter">/</span>
             <span class="inputfilter">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Price</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                <select class="form-select selectprice" id="selectprice" aria-label="Default select example"
+                    onchange="load_data(1)">
+                    <option value="">Price</option>
+                    <option value="1000000">1M-10M</option>
+                    <option value="10000000">10M-20M</option>
+                    <option value="20000000">Moreover 20M</option>
                 </select>
             </span>
     </div>
@@ -125,14 +134,21 @@ function setimg(size) {
 }
 
 function load_data(page) {
-
+    var selectBrand = document.getElementById('brand');
+    var valueBrand = selectBrand.options[selectBrand.selectedIndex].value;
+    var selectYear = document.getElementById('yearcar');
+    var valueYear = selectYear.options[selectYear.selectedIndex].value;
+    var selectPrice = document.getElementById('selectprice');
+    var valuePrice = selectPrice.options[selectPrice.selectedIndex].value;
     $.ajax({
         url: "./product_load.php",
         method: "POST",
         data: {
             screenwidth: screen.width,
-            page: page
-
+            page: page,
+            brand: valueBrand,
+            yearcar: valueYear,
+            price: valuePrice
         },
         success: function(data) {
             $('#result').html(data);

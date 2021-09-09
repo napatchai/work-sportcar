@@ -38,59 +38,60 @@
         </div>
     </div>
 </div>
-<div class="container" style="margin-top: 30px">
-    <div class="" style="margin-bottom:70px;margin-left: 10px">
-        <div class="row">
-            <div class="col-12 col-sm-6">
-                <div class="row">
-                    <div class="col-3 form">
-                        Name
-                    </div>
-                    <div class="col-9 form">
-                        <input type="text" class="forminput">
-                    </div>
-                    <div class="col-3 form">
-                        Phone
-                    </div>
-                    <div class="col-9 form">
-                        <input type="text" class="forminput">
-                    </div>
-                    <div class="col-3 form">
-                        Email
-                    </div>
-                    <div class="col-9 form">
-                        <input type="text" class="forminput">
-                    </div>
-                    <div class="col-12 form">
-                        Requirement or Question
-                    </div>
-                    <div class="col-12 form">
-                        <textarea name="" id="" class="forminput" style="width: 100%" rows="5"></textarea>
-                    </div>
-                    <div class="col-12 form" style="text-align: center;">
-                        <div class="btnsubmit">
-                            Submit
+<form action="./sendEmail.php" method="post" name="add_product">
+    <div class="container" style="margin-top: 30px">
+        <div class="" style="margin-bottom:70px;margin-left: 10px">
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <div class="row">
+                        <div class="col-3 form">
+                            Name
+                        </div>
+                        <div class="col-9 form">
+                            <input type="text" name="name" class="forminput" required>
+                        </div>
+                        <div class="col-3 form">
+                            Phone
+                        </div>
+                        <div class="col-9 form">
+                            <input type="text" name="phone" class="forminput" required>
+                        </div>
+                        <div class="col-3 form">
+                            Email
+                        </div>
+                        <div class="col-9 form">
+                            <input type="email" name="email" class="forminput" required>
+                        </div>
+                        <div class="col-12 form">
+                            Requirement or Question
+                        </div>
+                        <div class="col-12 form">
+                            <textarea name="message" id="" class="forminput" style="width: 100%" rows="5"
+                                required></textarea>
+                        </div>
+                        <div class="col-12 form" style="text-align: center;">
+                            <input type="submit" class="btnsubmit" value="Submit">
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-12 mapsec" style="height: 200px;margin-top: 40px;margin-bottom: 40px">
-                <?php include('./map1.php') ?>
-            </div>
-            <div class="col-12 col-sm-6" style="margin-top: 20px;padding: 0px">
-                <div class="row">
-                    <div class="col-6">
-                        <img src="./img/headphones.png" width="50%" class="imgcontact" alt="">
-                    </div>
-                    <div class="col-6">
-                        <img src="./img/vector-qr-code-sample-isolated_255502-275.png" width="50%" class="imgcontact"
-                            alt="">
+                <div class="col-12 mapsec" style="height: 200px;margin-top: 40px;margin-bottom: 40px">
+                    <?php include('./map1.php') ?>
+                </div>
+                <div class="col-12 col-sm-6" style="margin-top: 20px;padding: 0px">
+                    <div class="row">
+                        <div class="col-6">
+                            <img src="./img/headphones.png" width="50%" class="imgcontact" alt="">
+                        </div>
+                        <div class="col-6">
+                            <img src="./img/vector-qr-code-sample-isolated_255502-275.png" width="50%"
+                                class="imgcontact" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</form>
 <!-- //? End Contact -->
 <?php include('./contentfooter.php') ?>
 <?php include('./message.php') ?>
