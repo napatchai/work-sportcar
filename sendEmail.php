@@ -1,18 +1,40 @@
 <?php
-$to = 'nick.napat123@gmail.com';
-$subject = "Email Subject";
 
-$message = 'Dear '.'nick'.',<br>';
-$message .= "We welcome you to be part of family<br><br>";
-$message .= "Regards,<br>";
+print_r($_POST);
+$name = $_POST['name'];
+$phone = $_POST['phone'];
+$email = $_POST['email'];
+$message = $_POST['message'];
 
-// Always set content-type when sending HTML email
-$headers = "MIME-Version: 1.0" . "\r\n";
-$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+$txt_msg = "Name%20=%20$name,%0APhone%20=%20$phone,%0AEmail%20=%20$email,%0AMessage%20=%20$message";
 
-// More headers
-$headers .= 'From: nick.napat123@gmail.com' . "\r\n";
-$headers .= 'Cc: nick.napat123@gmail.com' . "\r\n";
+$curl = curl_init();
 
-mail($to,$subject,$message,$headers);
+curl_setopt_array($curl, [
+	CURLOPT_URL => "https://email-sender1.p.rapidapi.com/?txt_msg=".$txt_msg."&to=nick.napat123%40gmail.com&from=V1-AutoMail&subject=%20Contact%20Requirement",
+	CURLOPT_RETURNTRANSFER => true,
+	CURLOPT_FOLLOWLOCATION => true,
+	CURLOPT_ENCODING => "",
+	CURLOPT_MAXREDIRS => 10,
+	CURLOPT_TIMEOUT => 30,
+	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+	CURLOPT_CUSTOMREQUEST => "POST",
+	CURLOPT_POSTFIELDS => "{\n    \"key1\": \"value\",\n    \"key2\": \"value\"\n}",
+	CURLOPT_HTTPHEADER => [
+		"content-type: application/json",
+		"x-rapidapi-host: email-sender1.p.rapidapi.com",
+		"x-rapidapi-key: 252c7c4571msh1d3d7d6eb7935e7p18fbc8jsn57c4b220c8f8"
+	],
+]);
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+
+if ($err) {
+	echo "cURL Error #:" . $err;
+} else {
+	echo $response;
+}
 ?>

@@ -12,6 +12,9 @@ $result = mysqli_query($conn, $query);
         $z = 0;
         foreach($result as $rs) { 
         if($z == 0) {
+            $newView = $rs['view'] + 1;
+            $sqlUpdate = "UPDATE blog SET view = $newView WHERE blogID = '$blogID'";
+            $resultUpdate = mysqli_query($conn, $sqlUpdate);
         ?>
         <h2><?php echo $rs['subject'] ?></h2>
         <?php }  ?>

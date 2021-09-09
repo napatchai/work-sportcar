@@ -5,17 +5,23 @@ $type = $_GET['type'];
 if($type == 'add'){
     $blogID = generateRandomString().random_int(1000000, 9999999);
     $subjectHead = $_POST['Subject'];
-    $sql = "INSERT INTO blog (blogID, subject) VALUE ('$blogID', '$subjectHead')";
+    $pinblog = $_POST['pinblog'];
+    $price = $_POST['price'];
+    if($pinblog == 1){
+        $sqlupdatepin = "UPDATE blog SET blogpin = 2";
+        $resultpin = mysqli_query($conn, $sqlupdatepin);
+    }
+    $sql = "INSERT INTO blog (blogID, subject, blogpin, price) VALUE ('$blogID', '$subjectHead', '$pinblog', '$price')";
     $result = mysqli_query($conn, $sql);
     if(is_array(@$_FILES['bannerDesktop'])){
         foreach ($_FILES['bannerDesktop']['name'] as $name => $value)  
         {
               $newNameBannerDesktop = imgarray('bannerDesktop', $name);
               $newNameBannerMobile = imgarray('bannerMobile', $name);
-              $subjectDes = $_POST["subject"][$name];
+            //   $subjectDes = $_POST["subject"][$name];
               $blogDes = $_POST["description"][$name];
                if(strlen($newNameBannerDesktop) > 5 && strlen($newNameBannerDesktop) > 5){
-                $sql = "INSERT INTO blog_detail (blogID, blogDesID, blog_desktop, blog_mobile, subjectDes, description) VALUE ('$blogID', '$name', '$newNameBannerDesktop', '$newNameBannerMobile', '$subjectDes', '$blogDes')";
+                $sql = "INSERT INTO blog_detail (blogID, blogDesID, blog_desktop, blog_mobile, description) VALUE ('$blogID', '$name', '$newNameBannerDesktop', '$newNameBannerMobile', '$blogDes')";
                 $result = mysqli_query($conn, $sql) or die ("Error sql = $sql" . mysqli_error());
                }
                if($result){
@@ -39,7 +45,13 @@ if($type == 'add'){
 }else if($type == 'edit'){
     $Subject = $_POST['Subject'];
     $blogID = $_POST['blogID'];
-    $query = "UPDATE blog SET subject = '$Subject' WHERE blogID = '$blogID'";
+    $pinblog = $_POST['pinblog'];
+    $price = $_POST['price'];
+    if($pinblog == '1'){
+        $updatepin = "UPDATE blog set blogpin = 2";
+        $resultpin = mysqli_query($conn, $updatepin);
+    }
+    $query = "UPDATE blog SET subject = '$Subject', blogpin = '$pinblog', price = '$price' WHERE blogID = '$blogID'";
     mysqli_query($conn, $query) or die ('ERROR $sql ' . mysqli_error());
     $querycheck = "SELECT * FROM blog_detail WHERE blogID = '$blogID'";
     $resultcheck = mysqli_query($conn, $querycheck) or die ("Error $sql " . mysqli_error());

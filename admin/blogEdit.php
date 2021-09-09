@@ -218,9 +218,21 @@ $resultmore = mysqli_query($conn, $querymore) or die ("Error sql = $quequerymore
 <body>
     <form name="add_product" method="post" action="./blogsql.php?type=edit" id="add_product" name="frmMain"
         target="iframe_target" enctype="multipart/form-data">
+        <br>
         <div class="price">
             <h3 class="bannertext"><input type="text" class="inputbannertext" placeholder="Subject" name="Subject" id=""
-                    required value="<?php echo $row['subject'] ?>"></h3>
+                    required value="<?php echo $row['subject'] ?>">
+                <br><br>
+                <select name="pinblog" id="" style="width: 200px;margin:auto" class="form-select" required>
+                    <?php if($row['blogpin'] == 1) {$pin = 'Pin blog';}else{$pin = 'Nonal blog';}  ?>
+                    <option value="$row['blogpin']"><?php echo $pin ?> </option>
+                    <option value="1">Pin blog</option>
+                    <option value="2">Nonal blog</option>
+                </select>
+                <br>
+                <input type="number" class="form-control" value="<?php echo $row['price'] ?>"
+                    style="width: 250px;margin:auto" placeholder="Price" name="price" id="" required>
+            </h3>
         </div>
         <div id="addmore">
             <?php 
@@ -261,11 +273,13 @@ $resultmore = mysqli_query($conn, $querymore) or die ("Error sql = $quequerymore
                         </div>
                     </div>
                 </div>
+                <br>
                 <div class="subjectblog">
+                    <?php if(@$rs['subjectDes'] != '') { ?>
                     <input type="text" name="subject<?php echo $rs['blogDesID'] ?>" class="subject"
                         placeholder="Subject" required value="<?php echo $rs['subjectDes'] ?>">
+                    <?php } ?>
 
-                    <br>
                     <textarea name="description<?php echo $rs['blogDesID'] ?>" rows="5"
                         class="textareaBlog"><?php echo $rs['description'] ?></textarea>
                     <div class="deleteBlog btn_remove btn_removeimg" id="<?php echo $rs['blogID'].$rs['blogDesID'] ?>">

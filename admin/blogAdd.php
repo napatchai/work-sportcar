@@ -201,11 +201,22 @@ i.material-icons {
 </head>
 
 <body>
-    <form name="add_product" method="post" action="./blogSql.php?type=add" enctype="multipart/form-data"
+    <form name="add_product" method="post" action="./blogsql.php?type=add" enctype="multipart/form-data"
         id="add_product" name="frmMain" target="iframe_target">
+        <br>
         <div class="price">
             <h3 class="bannertext"><input type="text" class="inputbannertext" placeholder="Subject" name="Subject" id=""
-                    required></h3>
+                    required>
+                <br><br>
+                <select name="pinblog" id="" style="width: 200px;margin:auto" class="form-select" required>
+                    <option value="">Select Type</option>
+                    <option value="1">Pin blog</option>
+                    <option value="2">Nonal blog</option>
+                </select>
+                <br>
+                <input type="number" class="form-control" style="width: 250px;margin:auto" placeholder="Price"
+                    name="price" id="" required>
+            </h3>
         </div>
         <div id="addmore">
             <div class="wrapper" style="margin-top: 30px">
@@ -390,7 +401,7 @@ $(document).ready(function() {
         i++;
         $('#addmore').append(
             ' <div id="row1' + i +
-            '"><div class="wrapper" style="margin-top: 30px"> <div class="box" style="height: 80vh"> <h4 style="margin-top: 20px;margin-left: 10px">Banner Desktop</h4> <div class="js--image-preview"></div> <div class="upload-options" style="margin-top: 20px;"> <label> <input type="file" name="bannerDesktop[]" class="image-upload form-control" accept="image/*" required /> <br><br> <br> </label> </div> </div> <div class="box" style="height: 80vh"> <h4 style="margin-top: 20px;margin-left: 10px">Banner Mobile</h4> <div class="js--image-preview"></div> <div class="upload-options" style="margin-top: 20px;"> <label> <input type="file" name="bannerMobile[]" class="image-upload form-control" accept="image/*" required /> <br><br> <br> </label> </div> </div> </div> <div class="test"> <input type="text" name="subject[]" class="subject" placeholder="Subject" required><br> <textarea name="description[]" rows="5" class="textareaBlog"></textarea> <div class="deleteBlog btn_remove btn_removeimg" id="' +
+            '"><div class="wrapper" style="margin-top: 30px"> <div class="box" style="height: 80vh"> <h4 style="margin-top: 20px;margin-left: 10px">Banner Desktop</h4> <div class="js--image-preview"></div> <div class="upload-options" style="margin-top: 20px;"> <label> <input type="file" name="bannerDesktop[]" class="image-upload form-control" accept="image/*" required /> <br><br> <br> </label> </div> </div> <div class="box" style="height: 80vh"> <h4 style="margin-top: 20px;margin-left: 10px">Banner Mobile</h4> <div class="js--image-preview"></div> <div class="upload-options" style="margin-top: 20px;"> <label> <input type="file" name="bannerMobile[]" class="image-upload form-control" accept="image/*" required /> <br><br> <br> </label> </div> </div> </div> <div class="test">  <textarea name="description[]" rows="5" class="textareaBlog"></textarea> <div class="deleteBlog btn_remove btn_removeimg" id="' +
             i + '">Delete <i class="bx bx-up-arrow-alt " ></i></div> </div>'
         );
         test();

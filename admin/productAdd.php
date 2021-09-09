@@ -376,7 +376,8 @@ i.material-icons {
                 </div>
                 <div class="col-md-6 ">
                     <div class="ref" style="padding-top: 5px">
-                        <input type="text" name="equipment[]" style="height: 20px;width: 90%" id="" required>
+                        <input type="text" name="equipment[]" style="padding-left: 10px;height: 20px;width: 90%" id=""
+                            required>
                     </div>
                 </div>
 
@@ -567,7 +568,7 @@ $(document).ready(function() {
         d++;
         $('#detail').append(
             '<div class="col-md-6 " id="row' + d +
-            '"><div class="ref" style="padding-top: 5px"><input type="text" name="equipment[]" style="height: 20px;width: 90%" id="" required><span style="margin-left: 10px"><i class="far fa-trash-alt btn_removeDes" id="' +
+            '"><div class="ref" style="padding-top: 5px"><input type="text" name="equipment[]" style="padding-left: 10px;height: 20px;width: 90%" id="" required><span style="margin-left: 10px"><i class="far fa-trash-alt btn_removeDes" id="' +
             d + '"></i></div></div>'
         );
     });

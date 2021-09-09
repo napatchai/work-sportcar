@@ -422,8 +422,9 @@ function setBackgroundproduct(id, url) {
                 <div class="col-md-6" id="row<?php echo $rsh['productID'].$rsh['proHighID'] ?>">
                     <div class="ref" style="padding-top: 5px">
                         <input type="text" name="equipment<?php echo $rsh['proHighID'] ?>"
-                            style="height: 20px;width: 90%" id="" required value="<?php echo $rsh['highlight'] ?>"><span
-                            style="margin-left: 10px"><i class="far fa-trash-alt btn_removeDes btn_removeDes2"
+                            style="padding-left: 10px;height: 20px;width: 90%" id="" required
+                            value="<?php echo $rsh['highlight'] ?>"><span style="margin-left: 10px"><i
+                                class="far fa-trash-alt btn_removeDes btn_removeDes2"
                                 id="<?php echo $rsh['productID'].$rsh['proHighID'] ?>"></i></span>
                     </div>
                 </div>
