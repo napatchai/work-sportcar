@@ -50,7 +50,7 @@ if($page=="" || $page == 1){
         $output .= 
         '<div class="row" style="margin-top: 30px">
         <div class="col-sm-6">
-        <img src="./blog/'. $row['blog_desktop'] .'" width="100%" alt="">
+        <img src="./blog/'. $row['blog_desktop'] .'" width="100%" height="240px" style="object-fit: cover;" alt="">
         </div>
         <div class="col-sm-6 paddingnews">
         <h5 class="newdescription">'. strtoupper(date('d M Y', strtotime($row['date']))) .'</h5>

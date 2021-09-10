@@ -1,24 +1,27 @@
-<div class="popup" id="popup-1">
-    <div class="overlay" onclick="togglePopup()"></div>
-    <div class="content">
-        <div class="close-btn-dot" onclick="togglePopup()">...</div>
-        <div class="close-btn" onclick="togglePopup()">-</div>
-        <h1>Chat with V1</h1>
-        <p>V1 สวัสดีค่ะ :) สามารถสอบถามข้อมูล
-            ได้เลยนะคะ</p>
-        <div class="btn" style="margin-top: 0px;width: 100%">
-            <a class="btn btn-primary" style="width: 100%">แชทต่อด้วยชื่อ
-                (Facebook Name)</a>
-        </div>
-    </div>
-</div>
+<div id="fb-root"></div>
 
-<div class="message">
-    <img src="./img/messenger.png" width=" 50px" alt="" style="cursor: pointer;" onclick="togglePopup()">
+<!-- Your ปลั๊กอินแชท code -->
+<div id="fb-customer-chat" class="fb-customerchat">
 </div>
 
 <script>
-function togglePopup() {
-    document.getElementById("popup-1").classList.toggle("active");
-}
+var chatbox = document.getElementById('fb-customer-chat');
+chatbox.setAttribute("page_id", "108590934775407");
+chatbox.setAttribute("attribution", "biz_inbox");
+
+window.fbAsyncInit = function() {
+    FB.init({
+        xfbml: true,
+        version: 'v11.0'
+    });
+};
+
+(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = 'https://connect.facebook.net/th_TH/sdk/xfbml.customerchat.js';
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
 </script>
