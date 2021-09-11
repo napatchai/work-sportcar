@@ -201,8 +201,8 @@ i.material-icons {
 </head>
 
 <body>
-    <form name="add_product" method="post" action="./blogsql.php?type=add" enctype="multipart/form-data"
-        id="add_product" name="frmMain" target="iframe_target">
+    <form name="add_product" method="post" action="./blogsql.php?type=add" id="add_product" name="frmMain"
+        target="iframe_target1" enctype="multipart/form-data">
         <br>
         <div class="price">
             <h3 class="bannertext"><input type="text" class="inputbannertext" placeholder="Subject" name="Subject" id=""
@@ -218,8 +218,30 @@ i.material-icons {
                     name="price" id="" required>
             </h3>
         </div>
+        <br>
+        <div class="wrappermore" id="blogbanner1">
+            <div class="boxadd1" id="blogbanner1" style="height: 80vh;text-align: center">
+                <div class="boxadd" id="addedblog">
+                    <div class="addproducr">+</div>
+                </div>
+            </div>
+            <div class="box" style="height: 80vh">
+                <h4 style="margin-top: 20px;margin-left: 10px">Image more </h4>
+                <div class="js--image-preview"></div>
+                <div class="upload-options" style="margin-top: 20px;">
+                    <label>
+                        <input type="file" class="image-upload form-control" name="blogbanner[]" accept="image/*"
+                            required />
+                        <input type="hidden" name="checkbanner[]" value="blogbanner1" id="">
+                        <br><br>
+                        <br>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
         <div id="addmore">
-            <div class="wrapper" style="margin-top: 30px">
+            <!-- <div class="wrapper" style="margin-top: 30px">
                 <div class="box" style="height: 80vh">
                     <h4 style="margin-top: 20px;margin-left: 10px">Banner Desktop</h4>
                     <div class="js--image-preview"></div>
@@ -244,7 +266,7 @@ i.material-icons {
                         </label>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="subjectblog">
                 <input type="text" name="subject[]" class="subject" placeholder="Subject" required>
 
@@ -397,12 +419,19 @@ function initDropEffect(box) {
 $(document).ready(function() {
     var i = 1
     var d = 1
-    $('#added').click(function() {
+
+    $(document).on('click', '.addBlogMore', function() {
+        var button_id = $(this).attr("id");
+
         i++;
         $('#addmore').append(
             ' <div id="row1' + i +
-            '"><div class="wrapper" style="margin-top: 30px"> <div class="box" style="height: 80vh"> <h4 style="margin-top: 20px;margin-left: 10px">Banner Desktop</h4> <div class="js--image-preview"></div> <div class="upload-options" style="margin-top: 20px;"> <label> <input type="file" name="bannerDesktop[]" class="image-upload form-control" accept="image/*" required /> <br><br> <br> </label> </div> </div> <div class="box" style="height: 80vh"> <h4 style="margin-top: 20px;margin-left: 10px">Banner Mobile</h4> <div class="js--image-preview"></div> <div class="upload-options" style="margin-top: 20px;"> <label> <input type="file" name="bannerMobile[]" class="image-upload form-control" accept="image/*" required /> <br><br> <br> </label> </div> </div> </div> <div class="test">  <textarea name="description[]" rows="5" class="textareaBlog"></textarea> <div class="deleteBlog btn_remove btn_removeimg" id="' +
-            i + '">Delete <i class="bx bx-up-arrow-alt " ></i></div> </div>'
+            '"><div class="wrappermore" id="blogbanner' + i +
+            '"> <div class="boxadd1" id="blogbanner' + i +
+            '" style="height: 80vh;text-align: center"> <div class="boxadd" id="addedblog"> <div class="addproducr">+</div> </div> </div> <div class="box" style="height: 80vh"> <h4 style="margin-top: 20px;margin-left: 10px">Image more  </h4> <div class="js--image-preview"></div> <div class="upload-options" style="margin-top: 20px;"> <label> <input type="file" class="image-upload form-control" name="blogbanner[]" accept="image/*" required /><input type="hidden" name="checkbanner[]" value="blogbanner' +
+            i +
+            '" id=""> <br><br> <br> </label> </div> </div></div><br><div id="addmore"><div class="subjectblog"> <input type="hidden" name="subject[]" class="subject" placeholder="Subject" required> <textarea name="description[]" rows="5" class="textareaBlog"></textarea><div class="deleteBlog btn_remove btn_removeimg" id="' +
+            i + '">Delete <i class="bx bx-up-arrow-alt " ></i></div></div></div>'
         );
         test();
     });
@@ -410,6 +439,29 @@ $(document).ready(function() {
         var button_id = $(this).attr("id");
         $('#row1' + button_id + '').remove();
     });
+
+
+    $(document).ready(function() {
+        var i = 1
+        var d = 1
+        $(document).on('click', '.boxadd1', function() {
+            var button_id = $(this).attr("id");
+            alert(button_id)
+            d++;
+            $('#' + button_id).append(
+                '<div id="row1' + d +
+                '" class="box" style="height: 80vh"><h4 style="margin-top: 20px;margin-left: 10px">Image more <span style = "float: right;padding-right: 15px;font-size: 20px;cursor: pointer;" > <i class ="far fa-trash-alt btn_removeimg" id = "' +
+                d +
+                '"></i></span></h4><div class="js--image-preview"></div><div class="upload-options" style="margin-top: 20px;"><label><input type="file" class="image-upload form-control" name="blogbanner[]" accept="image/*" required /><input type="hidden" name="checkbanner[]" value="' +
+                button_id + '" id=""><br><br><br></label></div></div>'
+            );
+            test();
+        });
+        $(document).on('click', '.btn_removeimg', function() {
+            var button_id = $(this).attr("id");
+            $('#row1' + button_id + '').remove();
+        });
+    })
 });
 </script>
 

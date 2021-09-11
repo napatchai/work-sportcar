@@ -22,7 +22,7 @@ if(@$_GET['page']==""){
     $sql     = $query." LIMIT  $start,$per_page";
     $query2=mysqli_query($conn, $sql);
 
-    $sqlpin = "SELECT * FROM blog b inner JOIN blog_detail d on d.blogID = b.blogID WHERE blogpin = 1 group by d.blogID ORDER by d.blogDesID asc";
+    $sqlpin = "SELECT * FROM blog b inner JOIN blog_detail d on d.blogID = b.blogID INNER JOIN blog_detail_Banner bd on bd.blogID = b.blogID WHERE blogpin = 1 group by d.blogID ORDER by d.blogDesID asc";
     $reqpin = mysqli_query($conn, $sqlpin);
     $rowpin = mysqli_fetch_array($reqpin);
 ?>
@@ -42,7 +42,7 @@ if(@$_GET['page']==""){
     <div class="test" style="margin-bottom: 50px">
         <div class="headernew">
             <h2 style="margin-bottom: 20px;margin-top: 20px;font-size: 35px"><?php echo $rowpin['subject'] ?></h2>
-            <img src="./blog/<?php echo $rowpin['blog_desktop'] ?>" width="100%" alt="">
+            <img src="./blog/<?php echo $rowpin['blog_banner'] ?>" width="100%" alt="">
         </div>
         <div class="row">
             <div class="col-12">

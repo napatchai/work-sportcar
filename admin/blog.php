@@ -2,7 +2,7 @@
 include('./header.php');
 include('./slidebar.php');
 include('../condb.php');
-$sql = "SELECT b.blogID, b.subject, b.date, d.blog_desktop FROM blog  b INNER JOIN blog_detail d ON b.blogID = d.blogID  GROUP BY d.blogID ORDER BY b.date asc";
+$sql = "SELECT b.blogID, b.subject, b.date, d.blog_desktop, bd.blog_banner FROM blog  b INNER JOIN blog_detail d ON b.blogID = d.blogID INNER JOIN blog_detail_Banner bd on bd.blogID = b.blogID GROUP BY d.blogID ORDER BY b.date asc";
 $result = mysqli_query($conn, $sql);
 ?>
 
@@ -51,7 +51,7 @@ $result = mysqli_query($conn, $sql);
             <a href="#" data-bs-toggle="modal" onclick="setinput(<?php echo  $blogID ?>)"
                 data-bs-target="#exampleModal1">
                 <div class="managerbanner">
-                    <img src="../blog/<?php echo $row['blog_desktop'] ?>" class="imgbanner" alt="">
+                    <img src="../blog/<?php echo $row['blog_banner'] ?>" class="imgbanner" alt="">
                     <div class="detailbanner">
                         <h1><?php echo $row['subject'] ?></h1>
                         <!-- <h3><?php echo $row['description'] ?></h3> -->

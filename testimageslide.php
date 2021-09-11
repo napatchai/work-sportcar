@@ -26,12 +26,11 @@
 </style>
 <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.css">
 <link rel="stylesheet" href="https://unpkg.com/flickity-fullscreen@1/fullscreen.css">
-<?php include('./navbar.php') ?>
 <!-- Start bammer -->
 
 <!-- Flickity HTML init -->
 <div class="carousel" data-flickity='{ "fullscreen": true, "lazyLoad": 2 }'>
-    <img class="carousel-image" data-flickity-lazyload="./img/productdetail1.png" />
+    <img class="carousel-image" data-flickity-lazyload="./img/aston-martin-vulcan-2918114_1920.png" />
     <img class="carousel-image" data-flickity-lazyload="./img/productdetail2.png" />
     <img class="carousel-image" data-flickity-lazyload="./img/productdetail3.png" />
     <img class="carousel-image" data-flickity-lazyload="./img/productdetail4.png" />
@@ -43,12 +42,5 @@
 <?php include('./contentfooter.php') ?>
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.js"></script>
 <script src="https://unpkg.com/flickity-fullscreen@1/fullscreen.js"></script>
-<script>
-var elem = document.querySelector('.carousel');
-var flkty = new Flickity(elem, {
-    // options
-    cellAlign: 'left',
-    contain: true
-});
-</script>
+
 <?php include('./footer.php') ?>

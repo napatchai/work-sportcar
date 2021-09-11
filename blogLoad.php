@@ -14,7 +14,7 @@ if(Strlen($_POST['type']) >= 1){
     }
 }
 if(Strlen($_POST['price']) >= 1){
-    $queryWhereMore .= ' WHERE ';
+    $queryWhereMore .= ' AND ';
     $price = $_POST['price'];
     if($_POST['price'] == 1000000){
         $endprice = 10000000;
@@ -28,7 +28,7 @@ if(Strlen($_POST['price']) >= 1){
     }
 }
 
-$query = "SELECT * FROM blog b inner join blog_detail d on d.blogID = b.blogID $queryWhereMore group by d.blogID   $queryMore  ";
+$query = "SELECT * FROM blog b inner join blog_detail d on d.blogID = b.blogID INNER JOIN blog_detail_Banner bd on bd.blogID = b.blogID WHERE blogpin = '2' $queryWhereMore group by d.blogID   $queryMore  ";
 $resule = mysqli_query($conn, $query);
 $numresultBlog = mysqli_num_rows($resule);
 ?>
@@ -50,7 +50,7 @@ if($page=="" || $page == 1){
         $output .= 
         '<div class="row" style="margin-top: 30px">
         <div class="col-sm-6">
-        <img src="./blog/'. $row['blog_desktop'] .'" width="100%" height="240px" style="object-fit: cover;" alt="">
+        <img src="./blog/'. $row['blog_banner'] .'" width="100%" height="240px" style="object-fit: cover;" alt="">
         </div>
         <div class="col-sm-6 paddingnews">
         <h5 class="newdescription">'. strtoupper(date('d M Y', strtotime($row['date']))) .'</h5>
