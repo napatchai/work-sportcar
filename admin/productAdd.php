@@ -1,4 +1,5 @@
 <?php include('./header.php') ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <?php include('./slidebar.php') ?>
 
 <style>
@@ -200,91 +201,86 @@ i.material-icons {
 
 </head>
 
-<body>
-    <form name="add_product" method="post" action="./productsql.php?type=add" id="add_product"
-        enctype="multipart/form-data" name="frmMain" target="iframe_target">
-        <iframe id="iframe_target" name="iframe_target" src="#"
-            style="width:0;height:0;border:0px solid #fff;"></iframe>
-        <div class="wrapper">
-            <div class="box" style="height: 80vh">
-                <h4 style="margin-top: 20px;margin-left: 10px">Banner Desktop</h4>
-                <div class="js--image-preview"></div>
-                <div class="upload-options" style="margin-top: 20px;">
-                    <label>
-                        <input type="file" name="bannerDesktop" class="image-upload form-control" accept="image/*"
-                            required />
-                        <br><br>
-                        <br>
-                    </label>
-                </div>
-            </div>
-            <div class="box" style="height: 80vh">
-                <h4 style="margin-top: 20px;margin-left: 10px">Banner Mobile</h4>
-                <div class="js--image-preview"></div>
-                <div class="upload-options" style="margin-top: 20px;">
-                    <label>
-                        <input type="file" name="bannerMobile" class="image-upload form-control" accept="image/*"
-                            required />
-                        <br><br>
-                        <br>
-                    </label>
-                </div>
-            </div>
-        </div>
-        <div class="price">
-            <h3 class="brand">
-                <select name="brand" class="form-select" aria-label="Default select example" id="">
-                    <option value="">Select Brand</option>
-                    <option value="Geo">Geo</option>
-                    <option value="VOLKSWAGEN">VOLKSWAGEN</option>
-                    <option value="Volvo">Volvo</option>
-                    <option value="Mercedes-Benz">Mercedes-Benz</option>
-                    <option value="Mazda">Mazda</option>
-                    <option value="MINI">MINI</option>
-                    <option value="LOTUS">LOTUS</option>
-                    <option value="Suzuki">Suzuki</option>
-                    <option value="Nissan">Nissan</option>
-                    <option value="Triumph">Triumph</option>
-                    <option value="LEXUS">LEXUS</option>
-                    <option value="Porsche">Porsche</option>
-                    <option value="Lamborghini">Lamborghini</option>
-                    <option value="Thairung">Thairung</option>
-                    <option value="TATA Motors">TATA Motors</option>
-                    <option value="SUBARU">SUBARU</option>
-                    <option value="TOYOTA">TOYOTA</option>
-                    <option value="GMC">GMC</option>
-                    <option value="Hillman">Hillman</option>
-                    <option value="JEEP">JEEP</option>
-                    <option value="Jaguar">Jaguar</option>
-                    <option value="Hudson">Hudson</option>
-                    <option value="Hyundai">Hyundai</option>
-                    <option value="Isuzu">Isuzu</option>
-                    <option value="Infiniti">Infiniti</option>
-                    <option value="KIA">KIA</option>
-                    <option value="HUMMER">HUMMER</option>
-                    <option value="Hino">Hino</option>
-                    <option value="Honda">Honda</option>
-                    <option value="Holden">Holden</option>
-                    <option value="Ferrari">Ferrari</option>
-                    <option value="Fiat">Fiat</option>
-                    <option value="Eagle">Eagle</option>
-                    <option value="Ford">Ford</option>
-                    <option value="Daimler">Daimler</option>
-                    <option value="Alpine">Alpine</option>
-                    <option value="De Tomaso">De Tomaso</option>
-                    <option value="Edsel">Edsel</option>
-                    <option value="Dodge">Dodge</option>
-                    <option value="Daihatsu">Daihatsu</option>
-                    <option value="DAF Trucks">DAF Trucks</option>
-                    <option value="Daewoo">Daewoo</option>
-                    <option value="Chrysler">Chrysler</option>
-                    <option value="Bugatti">Bugatti</option>
-                    <option value="Dacia">Dacia</option>
-                    <option value="Buick">Buick</option>
-                    <option value="Citroen">Citroen</option>
-                    <option value="Chevrolet">Chevrolet</option>
-                </select>
-                <br>
+<body style="background-color: #e2ecf8">
+    <br>
+    <div class="boxtest">
+        <form name="add_product" method="post" style="padding-left: 20px;padding-right: 20px"
+            action="./productsql.php?type=add" id="add_product" enctype="multipart/form-data" name="frmMain"
+            target="iframe_target">
+            <iframe id="iframe_target" name="iframe_target" src="#"
+                style="width:0;height:0;border:0px solid #fff;"></iframe>
+            <br>
+            <div class="addicon">
+                <!-- <h4 id="modelIcon"></h4> -->
+                <h5 class="brand">
+                    Brand <br>
+                    <select name="brand" class="form-select" style="margin-top: 10px"
+                        aria-label="Default select example" id="">
+                        <option value="">Select Brand</option>
+                        <option value="Geo">Geo</option>
+                        <option value="VOLKSWAGEN">VOLKSWAGEN</option>
+                        <option value="Volvo">Volvo</option>
+                        <option value="Mercedes-Benz">Mercedes-Benz</option>
+                        <option value="Maserati">Maserati</option>
+                        <option value="Mazda">Mazda</option>
+                        <option value="MINI">MINI</option>
+                        <option value="LOTUS">LOTUS</option>
+                        <option value="Suzuki">Suzuki</option>
+                        <option value="Nissan">Nissan</option>
+                        <option value="Triumph">Triumph</option>
+                        <option value="LEXUS">LEXUS</option>
+                        <option value="Porsche">Porsche</option>
+                        <option value="Lamborghini">Lamborghini</option>
+                        <option value="Thairung">Thairung</option>
+                        <option value="TATA Motors">TATA Motors</option>
+                        <option value="SUBARU">SUBARU</option>
+                        <option value="TOYOTA">TOYOTA</option>
+                        <option value="GMC">GMC</option>
+                        <option value="Hillman">Hillman</option>
+                        <option value="JEEP">JEEP</option>
+                        <option value="Jaguar">Jaguar</option>
+                        <option value="Hudson">Hudson</option>
+                        <option value="Hyundai">Hyundai</option>
+                        <option value="Isuzu">Isuzu</option>
+                        <option value="Infiniti">Infiniti</option>
+                        <option value="KIA">KIA</option>
+                        <option value="HUMMER">HUMMER</option>
+                        <option value="Hino">Hino</option>
+                        <option value="Honda">Honda</option>
+                        <option value="Holden">Holden</option>
+                        <option value="Ferrari">Ferrari</option>
+                        <option value="Fiat">Fiat</option>
+                        <option value="Eagle">Eagle</option>
+                        <option value="Ford">Ford</option>
+                        <option value="Daimler">Daimler</option>
+                        <option value="Alpine">Alpine</option>
+                        <option value="De Tomaso">De Tomaso</option>
+                        <option value="Edsel">Edsel</option>
+                        <option value="Dodge">Dodge</option>
+                        <option value="Daihatsu">Daihatsu</option>
+                        <option value="DAF Trucks">DAF Trucks</option>
+                        <option value="Daewoo">Daewoo</option>
+                        <option value="Chrysler">Chrysler</option>
+                        <option value="Bugatti">Bugatti</option>
+                        <option value="Dacia">Dacia</option>
+                        <option value="Buick">Buick</option>
+                        <option value="Citroen">Citroen</option>
+                        <option value="Chevrolet">Chevrolet</option>
+                    </select>
+
+                </h5>
+
+                <h5 style="margin-top: 20px">
+                    Model <br>
+                    <input type="text" name="headTexticon" style="text-align: center;margin-top: 10px"
+                        placeholder="HeaderText" required id="">
+                </h5>
+
+                <p style="margin-top: 30px">
+                <h5>Short Description</h5><input type="text" name="descriptionicon" placeholder="dsa"
+                    style="text-align: center;width: 30%" required id=""></p>
+                <div class="" style="margin-top: 30px"></div>
+                <h5 style="margin-bottom: 10px">Year</h5>
                 <select id="" class="form-select" name="year" style="width: 150px;margin: auto" required>
                     <option value="">Select Year</option>
                     <?php 
@@ -299,75 +295,130 @@ i.material-icons {
                     ?>
 
                 </select>
-            </h3>
-            <h2 class="bannertext"><input type="text" class="inputbannertext" placeholder="Model" name="model"
-                    onkeyup="setModelIcon()" id="model" required></h2>
-            <h5 class="pricetext">CONDITION: <span style="font-weight: bold;">
-                    <select name="condition" id="" required>
-                        <option value="New">New</option>
-                        <option value="New">New</option>
-                    </select></span> |
-                PRICE:
-                <input type="number" style="width: 120px" name="price" required>
-                BAHT
-            </h5>
-        </div>
-        <div class="wrappermore" id="imageproduct">
-            <div class="boxadd1" style="height: 80vh;text-align: center">
-                <div class="boxadd" id="added">
-                    <div class="addproducr">+</div>
+                <br>
+                <div class="wrapper">
+                    <div class="box" style="height: 300px">
+                        <h5 style="margin-top: 20px;margin-left: 10px">Icon Car</h5>
+                        <div class="js--image-preview" style="height: 65%" id="iconProduct"></div>
+                        <div class="upload-options" style="margin-top: 20px;">
+                            <label>
+                                <input type="file" name="iconProduct" class="image-upload form-control"
+                                    accept="image/*" />
+                                <br><br>
+                                <br>
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="box" style="height: 80vh">
-                <h4 style="margin-top: 20px;margin-left: 10px">Image more </h4>
-                <div class="js--image-preview"></div>
-                <div class="upload-options" style="margin-top: 20px;">
-                    <label>
-                        <input type="file" class="image-upload form-control" name="imageproduct[]" accept="image/*"
-                            required />
-                        <br><br>
-                        <br>
-                    </label>
+            <br>
+            <div class="wrapper">
+                <div class="box" style="height: 80vh">
+                    <h4 style="margin-top: 20px;margin-left: 10px">Banner Desktop</h4>
+                    <div class="js--image-preview"></div>
+                    <div class="upload-options" style="margin-top: 20px;">
+                        <label>
+                            <input type="file" name="bannerDesktop" class="image-upload form-control" accept="image/*"
+                                required />
+                            <br><br>
+                            <br>
+                        </label>
+                    </div>
+                </div>
+                <div class="box" style="height: 80vh">
+                    <h4 style="margin-top: 20px;margin-left: 10px">Banner Mobile</h4>
+                    <div class="js--image-preview"></div>
+                    <div class="upload-options" style="margin-top: 20px;">
+                        <label>
+                            <input type="file" name="bannerMobile" class="image-upload form-control" accept="image/*"
+                                required />
+                            <br><br>
+                            <br>
+                        </label>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="price">
+            <div class="price">
+
+                <h2 class="bannertext"><input type="text" class="inputbannertext" placeholder="Model" name="model"
+                        onkeyup="setModelIcon()" id="model" required></h2>
+                <h5 class="pricetext">CONDITION: <span style="font-weight: bold;">
+                        <select name="condition" id="" required>
+                            <option value="New">New</option>
+                            <option value="New">New</option>
+                        </select></span> |
+                    PRICE:
+                    <input type="number" style="width: 120px" name="price" required>
+                    BAHT
+                </h5>
+            </div>
+            <div class="wrappermore" id="imageproduct">
+                <div class="boxadd1" style="height: 80vh;text-align: center">
+                    <div class="boxadd" id="added">
+                        <div class="addproducr">+</div>
+                    </div>
+                </div>
+                <div class="box" style="height: 80vh">
+                    <h4 style="margin-top: 20px;margin-left: 10px">Image more </h4>
+                    <div class="js--image-preview"></div>
+                    <div class="upload-options" style="margin-top: 20px;">
+                        <label>
+                            <input type="file" class="image-upload form-control" name="imageproduct[]" accept="image/*"
+                                required />
+                            <br><br>
+                            <br>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="price">
             <h2 class="bannertext">EXTERIOR + INTERIOR</h2>
             <p class="pricetext"><input type="text" name="exterior" style="width: 80%;text-align: center" id=""></p>
-        </div>
-        <div class="wrapper">
-            <div class="box" style="height: 80vh">
-                <h4 style="margin-top: 20px;margin-left: 10px">Banner Desktop</h4>
-                <div class="js--image-preview"></div>
-                <div class="upload-options" style="margin-top: 20px;">
-                    <label>
-                        <input type="file" name="bannerDesktopDes" class="image-upload form-control" accept="image/*"
-                            required />
-                        <br><br>
-                        <br>
-                    </label>
+        </div> -->
+            <br>
+            <div class="price">
+                <textarea name="exterior" required></textarea>
+            </div>
+            <br>
+            <div class="wrapper">
+                <div class="box" style="height: 80vh">
+                    <h4 style="margin-top: 20px;margin-left: 10px">Banner Desktop</h4>
+                    <div class="js--image-preview"></div>
+                    <div class="upload-options" style="margin-top: 20px;">
+                        <label>
+                            <input type="file" name="bannerDesktopDes" class="image-upload form-control"
+                                accept="image/*" required />
+                            <br><br>
+                            <br>
+                        </label>
+                    </div>
+                </div>
+                <div class="box" style="height: 80vh">
+                    <h4 style="margin-top: 20px;margin-left: 10px">Banner Mobile</h4>
+                    <div class="js--image-preview"></div>
+                    <div class="upload-options" style="margin-top: 20px;">
+                        <label>
+                            <input type="file" name="bannerMobileDes" class="image-upload form-control" accept="image/*"
+                                required />
+                            <br><br>
+                            <br>
+                        </label>
+                    </div>
                 </div>
             </div>
-            <div class="box" style="height: 80vh">
-                <h4 style="margin-top: 20px;margin-left: 10px">Banner Mobile</h4>
-                <div class="js--image-preview"></div>
-                <div class="upload-options" style="margin-top: 20px;">
-                    <label>
-                        <input type="file" name="bannerMobileDes" class="image-upload form-control" accept="image/*"
-                            required />
-                        <br><br>
-                        <br>
-                    </label>
-                </div>
-            </div>
-        </div>
 
-        <div class="price">
+            <br>
+            <div class="price">
+                <textarea name="exterior2" required></textarea>
+            </div>
+            <br>
+
+            <!-- <div class="price">
             <h2 class="bannertext">EQUIPMENT HIGHLIGHTS</h2>
-        </div>
+        </div> -->
 
-        <!-- //? Start ref -->
-        <div class="container" style="margin-bottom: 30px;margin-top: 50px">
+            <!-- //? Start ref -->
+            <!-- <div class="container" style="margin-bottom: 30px;margin-top: 50px">
             <div class="row" id="detail">
                 <div class="col-md-12 ">
                     <div class="ref refadded" id="refadded">
@@ -382,9 +433,9 @@ i.material-icons {
                 </div>
 
             </div>
-        </div>
-        <!-- //? End ref -->
-        <br>
+        </div> -->
+            <!-- //? End ref -->
+            <!-- <br>
         <div class="addicon">
             <h4 id="modelIcon"></h4>
             <h5 style="margin-top: 30px"><input type="text" name="headTexticon" style="text-align: center;" required
@@ -405,18 +456,19 @@ i.material-icons {
                 </div>
             </div>
         </div>
-        <br>
-        <div class="col-12">
-            <div class="btnsave">
-                <input type="submit" id="submit" class="btn btn-success"></input>
+        <br> -->
+            <div class="col-12">
+                <div class="btnsave">
+                    <input type="submit" id="submit" class="btn btn-success"></input>
+                </div>
             </div>
-        </div>
-        <br>
-    </form>
+            <br>
+        </form>
+    </div>
 </body>
 
 
-
+<script src="../ckeditor/ckeditor.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function(event) {
     document.getElementById("product").classList.add('active')
@@ -590,6 +642,36 @@ $(document).ready(function() {
 //         }
 //     });
 // });
+</script>
+
+<script>
+CKEDITOR.replace('exterior', {
+    height: 300,
+    // extraPlugins: 'youtube',
+    uiColor: '#ffffff',
+
+    // Configure your file manager integration. This example uses CKFinder 3 for PHP.
+    // filebrowserBrowseUrl: './upload',
+    filebrowserUploadMethod: 'form',
+    // filebrowserImageBrowseUrl: './upload',
+    filebrowserUploadUrl: './testupload.php'
+    // filebrowserImageUploadUrl: '/apps/ckfinder/3.4.5/core/connector/php/connector.php?command=QuickUpload&type=Images',
+    // removeButtons: 'PasteFromWord'
+});
+
+CKEDITOR.replace('exterior2', {
+    height: 300,
+    // extraPlugins: 'youtube',
+    uiColor: '#ffffff',
+
+    // Configure your file manager integration. This example uses CKFinder 3 for PHP.
+    // filebrowserBrowseUrl: './upload',
+    filebrowserUploadMethod: 'form',
+    // filebrowserImageBrowseUrl: './upload',
+    filebrowserUploadUrl: './testupload.php'
+    // filebrowserImageUploadUrl: '/apps/ckfinder/3.4.5/core/connector/php/connector.php?command=QuickUpload&type=Images',
+    // removeButtons: 'PasteFromWord'
+});
 </script>
 
 </html>

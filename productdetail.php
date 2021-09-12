@@ -88,8 +88,9 @@ $rowProduct = mysqli_fetch_array($resultProduct);
 
 <!-- //? Start product detail -->
 <div class="generation">
-    <h2 class="bannertext">EXTERIOR + INTERIOR</h2>
-    <p class="pricetext"><?php echo $rowProduct['detail'] ?></p>
+    <!-- <h2 class="bannertext">EXTERIOR + INTERIOR</h2>
+    <p class="pricetext"><?php echo $rowProduct['detail'] ?></p> -->
+    <?php echo $rowProduct['textedit1'] ?>
 </div>
 <!-- //? End product detail -->
 
@@ -108,12 +109,13 @@ $rowProduct = mysqli_fetch_array($resultProduct);
 
 <!-- //? start textfooter -->
 <div class="generation">
-    <h2 class="footertext">EQUIPMENT HIGHLIGHTS</h2>
+    <!-- <h2 class="footertext">EQUIPMENT HIGHLIGHTS</h2> -->
+    <?php echo $rowProduct['textedit2'] ?>
 </div>
 <!-- //? End textfooter -->
 
 <!-- //? Start ref -->
-<div class="container" style="margin-bottom: 100px">
+<!-- <div class="container" style="margin-bottom: 100px">
     <div class="row">
         <?php 
     $sqlProhigh = "SELECT * FROM productHigh WHERE productID = '$productID' ORDER BY proHighID asc";
@@ -127,7 +129,7 @@ $rowProduct = mysqli_fetch_array($resultProduct);
         </div>
         <?php } ?>
     </div>
-</div>
+</div> -->
 <!-- //? End ref -->
 
 <!-- //? Start message -->

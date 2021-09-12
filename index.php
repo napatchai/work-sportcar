@@ -242,13 +242,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="row indexproduct">
                         <?php }  ?>
                         <div class="col-6 col-xl-3" style="padding-left: 20px">
-                            <label for="" class="labelproduct"><?php echo $rsp['model'] ?></label> <br>
+                            <label for="" class="labelproduct"><?php echo $rsp['brand'] ?></label> <br>
                             <?php if(($check+1)%$setNumPro == 0) { ?>
                             <div class="product-contentend">
                                 <?php }else{ ?>
                                 <div class="product-content">
                                     <?php } ?>
-                                    <label for="" class="labelmed"><?php echo $rsp['textHeadIcon'] ?></label>
+                                    <label for="" class="labelmed"><?php echo $rsp['model'] ?></label>
                                     <br>
                                     <p class="pevent"><?php echo $rsp['descriptionIcon'] ?> </p>
                                     <img src="./product/<?php echo $rsp['iconproduct'] ?>" width="100%"

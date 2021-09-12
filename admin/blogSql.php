@@ -1,57 +1,6 @@
 <?php 
 include('../condb.php');
 print_r($_POST);
-
-// if($_FILES['blogbanner1']){
-//     $i = 0;
-//     do {
-//         echo "<br>";
-//         $i++;
-//         $post = 'blogbanner'.$i;
-        
-//         $postnext = 'blogbanner'.($i+1);
-//         foreach ($_FILES[$post]['name'] as $name => $value)  
-//         {
-//             echo $value;
-//         }
-//       } while (@$_FILES[$postnext]);
-// }
-
-// $checkbanner = count($_POST["checkbanner"]);  
-// if($checkbanner > 0){
-//     $outputStringbefore = '' ;
-//     for($i=0; $i<$checkbanner; $i++)  
-//     {
-//     if(trim($_POST["checkbanner"][$i] != ''))  
-//     {  
-//         $outputString = preg_replace('/[^0-9]/', '', $_POST["checkbanner"][$i]); 
-        
-//         if($outputString != $outputStringbefore){
-//             // $sql = "INSERT INTO blog_detail (blogID, blogDesID, description) VALUE ('$blogID', '$i', '$blogDes')";
-//             // $result = mysqli_query($conn, $sql) or die ("Error sql = $sql" . mysqli_error());
-//         }
-//             $outputStringbefore = $outputString;
-//     }
-//     }
-// }
-// if(is_array(@$_FILES['blogbanner'])){
-// foreach ($_FILES['blogbanner']['name'] as $name => $value)  
-//         {
-//             $newNameBannerDesktop = imgarray('blogbanner', $name);
-//             $blogFrdBsnID = generateRandomString().random_int(1000000, 9999999);
-//             // $blogDes = $_POST["description"][$name];
-//             echo $_POST['checkbanner'][$name];
-//             $outputNumber = preg_replace('/[^0-9]/', '', $_POST["checkbanner"][$name]); 
-
-//             if(strlen($newNameBannerDesktop) > 5 ){
-//                 $sql = "INSERT INTO blog_detail_Banner (blogID, blogDesID, blogFrdBsnID, blog_banner) VALUE ('$blogID', '$outputNumber', '$blogFrdBsnID', '$newNameBannerDesktop')";
-//                 $result = mysqli_query($conn, $sql) or die ("Error sql = $sql" . mysqli_error());
-//                }
-
-               
-//         }
-// }
-// exit();
 $type = $_GET['type'];
 if($type == 'add'){
     $blogID = generateRandomString().random_int(1000000, 9999999);
@@ -64,43 +13,24 @@ if($type == 'add'){
     }
     $sql = "INSERT INTO blog (blogID, subject, blogpin, price) VALUE ('$blogID', '$subjectHead', '$pinblog', '$price')";
     $result = mysqli_query($conn, $sql);
-    $checkbanner = count($_POST["checkbanner"]);  
-    if($checkbanner > 0){
-        $outputStringbefore = '' ;
-        for($i=0; $i<$checkbanner; $i++)  
+    if(is_array(@$_FILES['bannerDesktop'])){
+        foreach ($_FILES['bannerDesktop']['name'] as $name => $value)  
         {
-        if(trim($_POST["checkbanner"][$i] != ''))  
-        {  
-            $outputString = preg_replace('/[^0-9]/', '', $_POST["checkbanner"][$i]); 
-            if($outputString != $outputStringbefore){
-                $getdes = $outputString-1;
-                $blogDes = $_POST["description"][$getdes];
-                @$subjectDes = $_POST["subject"][$getdes];
-                $sql = "INSERT INTO blog_detail (blogID, blogDesID, subjectDes, description) VALUE ('$blogID', '$getdes', '$subjectDes', '$blogDes')";
+              $newNameBannerDesktop = imgarray('bannerDesktop', $name);
+              $newNameBannerMobile = imgarray('bannerMobile', $name);
+            //   $subjectDes = $_POST["subject"][$name];
+              $blogDes = $_POST["description"][$name];
+               if(strlen($newNameBannerDesktop) > 5 && strlen($newNameBannerDesktop) > 5){
+                $sql = "INSERT INTO blog_detail (blogID, blogDesID, blog_desktop, blog_mobile, description) VALUE ('$blogID', '$name', '$newNameBannerDesktop', '$newNameBannerMobile', '$blogDes')";
                 $result = mysqli_query($conn, $sql) or die ("Error sql = $sql" . mysqli_error());
+               }
+               if($result){
+                echo "<script>window.top.window.showResult('1');</script>";
+            }else{
+                echo "<script>window.top.window.showResult('2');</script>";
             }
-            $outputStringbefore = $outputString;
-        }    
-    }
-    if(is_array(@$_FILES['blogbanner'])){
-        foreach ($_FILES['blogbanner']['name'] as $name => $value)  
-                {
-                    $newNameBannerDesktop = imgarray('blogbanner', $name);
-                    $blogFrdBsnID = generateRandomString().random_int(1000000, 9999999);
-                    // $blogDes = $_POST["description"][$name];
-                    echo $_POST['checkbanner'][$name];
-                    $outputNumber = preg_replace('/[^0-9]/', '', $_POST["checkbanner"][$name]); 
-                    $getdes = $outputNumber-1;
-        
-                    if(strlen($newNameBannerDesktop) > 5 ){
-                        $sql = "INSERT INTO blog_detail_Banner (blogID, blogDesID, blogFrdBsnID, blog_banner) VALUE ('$blogID', '$getdes', '$name', '$newNameBannerDesktop')";
-                        $result = mysqli_query($conn, $sql) or die ("Error sql = $sql" . mysqli_error());
-                       }
-        
-                       
-                }
         }
-}
+    }
 }else if($type == 'delete'){
     $blogID = $_POST['blogID'];
     $sql = "DELETE FROM blog WHERE blogID = '$blogID'";

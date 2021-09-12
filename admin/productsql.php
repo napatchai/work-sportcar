@@ -15,10 +15,12 @@ print_r($_POST);
         $newNameIconProduct = img('iconProduct');
         $textHeadIcon = $_POST['headTexticon'];
         $descriptionIcon = $_POST['descriptionicon'];
+        $textedit1 = $_POST['exterior'];
+        $textedit2 = $_POST['exterior2'];
         $brand = $_POST['brand'];
             $year = $_POST['year'];
 
-        $sql = "INSERT INTO product (productID, product_desktop, product_Mobile, model, conditionPro, price, detail, detail_Desktop, detail_Mobile, textHeadIcon, descriptionIcon, iconproduct, brand, year) VALUE ('$productID', '$newNameBannerDes', '$newNameBannerMo', '$model', '$condition', '$price', '$exterior', '$newNameBannerDesDes', '$newNameBannerMoDes', '$textHeadIcon', '$descriptionIcon', '$newNameIconProduct', '$brand', '$year')";
+        $sql = "INSERT INTO product (productID, product_desktop, product_Mobile, model, conditionPro, price, detail, detail_Desktop, detail_Mobile, textHeadIcon, descriptionIcon, iconproduct, brand, year, textedit1, textedit2) VALUE ('$productID', '$newNameBannerDes', '$newNameBannerMo', '$model', '$condition', '$price', '', '$newNameBannerDesDes', '$newNameBannerMoDes', '$textHeadIcon', '$descriptionIcon', '$newNameIconProduct', '$brand', '$year', '$textedit1', '$textedit2')";
         $result = mysqli_query($conn, $sql) or die ("Error sql = $sql" . mysqli_error());
 
         if(is_array($_FILES)){
@@ -30,23 +32,24 @@ print_r($_POST);
             }
         }
 
-        $equipment = count($_POST["equipment"]);  
-        if($equipment > 0){
-            for($i=0; $i<$equipment; $i++)  
-            {
-                if(trim($_POST["equipment"][$i] != ''))  
-                {  
-                    $value = $_POST["equipment"][$i];
-                     $sql = "INSERT INTO productHigh (productID, proHighID, highlight) VALUE ('$productID', '$i', '$value')";
-                     $result = mysqli_query($conn, $sql) or die ("Error sql = $sql" . mysqli_error());
-                     if($result){
-                        echo "<script>window.top.window.showResult('1');</script>";
-                    }else{
-                        echo "<script>window.top.window.showResult('2');</script>";
-                    }
-                } 
-            }
-        }
+        // $equipment = count($_POST["equipment"]);  
+        // if($equipment > 0){
+        //     for($i=0; $i<$equipment; $i++)  
+        //     {
+        //         if(trim($_POST["equipment"][$i] != ''))  
+        //         {  
+        //             $value = $_POST["equipment"][$i];
+        //              $sql = "INSERT INTO productHigh (productID, proHighID, highlight) VALUE ('$productID', '$i', '$value')";
+        //              $result = mysqli_query($conn, $sql) or die ("Error sql = $sql" . mysqli_error());
+        //              if($result){
+        //                 echo "<script>window.top.window.showResult('1');</script>";
+        //             }else{
+        //                 echo "<script>window.top.window.showResult('2');</script>";
+        //             }
+        //         } 
+        //     }
+        // }
+        
     }else if($type == 'delete'){
         $productID = $_POST['productID'];
         $sql = "DELETE FROM product WHERE productID = '$productID'";
@@ -111,45 +114,47 @@ print_r($_POST);
         }
         $newNameBannerDesDes = img('bannerDesktopDes');
         $newNameBannerMoDes = img('bannerMobileDes');
-        $querycheckhig = "SELECT * FROM productHigh WHERE productID = '$productID'";
-        $resultcheckhig = mysqli_query($conn, $querycheckhig);
-        if(mysqli_num_rows($resultcheckhig) > 0){
-            foreach($resultcheckhig as $rsh){
-                $postchecktext = 'equipment'.$rsh['proHighID'];
-                $postCheckTextDelete = 'Deletetext' . $rsh['proHighID'];
-                if($_POST[$postCheckTextDelete] == 'Delete'){
-                    $proHighID = $rsh['proHighID'];
-                    $sqlDeleteText = "DELETE FROM productHigh WHERE productID = '$productID' AND proHighID = '$proHighID'";
-                    $resultDeleteText = mysqli_query($conn, $sqlDeleteText);
-                }else{
-                    $text = $_POST[$postchecktext];
-                    $proHighID = $rsh['proHighID'];
-                    $sqlUpdateText = "UPDATE productHigh SET highlight = '$text' WHERE productID = '$productID' AND proHighID = '$proHighID'";
-                    $resultUpdateText = mysqli_query($conn, $sqlUpdateText);
-                }
-            }
-            @$equipment = count($_POST["equipment"]);  
-                if($equipment > 0){
-                for($i=0; $i<$equipment; $i++)  
-                {
-                    if(trim($_POST["equipment"][$i] != ''))  
-                    {  
-                        $queryTopIDText = "SELECT MAX(proHighID) as maxTop FROM productHigh WHERE productID = '$productID'";
-                        $resultTopIDText = mysqli_query($conn, $queryTopIDText);
-                        $rowTopIDText = mysqli_fetch_array($resultTopIDText);
-                        $maxIDText = $rowTopIDText['maxTop'] + 1;
-                        $value = $_POST["equipment"][$i];
-                        $sql = "INSERT INTO productHigh (productID, proHighID, highlight) VALUE ('$productID', '$maxIDText', '$value')";
-                        $result = mysqli_query($conn, $sql) or die ("Error sql = $sql" . mysqli_error());
-                        if($result){
-                            echo "<script>window.top.window.showResult('1');</script>";
-                        }else{
-                            echo "<script>window.top.window.showResult('2');</script>";
-                        }
-                    } 
-                }
-            }
-            $newNameIconProduct = img('iconProduct');
+        // $querycheckhig = "SELECT * FROM productHigh WHERE productID = '$productID'";
+        // $resultcheckhig = mysqli_query($conn, $querycheckhig);
+        // if(mysqli_num_rows($resultcheckhig) > 0){
+        //     foreach($resultcheckhig as $rsh){
+        //         $postchecktext = 'equipment'.$rsh['proHighID'];
+        //         $postCheckTextDelete = 'Deletetext' . $rsh['proHighID'];
+        //         if($_POST[$postCheckTextDelete] == 'Delete'){
+        //             $proHighID = $rsh['proHighID'];
+        //             $sqlDeleteText = "DELETE FROM productHigh WHERE productID = '$productID' AND proHighID = '$proHighID'";
+        //             $resultDeleteText = mysqli_query($conn, $sqlDeleteText);
+        //         }else{
+        //             $text = $_POST[$postchecktext];
+        //             $proHighID = $rsh['proHighID'];
+        //             $sqlUpdateText = "UPDATE productHigh SET highlight = '$text' WHERE productID = '$productID' AND proHighID = '$proHighID'";
+        //             $resultUpdateText = mysqli_query($conn, $sqlUpdateText);
+        //         }
+        //     }
+        //     @$equipment = count($_POST["equipment"]);  
+        //         if($equipment > 0){
+        //         for($i=0; $i<$equipment; $i++)  
+        //         {
+        //             if(trim($_POST["equipment"][$i] != ''))  
+        //             {  
+        //                 $queryTopIDText = "SELECT MAX(proHighID) as maxTop FROM productHigh WHERE productID = '$productID'";
+        //                 $resultTopIDText = mysqli_query($conn, $queryTopIDText);
+        //                 $rowTopIDText = mysqli_fetch_array($resultTopIDText);
+        //                 $maxIDText = $rowTopIDText['maxTop'] + 1;
+        //                 $value = $_POST["equipment"][$i];
+        //                 $sql = "INSERT INTO productHigh (productID, proHighID, highlight) VALUE ('$productID', '$maxIDText', '$value')";
+        //                 $result = mysqli_query($conn, $sql) or die ("Error sql = $sql" . mysqli_error());
+        //                 if($result){
+        //                     echo "<script>window.top.window.showResult('1');</script>";
+        //                 }else{
+        //                     echo "<script>window.top.window.showResult('2');</script>";
+        //                 }
+        //             } 
+        //         }
+        //     }
+            
+        // }
+        $newNameIconProduct = img('iconProduct');
             $sqlmore = '';
             if($newNameBannerDes != ''){
                 $sqlmore = $sqlmore . ", product_desktop = '" . $newNameBannerDes . "'";
@@ -170,14 +175,15 @@ print_r($_POST);
             $descriptionIcon = $_POST['descriptionicon'];
             $brand = $_POST['brand'];
             $year = $_POST['year'];
-            $insert = "UPDATE product SET model = '$model', conditionPro = '$condition', price = '$price', detail = '$exterior', textHeadIcon = '$textHeadIcon', descriptionIcon = '$descriptionIcon' , brand = '$brand', year = '$year'  $sqlmore WHERE productID = '$productID'";
+            $textedit1 = $_POST['exterior'];
+            $textedit2 = $_POST['exterior2'];
+            $insert = "UPDATE product SET model = '$model', conditionPro = '$condition', price = '$price', detail = '', textHeadIcon = '$textHeadIcon', descriptionIcon = '$descriptionIcon' , brand = '$brand', year = '$year', textedit1 = '$textedit1', textedit2 = '$textedit2'  $sqlmore WHERE productID = '$productID'";
             $resultinsert = mysqli_query($conn, $insert) or die ("Error $insert". mysqli_error());
             if($resultinsert){
                 echo "<script>window.top.window.showResult('1');</script>";
             }else{
                 echo "<script>window.top.window.showResult('2');</script>";
             }
-        }
     }
 
     function img($file){

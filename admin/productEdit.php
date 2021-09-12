@@ -219,6 +219,30 @@ function setBackgroundproduct(id, url) {
         target="iframe_target" enctype="multipart/form-data">
         <iframe id="iframe_target" name="iframe_target" src="#"
             style="width:0;height:0;border:0px solid #fff;"></iframe>
+        <br>
+        <div class="addicon">
+            <h4 id="modelIcon"><?php echo $row['model'] ?></h4>
+            <h5 style="margin-top: 30px"><input type="text" name="headTexticon" style="text-align: center;" required
+                    id="" value="<?php echo $row['textHeadIcon'] ?>"></h5>
+            <p style="margin-top: 30px"><input type="text" name="descriptionicon" style="text-align: center;" required
+                    id="" value="<?php echo $row['descriptionIcon'] ?>"></p>
+            <div class="wrapper">
+                <div class="box" style="height: 300px">
+                    <h5 style="margin-top: 20px;margin-left: 10px">Icon Car</h5>
+                    <div class="js--image-preview" style="height: 65%" id="iconProduct"></div>
+                    <!-- //Todo set background -->
+                    <?php echo '<script>setBackgroundproduct("iconProduct","' . $row['iconproduct'] .'")</script>' ?>
+                    <!-- //Todo set background -->
+                    <div class="upload-options" style="margin-top: 20px;">
+                        <label>
+                            <input type="file" name="iconProduct" class="image-upload form-control" accept="image/*" />
+                            <br><br>
+                            <br>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="wrapper">
             <div class="box" style="height: 80vh">
                 <h4 style="margin-top: 20px;margin-left: 10px">Banner Desktop</h4>
@@ -257,6 +281,7 @@ function setBackgroundproduct(id, url) {
                     <option value="VOLKSWAGEN">VOLKSWAGEN</option>
                     <option value="Volvo">Volvo</option>
                     <option value="Mercedes-Benz">Mercedes-Benz</option>
+                    <option value="Maserati">Maserati</option>
                     <option value="Mazda">Mazda</option>
                     <option value="MINI">MINI</option>
                     <option value="LOTUS">LOTUS</option>
@@ -366,11 +391,11 @@ function setBackgroundproduct(id, url) {
                 id="delete<?php echo $rs['productID'].$rs['productDesID'] ?>">
             <?php } ?>
         </div>
+        <br>
         <div class="price">
-            <h2 class="bannertext">EXTERIOR + INTERIOR</h2>
-            <p class="pricetext"><input type="text" name="exterior" style="width: 80%;text-align: center" id=""
-                    value="<?php echo $row['detail'] ?>"></p>
+            <textarea name="exterior" required><?php echo $row['textedit1']?></textarea>
         </div>
+        <br>
         <div class="wrapper">
             <div class="box" style="height: 80vh">
                 <h4 style="margin-top: 20px;margin-left: 10px">Banner Desktop</h4>
@@ -402,12 +427,12 @@ function setBackgroundproduct(id, url) {
             </div>
         </div>
 
-        <div class="price">
+        <!-- <div class="price">
             <h2 class="bannertext">EQUIPMENT HIGHLIGHTS</h2>
-        </div>
+        </div> -->
 
         <!-- //? Start ref -->
-        <div class="container" style="margin-bottom: 30px;margin-top: 50px">
+        <!-- <div class="container" style="margin-bottom: 30px;margin-top: 50px">
             <div class="row" id="detail">
                 <div class="col-md-12 ">
                     <div class="ref refadded" id="refadded">
@@ -432,31 +457,11 @@ function setBackgroundproduct(id, url) {
                     id="deletetext<?php echo $rsh['productID'].$rsh['proHighID'] ?>">
                 <?php } ?>
             </div>
-        </div>
+        </div> -->
         <!-- //? End ref -->
         <br>
-        <div class="addicon">
-            <h4 id="modelIcon"><?php echo $row['model'] ?></h4>
-            <h5 style="margin-top: 30px"><input type="text" name="headTexticon" style="text-align: center;" required
-                    id="" value="<?php echo $row['textHeadIcon'] ?>"></h5>
-            <p style="margin-top: 30px"><input type="text" name="descriptionicon" style="text-align: center;" required
-                    id="" value="<?php echo $row['descriptionIcon'] ?>"></p>
-            <div class="wrapper">
-                <div class="box" style="height: 300px">
-                    <h5 style="margin-top: 20px;margin-left: 10px">Icon Car</h5>
-                    <div class="js--image-preview" style="height: 65%" id="iconProduct"></div>
-                    <!-- //Todo set background -->
-                    <?php echo '<script>setBackgroundproduct("iconProduct","' . $row['iconproduct'] .'")</script>' ?>
-                    <!-- //Todo set background -->
-                    <div class="upload-options" style="margin-top: 20px;">
-                        <label>
-                            <input type="file" name="iconProduct" class="image-upload form-control" accept="image/*" />
-                            <br><br>
-                            <br>
-                        </label>
-                    </div>
-                </div>
-            </div>
+        <div class="price">
+            <textarea name="exterior2" required><?php echo $row['textedit2']?></textarea>
         </div>
         <br>
         <div class="col-12">
@@ -470,7 +475,7 @@ function setBackgroundproduct(id, url) {
 </body>
 
 
-
+<script src="../ckeditor/ckeditor.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function(event) {
     document.getElementById("product").classList.add('active')
@@ -657,6 +662,36 @@ $(document).ready(function() {
 //         }
 //     });
 // });
+</script>
+
+<script>
+CKEDITOR.replace('exterior', {
+    height: 300,
+    // extraPlugins: 'youtube',
+    uiColor: '#ffffff',
+
+    // Configure your file manager integration. This example uses CKFinder 3 for PHP.
+    // filebrowserBrowseUrl: './upload',
+    filebrowserUploadMethod: 'form',
+    // filebrowserImageBrowseUrl: './upload',
+    filebrowserUploadUrl: './testupload.php'
+    // filebrowserImageUploadUrl: '/apps/ckfinder/3.4.5/core/connector/php/connector.php?command=QuickUpload&type=Images',
+    // removeButtons: 'PasteFromWord'
+});
+
+CKEDITOR.replace('exterior2', {
+    height: 300,
+    // extraPlugins: 'youtube',
+    uiColor: '#ffffff',
+
+    // Configure your file manager integration. This example uses CKFinder 3 for PHP.
+    // filebrowserBrowseUrl: './upload',
+    filebrowserUploadMethod: 'form',
+    // filebrowserImageBrowseUrl: './upload',
+    filebrowserUploadUrl: './testupload.php'
+    // filebrowserImageUploadUrl: '/apps/ckfinder/3.4.5/core/connector/php/connector.php?command=QuickUpload&type=Images',
+    // removeButtons: 'PasteFromWord'
+});
 </script>
 
 </html>
