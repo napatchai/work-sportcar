@@ -206,7 +206,7 @@ i.material-icons {
     <div class="boxtest">
         <form name="add_product" method="post" style="padding-left: 20px;padding-right: 20px"
             action="./productsql.php?type=add" id="add_product" enctype="multipart/form-data" name="frmMain"
-            target="iframe_target">
+            target="iframe_target1">
             <iframe id="iframe_target" name="iframe_target" src="#"
                 style="width:0;height:0;border:0px solid #fff;"></iframe>
             <br>

@@ -37,6 +37,7 @@
 ?>
 
 <?php if($numresult > 0) { ?>
+
 <table class="table" id="table1" style="overflow-x:auto;white-space: nowrap;">
     <thead style="color: #4723D9">
         <tr>
@@ -57,7 +58,7 @@
         <tr>
             <th scope="row"><a href="../product/<?php echo $row['product_desktop'] ?>" target="_blank"><img
                         src="../product/<?php echo $row['product_desktop'] ?>" width="100px" alt=""></a></th>
-            <td class="align-middle"><?php echo $row['brand'] ?></td>
+            <td class="align-middle"><?php echo $row['productID'] ?></td>
             <td class="align-middle"><?php echo $row['model'] ?></td>
             <td class="align-middle"><?php echo $row['year'] ?></td>
             <td class="align-middle"><?php echo $row['price'] ?></td>
@@ -70,9 +71,10 @@
                 </form>
             </td>
             <td class="align-middle">
-                <form action="./productsql.php?type=delete" method="post" id="myForm" target="iframe_target1">
-                    <input type="hidden" name="productID" value="<?php echo $row['productID'] ?>" id="productID">
-                    <a style="cursor: pointer;" onclick="document.getElementById('myForm').submit();"><i
+                <form action="./productsql.php?type=delete" method="post" id="myForm" target="iframe_target">
+                    <input type="hidden" name="productID" value="" id="productID12">
+                    <a style="cursor: pointer;"
+                        onclick="document.getElementById('productID12').value = '<?php echo $row['productID'] ?>';document.getElementById('myForm').submit();"><i
                             class="far fa-trash-alt"></i></a>
                 </form>
             </td>

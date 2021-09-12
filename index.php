@@ -40,6 +40,14 @@ function SubForm() {
         }
     });
 }
+
+function setimgbeforeFooter(src) {
+    document.getElementById("rightcloneimg").src = './blog/' + src;
+}
+
+function setlinkbeforeFooter(src) {
+    document.getElementById("rightclonelink").href = './blogDetail.php?ID=' + src;
+}
 </script>
 <?php include('./navbar.php') ?>
 <?php 
@@ -390,24 +398,49 @@ document.addEventListener("DOMContentLoaded", () => {
             <!-- //? Start image before footer -->
             <div class="containerimglast">
                 <div class="row" style="border: 0px solid #707070">
+                    <?php 
+                    $c = 0;
+                $querybeforeFooter = "SELECT * FROM blog order by date DESC LIMIT 3";
+                $resultbrforeFooter = mysqli_query($conn, $querybeforeFooter);
+                foreach($resultbrforeFooter as $rsbf){
+                    $c++;
+                    if($c == 1 ){
+                ?>
                     <div class="col-12" id="rightclone" style="padding: 0px">
-                        <img src="./img/car-5840866_192021.png" width="100%" height="100%" style="object-fit: cover;"
-                            alt="">
+                        <a href="" id="rightclonelink">
+                            <img src="./blog/<?php echo $rsbf['thumbnail'] ?>" id="rightcloneimg" width="100%"
+                                height="100%" style="object-fit: cover;" alt="">
+                        </a>
                     </div>
+
                     <div class="col-12 col-sm-6" style="padding: 0px">
                         <div class="row" style="padding: 0px;margin-left: 0px">
                             <div class="col-6 col-sm-12">
-                                <img src="./img/car-1376083_1920.png" width="100%" alt="" class="imgfooterleft">
+                                <a href="./blogDetail.php?ID=<?php echo $rsbf['blogID'] ?>">
+                                    <img src="./blog/<?php echo $rsbf['thumbnail'] ?>" width="100%" alt=""
+                                        class="imgfooterleft">
+                                </a>
                             </div>
+                            <?php } if($c == 2) {?>
                             <div class="col-6 col-sm-12">
-                                <img src="./img/porsche-4795520_1920.png" width="100%" alt="" class="imgfooterright">
+                                <a href="./blogDetail.php?ID=<?php echo $rsbf['blogID'] ?>">
+                                    <img src="./blog/<?php echo $rsbf['thumbnail'] ?>" width="100%" alt=""
+                                        class="imgfooterright">
+                                </a>
                             </div>
                         </div>
                     </div>
+                    <?php } if($c == 3 ) { ?>
                     <div class="col-6" id="rightimg">
-                        <img src="./img/car-5840866_1920.png" width="100%" height="100%" style="object-fit: cover;"
-                            alt="">
+                        <a href="./blogDetail.php?ID=<?php echo $rsbf['blogID'] ?>">
+                            <img src="./blog/<?php echo $rsbf['thumbnail'] ?>" width="100%" height="100%"
+                                style="object-fit: cover;" alt="">
+                        </a>
                     </div>
+                    <?php echo "<script>setimgbeforeFooter('".$rsbf['thumbnail']."')</script>" ?>
+                    <?php echo "<script>setlinkbeforeFooter('".$rsbf['blogID']."')</script>" ?>
+                    <?php } ?>
+                    <?php } ?>
                 </div>
             </div>
             <!-- //? End image before footer -->

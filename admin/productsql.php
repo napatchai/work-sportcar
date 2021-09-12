@@ -31,6 +31,11 @@ print_r($_POST);
                   $result = mysqli_query($conn, $sql) or die ("Error sql = $sql" . mysqli_error());
             }
         }
+        if($result){
+            echo "<script>window.top.window.showResult('1');</script>";
+        }else{
+            echo "<script>window.top.window.showResult('2');</script>";
+        }
 
         // $equipment = count($_POST["equipment"]);  
         // if($equipment > 0){

@@ -9,7 +9,7 @@ include('../condb.php');
 $sql = "SELECT * FROM product ORDER BY date desc";
 $result = mysqli_query($conn, $sql);
 ?>
-
+<iframe id="iframe_target" name="iframe_target" src="#" style="width:0;height:0;border:0px solid #fff;"></iframe>
 <!-- //?Start pop up Edit -->
 <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
