@@ -201,7 +201,7 @@ i.material-icons {
 
 </head>
 
-<body style="background-color: #e2ecf8">
+<body style="background-color: #F6F6FB">
     <br>
     <div class="boxtest">
         <form name="add_product" method="post" style="padding-left: 20px;padding-right: 20px"

@@ -9,7 +9,8 @@ if($type == 'add'){
     $newNameBannerDesktop = img('bannerDesktop');
     $newNameBannerMobile = img('bannerMobile');
     $bannerId = generateRandomString().random_int(1000000, 9999999);
-    $sql = "INSERT INTO banner (banner_id, banner_desktop, banner_mobile, subject, description, number) VALUE ('$bannerId', '$newNameBannerDesktop', '$newNameBannerMobile', '$subject', '$description', '$number')";
+    $link = $_POST['link'];
+    $sql = "INSERT INTO banner (banner_id, banner_desktop, banner_mobile, subject, description, number, link) VALUE ('$bannerId', '$newNameBannerDesktop', '$newNameBannerMobile', '$subject', '$description', '$number', '$link')";
     $result = mysqli_query($conn, $sql);
 }else if($type == 'edit'){
     $newNameBannerDesktop = img('bannerDesktop');

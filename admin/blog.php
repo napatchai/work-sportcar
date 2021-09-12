@@ -1,8 +1,12 @@
 <?php 
-include('./header.php');
+include('./header.php'); ?>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<?php
 include('./slidebar.php');
 include('../condb.php');
-$sql = "SELECT b.blogID, b.subject, b.date, d.blog_desktop FROM blog  b INNER JOIN blog_detail d ON b.blogID = d.blogID  GROUP BY d.blogID ORDER BY b.date asc";
+$sql = "SELECT * FROM product ORDER BY date desc";
 $result = mysqli_query($conn, $sql);
 ?>
 
@@ -18,12 +22,12 @@ $result = mysqli_query($conn, $sql);
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <iframe id="iframe_target" name="iframe_target" src="#"
                     style="width:0;height:0;border:0px solid #fff;"></iframe>
-                <form action="./blogSql.php?type=delete" method="post" target="iframe_target2">
-                    <input type="hidden" name="blogID" id="blogID">
+                <form action="./productsql.php?type=delete" method="post" target="iframe_target">
+                    <input type="hidden" name="productID" id="productID">
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
-                <form action="./blogEdit.php" method="post">
-                    <input type="hidden" name="productID" id="blogID1">
+                <form action="./productEdit.php" method="post">
+                    <input type="hidden" name="productID" id="productID1">
                     <button type="submit" class="btn btn-primary">Edit</button>
                 </form>
             </div>
@@ -39,44 +43,65 @@ $result = mysqli_query($conn, $sql);
     <input type="hidden" name="banner_id1" id="banner_id2">
 </form>
 <!-- //? End form Delete -->
+<br>
+<h4>List of Blog<a href="./blogAdd.php"><span class="btnadd">+ Create Blog</span></a></h4>
+<br>
+<div class="row">
+    <div class="col-sm-5">
 
-<div class="height-100">
-    <br><br>
-    <h4>Manage Blog</h4>
-    <div class="row">
-        <?php foreach($result as $row){  
-             $blogID = "'" . $row['blogID'] . "'";
-            ?>
-        <div class="col-md-4 test">
-            <a href="#" data-bs-toggle="modal" onclick="setinput(<?php echo  $blogID ?>)"
-                data-bs-target="#exampleModal1">
-                <div class="managerbanner">
-                    <img src="../blog/<?php echo $row['blog_desktop'] ?>" class="imgbanner" alt="">
-                    <div class="detailbanner">
-                        <h1><?php echo $row['subject'] ?></h1>
-                        <!-- <h3><?php echo $row['description'] ?></h3> -->
-                    </div>
-                </div>
-            </a>
-        </div>
-        <?php }  ?>
-        <div class="col-md-4 test">
-            <a href="./blogAdd.php">
-                <div class="managerbanner added">
-                    <div class="Addbanner">
-                        <h1>+</h1>
-                    </div>
-                </div>
-            </a>
-        </div>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+            rel="stylesheet" />
+
+        <input type="text" class="form-control" onkeyup="load_data()" id="search" placeholder="&#xF002; Search"
+            style="font-family:Arial, FontAwesome" />
+        <br>
     </div>
+
+
+    <div class="row indexproduct" style="padding-left: 15px" id="result"></div>
 </div>
+
 <?php include('../footer.php') ?>
 
 <script>
 document.addEventListener("DOMContentLoaded", function(event) {
     document.getElementById("blog").classList.add('active')
+    load_data();
 })
+
+window.addEventListener("resize", function(event) {
+    setimg(document.body.clientWidth);
+})
+
+// function setimg(size) {
+//     if (size <= 800) {
+//         document.getElementById("table1").style.display = "block";
+//     } else {
+//         document.getElementById("table1").style.removeProperty('display');
+//     }
+// }
+
+function load_data() {
+    var search = document.getElementById("search").value
+    // var search = document.getElementById('search').value
+    // alert(search)
+    // var selectBrand = document.getElementById('brand');
+    // var valueBrand = selectBrand.options[selectBrand.selectedIndex].value;
+    // var selectYear = document.getElementById('yearcar');
+    // var valueYear = selectYear.options[selectYear.selectedIndex].value;
+    // var selectPrice = document.getElementById('selectprice');
+    // var valuePrice = selectPrice.options[selectPrice.selectedIndex].value;
+    $.ajax({
+        url: "./blogLoad.php",
+        method: "POST",
+        data: {
+            search: search
+        },
+        success: function(data) {
+            $('#result').html(data);
+        }
+    });
+}
 
 function showResult(result) {
     if (result == 1) {
@@ -91,10 +116,5 @@ function showResult(result) {
     } else if (result == 2) {
         swal("Error", "Some Thing Warnning", "error");
     }
-}
-
-function setinput(productID) {
-    document.getElementById('blogID').value = productID;
-    document.getElementById('blogID1').value = productID;
 }
 </script>

@@ -43,7 +43,7 @@ if(@$_GET['page']==""){
         <?php if(mysqli_num_rows($reqpin) > 0) {?>
         <div class="headernew">
             <h2 style="margin-bottom: 20px;margin-top: 20px;font-size: 35px"><?php echo $rowpin['subject'] ?></h2>
-            <img src="./blog/<?php echo $rowpin['blog_desktop'] ?>" width="100%" alt="">
+            <img src="./blog/<?php echo $rowpin['thumbnail'] ?>" width="100%" alt="">
         </div>
         <div class="row">
             <div class="col-12">

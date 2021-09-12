@@ -207,232 +207,238 @@ function setBackgroundproduct(id, url) {
 }
 </script>
 
-<body>
-    <?php 
+<body style="background-color: #F6F6FB">
+    <br>
+    <div class="boxtest">
+        <?php 
         include('../condb.php');
         $productID = $_POST['productID'];
         $sql = "SELECT * FROM product WHERE productID = '$productID'";
         $result = mysqli_query($conn, $sql) or die ("Error sql = $sql " . mysqli_error());
         $row = mysqli_fetch_array($result);
     ?>
-    <form name="add_product" method="post" action="./productsql.php?type=edit" id="add_product" name="frmMain"
-        target="iframe_target" enctype="multipart/form-data">
-        <iframe id="iframe_target" name="iframe_target" src="#"
-            style="width:0;height:0;border:0px solid #fff;"></iframe>
-        <br>
-        <div class="addicon">
-            <h4 id="modelIcon"><?php echo $row['model'] ?></h4>
-            <h5 style="margin-top: 30px"><input type="text" name="headTexticon" style="text-align: center;" required
-                    id="" value="<?php echo $row['textHeadIcon'] ?>"></h5>
-            <p style="margin-top: 30px"><input type="text" name="descriptionicon" style="text-align: center;" required
-                    id="" value="<?php echo $row['descriptionIcon'] ?>"></p>
+        <form name="add_product" method="post" action="./productsql.php?type=edit" id="add_product" name="frmMain"
+            target="iframe_target" enctype="multipart/form-data">
+            <iframe id="iframe_target" name="iframe_target" src="#"
+                style="width:0;height:0;border:0px solid #fff;"></iframe>
+            <br>
+            <div class="addicon">
+                <h4 id="modelIcon"><?php echo $row['model'] ?></h4>
+                <h5 style="margin-top: 30px"><input type="text" name="headTexticon" style="text-align: center;" required
+                        id="" value="<?php echo $row['textHeadIcon'] ?>"></h5>
+                <p style="margin-top: 30px"><input type="text" name="descriptionicon" style="text-align: center;"
+                        required id="" value="<?php echo $row['descriptionIcon'] ?>"></p>
+                <div class="wrapper">
+                    <div class="box" style="height: 300px">
+                        <h5 style="margin-top: 20px;margin-left: 10px">Icon Car</h5>
+                        <div class="js--image-preview" style="height: 65%" id="iconProduct"></div>
+                        <!-- //Todo set background -->
+                        <?php echo '<script>setBackgroundproduct("iconProduct","' . $row['iconproduct'] .'")</script>' ?>
+                        <!-- //Todo set background -->
+                        <div class="upload-options" style="margin-top: 20px;">
+                            <label>
+                                <input type="file" name="iconProduct" class="image-upload form-control"
+                                    accept="image/*" />
+                                <br><br>
+                                <br>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="wrapper">
-                <div class="box" style="height: 300px">
-                    <h5 style="margin-top: 20px;margin-left: 10px">Icon Car</h5>
-                    <div class="js--image-preview" style="height: 65%" id="iconProduct"></div>
+                <div class="box" style="height: 80vh">
+                    <h4 style="margin-top: 20px;margin-left: 10px">Banner Desktop</h4>
+                    <div class="js--image-preview" id="bannerDesktop"></div>
                     <!-- //Todo set background -->
-                    <?php echo '<script>setBackgroundproduct("iconProduct","' . $row['iconproduct'] .'")</script>' ?>
+                    <?php echo '<script>setBackgroundproduct("bannerDesktop","' . $row['product_desktop'] .'")</script>' ?>
                     <!-- //Todo set background -->
                     <div class="upload-options" style="margin-top: 20px;">
                         <label>
-                            <input type="file" name="iconProduct" class="image-upload form-control" accept="image/*" />
+                            <input type="file" name="bannerDesktop" class="image-upload form-control"
+                                accept="image/*" />
+                            <br><br>
+                            <br>
+                        </label>
+                    </div>
+                </div>
+                <div class="box" style="height: 80vh">
+                    <h4 style="margin-top: 20px;margin-left: 10px">Banner Mobile</h4>
+                    <div class="js--image-preview" id="bannerMobile"></div>
+                    <!-- //Todo set background -->
+                    <?php echo '<script>setBackgroundproduct("bannerMobile","' . $row['product_Mobile'] .'")</script>' ?>
+                    <!-- //Todo set background -->
+                    <div class="upload-options" style="margin-top: 20px;">
+                        <label>
+                            <input type="file" name="bannerMobile" class="image-upload form-control" accept="image/*" />
                             <br><br>
                             <br>
                         </label>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="wrapper">
-            <div class="box" style="height: 80vh">
-                <h4 style="margin-top: 20px;margin-left: 10px">Banner Desktop</h4>
-                <div class="js--image-preview" id="bannerDesktop"></div>
-                <!-- //Todo set background -->
-                <?php echo '<script>setBackgroundproduct("bannerDesktop","' . $row['product_desktop'] .'")</script>' ?>
-                <!-- //Todo set background -->
-                <div class="upload-options" style="margin-top: 20px;">
-                    <label>
-                        <input type="file" name="bannerDesktop" class="image-upload form-control" accept="image/*" />
-                        <br><br>
-                        <br>
-                    </label>
-                </div>
-            </div>
-            <div class="box" style="height: 80vh">
-                <h4 style="margin-top: 20px;margin-left: 10px">Banner Mobile</h4>
-                <div class="js--image-preview" id="bannerMobile"></div>
-                <!-- //Todo set background -->
-                <?php echo '<script>setBackgroundproduct("bannerMobile","' . $row['product_Mobile'] .'")</script>' ?>
-                <!-- //Todo set background -->
-                <div class="upload-options" style="margin-top: 20px;">
-                    <label>
-                        <input type="file" name="bannerMobile" class="image-upload form-control" accept="image/*" />
-                        <br><br>
-                        <br>
-                    </label>
-                </div>
-            </div>
-        </div>
-        <div class="price">
-            <h3 class="brand">
-                <select name="brand" class="form-select" aria-label="Default select example" id="">
-                    <option value="<?php echo $row['brand'] ?>"><?php echo $row['brand'] ?></option>
-                    <option value="Geo">Geo</option>
-                    <option value="VOLKSWAGEN">VOLKSWAGEN</option>
-                    <option value="Volvo">Volvo</option>
-                    <option value="Mercedes-Benz">Mercedes-Benz</option>
-                    <option value="Maserati">Maserati</option>
-                    <option value="Mazda">Mazda</option>
-                    <option value="MINI">MINI</option>
-                    <option value="LOTUS">LOTUS</option>
-                    <option value="Suzuki">Suzuki</option>
-                    <option value="Nissan">Nissan</option>
-                    <option value="Triumph">Triumph</option>
-                    <option value="LEXUS">LEXUS</option>
-                    <option value="Porsche">Porsche</option>
-                    <option value="Lamborghini">Lamborghini</option>
-                    <option value="Thairung">Thairung</option>
-                    <option value="TATA Motors">TATA Motors</option>
-                    <option value="SUBARU">SUBARU</option>
-                    <option value="TOYOTA">TOYOTA</option>
-                    <option value="GMC">GMC</option>
-                    <option value="Hillman">Hillman</option>
-                    <option value="JEEP">JEEP</option>
-                    <option value="Jaguar">Jaguar</option>
-                    <option value="Hudson">Hudson</option>
-                    <option value="Hyundai">Hyundai</option>
-                    <option value="Isuzu">Isuzu</option>
-                    <option value="Infiniti">Infiniti</option>
-                    <option value="KIA">KIA</option>
-                    <option value="HUMMER">HUMMER</option>
-                    <option value="Hino">Hino</option>
-                    <option value="Honda">Honda</option>
-                    <option value="Holden">Holden</option>
-                    <option value="Ferrari">Ferrari</option>
-                    <option value="Fiat">Fiat</option>
-                    <option value="Eagle">Eagle</option>
-                    <option value="Ford">Ford</option>
-                    <option value="Daimler">Daimler</option>
-                    <option value="Alpine">Alpine</option>
-                    <option value="De Tomaso">De Tomaso</option>
-                    <option value="Edsel">Edsel</option>
-                    <option value="Dodge">Dodge</option>
-                    <option value="Daihatsu">Daihatsu</option>
-                    <option value="DAF Trucks">DAF Trucks</option>
-                    <option value="Daewoo">Daewoo</option>
-                    <option value="Chrysler">Chrysler</option>
-                    <option value="Bugatti">Bugatti</option>
-                    <option value="Dacia">Dacia</option>
-                    <option value="Buick">Buick</option>
-                    <option value="Citroen">Citroen</option>
-                    <option value="Chevrolet">Chevrolet</option>
-                </select>
-                <br>
-                <select id="" class="form-select" name="year" style="width: 150px;margin: auto" required>
-                    <option value="<?php echo $row['year'] ?>"><?php echo $row['year'] ?></option>
-                    <?php 
+            <div class="price">
+                <h3 class="brand">
+                    <select name="brand" class="form-select" aria-label="Default select example" id="">
+                        <option value="<?php echo $row['brand'] ?>"><?php echo $row['brand'] ?></option>
+                        <option value="Geo">Geo</option>
+                        <option value="VOLKSWAGEN">VOLKSWAGEN</option>
+                        <option value="Volvo">Volvo</option>
+                        <option value="Mercedes-Benz">Mercedes-Benz</option>
+                        <option value="Maserati">Maserati</option>
+                        <option value="Mazda">Mazda</option>
+                        <option value="MINI">MINI</option>
+                        <option value="LOTUS">LOTUS</option>
+                        <option value="Suzuki">Suzuki</option>
+                        <option value="Nissan">Nissan</option>
+                        <option value="Triumph">Triumph</option>
+                        <option value="LEXUS">LEXUS</option>
+                        <option value="Porsche">Porsche</option>
+                        <option value="Lamborghini">Lamborghini</option>
+                        <option value="Thairung">Thairung</option>
+                        <option value="TATA Motors">TATA Motors</option>
+                        <option value="SUBARU">SUBARU</option>
+                        <option value="TOYOTA">TOYOTA</option>
+                        <option value="GMC">GMC</option>
+                        <option value="Hillman">Hillman</option>
+                        <option value="JEEP">JEEP</option>
+                        <option value="Jaguar">Jaguar</option>
+                        <option value="Hudson">Hudson</option>
+                        <option value="Hyundai">Hyundai</option>
+                        <option value="Isuzu">Isuzu</option>
+                        <option value="Infiniti">Infiniti</option>
+                        <option value="KIA">KIA</option>
+                        <option value="HUMMER">HUMMER</option>
+                        <option value="Hino">Hino</option>
+                        <option value="Honda">Honda</option>
+                        <option value="Holden">Holden</option>
+                        <option value="Ferrari">Ferrari</option>
+                        <option value="Fiat">Fiat</option>
+                        <option value="Eagle">Eagle</option>
+                        <option value="Ford">Ford</option>
+                        <option value="Daimler">Daimler</option>
+                        <option value="Alpine">Alpine</option>
+                        <option value="De Tomaso">De Tomaso</option>
+                        <option value="Edsel">Edsel</option>
+                        <option value="Dodge">Dodge</option>
+                        <option value="Daihatsu">Daihatsu</option>
+                        <option value="DAF Trucks">DAF Trucks</option>
+                        <option value="Daewoo">Daewoo</option>
+                        <option value="Chrysler">Chrysler</option>
+                        <option value="Bugatti">Bugatti</option>
+                        <option value="Dacia">Dacia</option>
+                        <option value="Buick">Buick</option>
+                        <option value="Citroen">Citroen</option>
+                        <option value="Chevrolet">Chevrolet</option>
+                    </select>
+                    <br>
+                    <select id="" class="form-select" name="year" style="width: 150px;margin: auto" required>
+                        <option value="<?php echo $row['year'] ?>"><?php echo $row['year'] ?></option>
+                        <?php 
                     $now=date("Y")+543; 
                     $start = $now - 100;
                     echo $start;
                     echo $now;
                     for($i = $now; $i >= $start; $i--){
                         ?>
-                    <option value="<?php echo $i ?>"><?php echo $i ?></option>
-                    <?php  }
+                        <option value="<?php echo $i ?>"><?php echo $i ?></option>
+                        <?php  }
                     ?>
 
-                </select>
-            </h3>
+                    </select>
+                </h3>
 
-            <h2 class="bannertext"><input type="text" class="inputbannertext" onkeyup="setModelIcon()"
-                    placeholder="Model" name="model" id="model" value="<?php echo $row['model'] ?>" required></h2>
-            <h5 class="pricetext">CONDITION: <span style="font-weight: bold;">
-                    <select name="condition" id="" required>
-                        <option value="New">New</option>
-                        <option value="New">New</option>
-                    </select></span> |
-                PRICE:
-                <input type="number" style="width: 120px" name="price" required value="<?php echo $row['price'] ?>">
-                BAHT
-            </h5>
-        </div>
-        <div class="wrappermore" id="imageproduct">
-            <div class="boxadd1" style="height: 80vh;text-align: center">
-                <div class="boxadd" id="added">
-                    <div class="addproducr">+</div>
-                </div>
+                <h2 class="bannertext"><input type="text" class="inputbannertext" onkeyup="setModelIcon()"
+                        placeholder="Model" name="model" id="model" value="<?php echo $row['model'] ?>" required></h2>
+                <h5 class="pricetext">CONDITION: <span style="font-weight: bold;">
+                        <select name="condition" id="" required>
+                            <option value="New">New</option>
+                            <option value="New">New</option>
+                        </select></span> |
+                    PRICE:
+                    <input type="number" style="width: 120px" name="price" required value="<?php echo $row['price'] ?>">
+                    BAHT
+                </h5>
             </div>
-            <?php 
+            <div class="wrappermore" id="imageproduct">
+                <div class="boxadd1" style="height: 80vh;text-align: center">
+                    <div class="boxadd" id="added">
+                        <div class="addproducr">+</div>
+                    </div>
+                </div>
+                <?php 
                 $query = "SELECT * FROM product_image WHERE productID = '$productID' ORDER BY productDesID";
                 $resultproductimg = mysqli_query($conn, $query) or die ("Error $sql" . mysqli_error());
                 $z = 0;
                 foreach($resultproductimg as $rs){
                     $z++;
             ?>
-            <div class="box" style="height: 80vh" id="row1<?php echo $rs['productID'].$rs['productDesID']  ?>">
-                <h4 style="margin-top: 20px;margin-left: 10px">Image more <span
-                        style="float: right;padding-right: 15px;font-size: 20px;cursor: pointer;"> <i
-                            class="far fa-trash-alt btn_remove btn_removeimg"
-                            id="<?php echo $rs['productID'].$rs['productDesID'] ?>"></i></span></h4>
-                <div class="js--image-preview" id="imgloop<?php echo $z ?>"></div>
-                <!-- //Todo set background -->
-                <?php echo '<script>setBackgroundproduct("imgloop'.$z.'","' . $rs['imageProDes'] .'")</script>' ?>
-                <!-- //Todo set background -->
-                <div class="upload-options" style="margin-top: 20px;">
-                    <label>
-                        <input type="file" class="image-upload form-control"
-                            name="imageproduct<?php echo $rs['productDesID'] ?>" accept="image/*" />
-                        <br><br>
-                        <br>
-                    </label>
+                <div class="box" style="height: 80vh" id="row1<?php echo $rs['productID'].$rs['productDesID']  ?>">
+                    <h4 style="margin-top: 20px;margin-left: 10px">Image more <span
+                            style="float: right;padding-right: 15px;font-size: 20px;cursor: pointer;"> <i
+                                class="far fa-trash-alt btn_remove btn_removeimg"
+                                id="<?php echo $rs['productID'].$rs['productDesID'] ?>"></i></span></h4>
+                    <div class="js--image-preview" id="imgloop<?php echo $z ?>"></div>
+                    <!-- //Todo set background -->
+                    <?php echo '<script>setBackgroundproduct("imgloop'.$z.'","' . $rs['imageProDes'] .'")</script>' ?>
+                    <!-- //Todo set background -->
+                    <div class="upload-options" style="margin-top: 20px;">
+                        <label>
+                            <input type="file" class="image-upload form-control"
+                                name="imageproduct<?php echo $rs['productDesID'] ?>" accept="image/*" />
+                            <br><br>
+                            <br>
+                        </label>
+                    </div>
+                </div>
+                <input type="hidden" name="Delete<?php echo $rs['productDesID'] ?>" value=""
+                    id="delete<?php echo $rs['productID'].$rs['productDesID'] ?>">
+                <?php } ?>
+            </div>
+            <br>
+            <div class="price">
+                <textarea name="exterior" required><?php echo $row['textedit1']?></textarea>
+            </div>
+            <br>
+            <div class="wrapper">
+                <div class="box" style="height: 80vh">
+                    <h4 style="margin-top: 20px;margin-left: 10px">Banner Desktop</h4>
+                    <div class="js--image-preview" id="detail_Desktop"></div>
+                    <!-- //Todo set background -->
+                    <?php echo '<script>setBackgroundproduct("detail_Desktop","' . $row['detail_Desktop'] .'")</script>' ?>
+                    <!-- //Todo set background -->
+                    <div class="upload-options" style="margin-top: 20px;">
+                        <label>
+                            <input type="file" name="bannerDesktopDes" class="image-upload form-control"
+                                accept="image/*" />
+                            <br><br>
+                            <br>
+                        </label>
+                    </div>
+                </div>
+                <div class="box" style="height: 80vh">
+                    <h4 style="margin-top: 20px;margin-left: 10px">Banner Mobile</h4>
+                    <div class="js--image-preview" id="detail_Mobile"></div>
+                    <!-- //Todo set background -->
+                    <?php echo '<script>setBackgroundproduct("detail_Mobile","' . $row['detail_Mobile'] .'")</script>' ?>
+                    <!-- //Todo set background -->
+                    <div class="upload-options" style="margin-top: 20px;">
+                        <label>
+                            <input type="file" name="bannerMobileDes" class="image-upload form-control"
+                                accept="image/*" />
+                            <br><br>
+                            <br>
+                        </label>
+                    </div>
                 </div>
             </div>
-            <input type="hidden" name="Delete<?php echo $rs['productDesID'] ?>" value=""
-                id="delete<?php echo $rs['productID'].$rs['productDesID'] ?>">
-            <?php } ?>
-        </div>
-        <br>
-        <div class="price">
-            <textarea name="exterior" required><?php echo $row['textedit1']?></textarea>
-        </div>
-        <br>
-        <div class="wrapper">
-            <div class="box" style="height: 80vh">
-                <h4 style="margin-top: 20px;margin-left: 10px">Banner Desktop</h4>
-                <div class="js--image-preview" id="detail_Desktop"></div>
-                <!-- //Todo set background -->
-                <?php echo '<script>setBackgroundproduct("detail_Desktop","' . $row['detail_Desktop'] .'")</script>' ?>
-                <!-- //Todo set background -->
-                <div class="upload-options" style="margin-top: 20px;">
-                    <label>
-                        <input type="file" name="bannerDesktopDes" class="image-upload form-control" accept="image/*" />
-                        <br><br>
-                        <br>
-                    </label>
-                </div>
-            </div>
-            <div class="box" style="height: 80vh">
-                <h4 style="margin-top: 20px;margin-left: 10px">Banner Mobile</h4>
-                <div class="js--image-preview" id="detail_Mobile"></div>
-                <!-- //Todo set background -->
-                <?php echo '<script>setBackgroundproduct("detail_Mobile","' . $row['detail_Mobile'] .'")</script>' ?>
-                <!-- //Todo set background -->
-                <div class="upload-options" style="margin-top: 20px;">
-                    <label>
-                        <input type="file" name="bannerMobileDes" class="image-upload form-control" accept="image/*" />
-                        <br><br>
-                        <br>
-                    </label>
-                </div>
-            </div>
-        </div>
 
-        <!-- <div class="price">
+            <!-- <div class="price">
             <h2 class="bannertext">EQUIPMENT HIGHLIGHTS</h2>
         </div> -->
 
-        <!-- //? Start ref -->
-        <!-- <div class="container" style="margin-bottom: 30px;margin-top: 50px">
+            <!-- //? Start ref -->
+            <!-- <div class="container" style="margin-bottom: 30px;margin-top: 50px">
             <div class="row" id="detail">
                 <div class="col-md-12 ">
                     <div class="ref refadded" id="refadded">
@@ -458,20 +464,21 @@ function setBackgroundproduct(id, url) {
                 <?php } ?>
             </div>
         </div> -->
-        <!-- //? End ref -->
-        <br>
-        <div class="price">
-            <textarea name="exterior2" required><?php echo $row['textedit2']?></textarea>
-        </div>
-        <br>
-        <div class="col-12">
-            <div class="btnsave">
-                <input type="submit" id="submit" class="btn btn-success"></input>
-                <input type="hidden" name="productID" value="<?php echo $row['productID'] ?>">
+            <!-- //? End ref -->
+            <br>
+            <div class="price">
+                <textarea name="exterior2" required><?php echo $row['textedit2']?></textarea>
             </div>
-        </div>
-        <br>
-    </form>
+            <br>
+            <div class="col-12">
+                <div class="btnsave">
+                    <input type="submit" id="submit" class="btn btn-success"></input>
+                    <input type="hidden" name="productID" value="<?php echo $row['productID'] ?>">
+                </div>
+            </div>
+            <br>
+        </form>
+    </div>
 </body>
 
 

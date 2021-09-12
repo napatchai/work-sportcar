@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="carousel-caption  d-md-block">
                 <h1><?php echo $row['subject'] ?></h1>
                 <h5><?php echo $row['description'] ?></h5>
-                <a href="">
+                <a href="<?php echo $row['link'] ?>">
                     <div class="readmore">
                         Read more
                     </div>
@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="carousel-caption  d-md-block">
                 <h1><?php echo $row['subject'] ?></h1>
                 <h5><?php echo $row['description'] ?></h5>
-                <a href="">
+                <a href="<?php echo $row['link'] ?>">
                     <div class="readmore">
                         Read more
                     </div>
@@ -387,60 +387,31 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
 </div> -->
             <!-- //? end index product -->
-            <script>
-            function setimgbeforefooter(path, pathLink) {
-                document.getElementById("rightcloneblog").src = './blog/' + path;
-                document.getElementById("rightclonelink").href = './blogDetail.php?ID=' + pathLink;
-            }
-            </script>
             <!-- //? Start image before footer -->
             <div class="containerimglast">
                 <div class="row" style="border: 0px solid #707070">
-                    <?php 
-                    $sqlblog1 = "SELECT * FROM blog b INNER JOIN blog_detail d on d.blogID = b.blogID GROUP BY b.blogID ORDER BY date DESC LIMIT 3"; 
-                    $resultblog1 = mysqli_query($conn, $sqlblog1);
-                    $c = 0 ;
-                        foreach($resultblog1 as $rsb1){
-                            $c++;
-                            if($c == 1){
-                    ?>
                     <div class="col-12" id="rightclone" style="padding: 0px">
-                        <a href="" id="rightclonelink">
-                            <img src="./blog/<?php echo $rsb1['blog_desktop'] ?>" id="rightcloneblog" width="100%"
-                                height="100%" style="object-fit: cover;" alt="">
-                        </a>
+                        <img src="./img/car-5840866_192021.png" width="100%" height="100%" style="object-fit: cover;"
+                            alt="">
                     </div>
-                    <?php } if($c == 1) { ?>
                     <div class="col-12 col-sm-6" style="padding: 0px">
                         <div class="row" style="padding: 0px;margin-left: 0px">
                             <div class="col-6 col-sm-12">
-                                <a href="./blogDetail.php?ID=<?php echo $rsb1['blogID'] ?>">
-                                    <img src="./blog/<?php echo $rsb1['blog_desktop'] ?>" width="100%" alt=""
-                                        class="imgfooterleft">
-                                </a>
+                                <img src="./img/car-1376083_1920.png" width="100%" alt="" class="imgfooterleft">
                             </div>
-                            <?php } if($c == 2) { ?>
                             <div class="col-6 col-sm-12">
-                                <a href="./blogDetail.php?ID=<?php echo $rsb1['blogID'] ?>">
-                                    <img src="./blog/<?php echo $rsb1['blog_desktop'] ?>" width="100%" alt=""
-                                        class="imgfooterright">
-                                </a>
+                                <img src="./img/porsche-4795520_1920.png" width="100%" alt="" class="imgfooterright">
                             </div>
-                            <?php } ?>
-                            <?php if($c == 3) {   echo "<script>setimgbeforefooter('".$rsb1['blog_desktop']."','".$rsb1['blogID']."')</script>" ?>
                         </div>
                     </div>
                     <div class="col-6" id="rightimg">
-                        <a href="./blogDetail.php?ID=<?php echo $rsb1['blogID'] ?>">
-                            <img src="./blog/<?php echo $rsb1['blog_desktop'] ?>" width="100%" height="100%"
-                                style="object-fit: cover;" alt="">
-                        </a>
+                        <img src="./img/car-5840866_1920.png" width="100%" height="100%" style="object-fit: cover;"
+                            alt="">
                     </div>
-                    <?php } ?>
-                    <?php } ?>
                 </div>
             </div>
             <!-- //? End image before footer -->
+
             <!-- //? Start popup booking -->
             <form action="" id="popForm">
                 <div class="popupbooking" id="popup-1booking">
@@ -488,9 +459,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             </form>
 
-            <!-- <div class="message">
+            <div class="message">
                 <img src="./img/messenger.png" width=" 50px" alt="" style="cursor: pointer;" onclick="togglePopup()">
-            </div> -->
+            </div>
             <!-- //? End popup booking -->
 
             <!-- //? Start footer -->

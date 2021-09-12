@@ -219,6 +219,21 @@ i.material-icons {
                     name="price" id="" required>
             </h3>
         </div>
+        <br>
+        <div class="wrapper">
+            <div class="box" style="height: 300px">
+                <h5 style="margin-top: 20px;margin-left: 10px">Thumbnail</h5>
+                <div class="js--image-preview" style="height: 65%" id="iconProduct"></div>
+                <div class="upload-options" style="margin-top: 20px;">
+                    <label>
+                        <input type="file" name="Thumbnail" class="image-upload form-control" accept="image/*" />
+                        <br><br>
+                        <br>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
         <div id="addmore">
             <div class="wrapper" style="margin-top: 30px">
                 <div class="box" style="height: 80vh">

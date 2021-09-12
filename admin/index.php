@@ -21,6 +21,9 @@ $result = mysqli_query($conn, $sql);
                     <label for="">Banner Desktop</label>
                     <input type="file" name="bannerDesktop" class="form-control" required>
                     <br>
+                    <label for="">Link</label>
+                    <input type="text" name="link" class="form-control" required>
+                    <br>
                     <label for="">Banner Mobile</label>
                     <input type="file" name="bannerMobile" class="form-control" required>
                     <br>

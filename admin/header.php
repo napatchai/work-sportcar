@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php 
+session_start();
+if($_SESSION['level'] != '1') {
+    header( "Location: ../" );
+}
+?>
 
 <head>
     <meta charset="UTF-8">

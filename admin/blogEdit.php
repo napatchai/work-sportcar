@@ -1,4 +1,5 @@
 <?php include('./header.php') ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <?php include('./slidebar.php') ?>
 
 <style>
@@ -199,10 +200,27 @@ i.material-icons {
 
 
 </head>
+<script src="../ckeditor/ckeditor.js"></script>
 <script>
 function setBackgroundproduct(id, url) {
     path = "../blog/" + url;
     document.getElementById(id).style.backgroundImage = "url(" + path + ")";
+}
+
+function setTexteidt(id) {
+    CKEDITOR.replace(id, {
+        height: 300,
+        // extraPlugins: 'youtube',
+        uiColor: '#ffffff',
+
+        // Configure your file manager integration. This example uses CKFinder 3 for PHP.
+        // filebrowserBrowseUrl: './upload',
+        filebrowserUploadMethod: 'form',
+        // filebrowserImageBrowseUrl: './upload',
+        filebrowserUploadUrl: './testupload.php'
+        // filebrowserImageUploadUrl: '/apps/ckfinder/3.4.5/core/connector/php/connector.php?command=QuickUpload&type=Images',
+        // removeButtons: 'PasteFromWord'
+    });
 }
 </script>
 <?php 
@@ -215,101 +233,107 @@ $querymore = "SELECT * FROM blog_detail WHERE blogID = '$productID'";
 $resultmore = mysqli_query($conn, $querymore) or die ("Error sql = $quequerymorery " . mysqli_error());
 ?>
 
-<body>
-    <form name="add_product" method="post" action="./blogsql.php?type=edit" id="add_product" name="frmMain"
-        target="iframe_target" enctype="multipart/form-data">
-        <br>
-        <div class="price">
-            <h3 class="bannertext"><input type="text" class="inputbannertext" placeholder="Subject" name="Subject" id=""
-                    required value="<?php echo $row['subject'] ?>">
-                <br><br>
-                <select name="pinblog" id="" style="width: 200px;margin:auto" class="form-select" required>
-                    <?php if($row['blogpin'] == 1) {$pin = 'Pin blog';}else{$pin = 'Nonal blog';}  ?>
-                    <option value="$row['blogpin']"><?php echo $pin ?> </option>
-                    <option value="1">Pin blog</option>
-                    <option value="2">Nonal blog</option>
-                </select>
-                <br>
-                <input type="number" class="form-control" value="<?php echo $row['price'] ?>"
-                    style="width: 250px;margin:auto" placeholder="Price" name="price" id="" required>
-            </h3>
-        </div>
-        <div id="addmore">
-            <?php 
+<body style="background-color: #F6F6FB">
+    <br>
+    <div class="boxtest">
+        <form name="add_product" method="post" action="./blogsql.php?type=edit" id="add_product" name="frmMain"
+            target="iframe_target" enctype="multipart/form-data">
+            <br>
+            <div class="price">
+                <h3 class="bannertext"><input type="text" class="inputbannertext" placeholder="Subject" name="Subject"
+                        id="" required value="<?php echo $row['subject'] ?>">
+                    <br><br>
+                    <select name="pinblog" id="" style="width: 200px;margin:auto" class="form-select" required>
+                        <?php if($row['blogpin'] == 1) {$pin = 'Pin blog';}else{$pin = 'Nonal blog';}  ?>
+                        <option value="<?php echo $row['blogpin'] ?>"><?php echo $pin ?> </option>
+                        <option value="1">Pin blog</option>
+                        <option value="2">Nonal blog</option>
+                    </select>
+                    <br>
+                    <input type="number" class="form-control" value="<?php echo $row['price'] ?>"
+                        style="width: 250px;margin:auto" placeholder="Price" name="price" id="" required>
+                </h3>
+            </div>
+            <div id="addmore">
+                <?php 
             $z = 0;
             foreach($resultmore as $rs){
                 $z++;
         ?>
-            <div id="row1<?php echo $rs['blogID'].$rs['blogDesID'] ?>">
-                <div class="wrapper" style="margin-top: 30px">
-                    <div class="box" style="height: 80vh">
-                        <h4 style="margin-top: 20px;margin-left: 10px">Banner Desktop</h4>
-                        <div class="js--image-preview" id="BannerDesktop<?php echo $z ?>"></div>
-                        <!-- //Todo set background -->
-                        <?php echo '<script>setBackgroundproduct("BannerDesktop'.$z.'","' . $rs['blog_desktop'] .'")</script>' ?>
-                        <!-- //Todo set background -->
-                        <div class="upload-options" style="margin-top: 20px;">
-                            <label>
-                                <input type="file" name="bannerDesktop<?php echo $rs['blogDesID'] ?>"
-                                    class="image-upload form-control" accept="image/*" />
-                                <br><br>
-                                <br>
-                            </label>
+                <div id="row1<?php echo $rs['blogID'].$rs['blogDesID'] ?>">
+                    <div class="wrapper" style="margin-top: 30px">
+                        <div class="box" style="height: 80vh">
+                            <h4 style="margin-top: 20px;margin-left: 10px">Banner Desktop</h4>
+                            <div class="js--image-preview" id="BannerDesktop<?php echo $z ?>"></div>
+                            <!-- //Todo set background -->
+                            <?php echo '<script>setBackgroundproduct("BannerDesktop'.$z.'","' . $rs['blog_desktop'] .'")</script>' ?>
+                            <!-- //Todo set background -->
+                            <div class="upload-options" style="margin-top: 20px;">
+                                <label>
+                                    <input type="file" name="bannerDesktop<?php echo $rs['blogDesID'] ?>"
+                                        class="image-upload form-control" accept="image/*" />
+                                    <br><br>
+                                    <br>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="box" style="height: 80vh">
+                            <h4 style="margin-top: 20px;margin-left: 10px">Banner Mobile</h4>
+                            <div class="js--image-preview" id="BannerMobile<?php echo $z ?>"></div>
+                            <!-- //Todo set background -->
+                            <?php echo '<script>setBackgroundproduct("BannerMobile'.$z.'","' . $rs['blog_mobile'] .'")</script>' ?>
+                            <!-- //Todo set background -->
+                            <div class="upload-options" style="margin-top: 20px;">
+                                <label>
+                                    <input type="file" name="bannerMobile<?php echo $rs['blogDesID'] ?>"
+                                        class="image-upload form-control" accept="image/*" />
+                                    <br><br>
+                                    <br>
+                                </label>
+                            </div>
                         </div>
                     </div>
-                    <div class="box" style="height: 80vh">
-                        <h4 style="margin-top: 20px;margin-left: 10px">Banner Mobile</h4>
-                        <div class="js--image-preview" id="BannerMobile<?php echo $z ?>"></div>
-                        <!-- //Todo set background -->
-                        <?php echo '<script>setBackgroundproduct("BannerMobile'.$z.'","' . $rs['blog_mobile'] .'")</script>' ?>
-                        <!-- //Todo set background -->
-                        <div class="upload-options" style="margin-top: 20px;">
-                            <label>
-                                <input type="file" name="bannerMobile<?php echo $rs['blogDesID'] ?>"
-                                    class="image-upload form-control" accept="image/*" />
-                                <br><br>
-                                <br>
-                            </label>
+                    <br>
+                    <div class="subjectblog">
+                        <?php if(@$rs['subjectDes'] != '') { ?>
+                        <input type="text" name="subject<?php echo $rs['blogDesID'] ?>" class="subject"
+                            placeholder="Subject" required value="<?php echo $rs['subjectDes'] ?>">
+                        <?php } ?>
+                        <br><br>
+                        <textarea name="description<?php echo $rs['blogDesID'] ?>" rows="5" class="textareaBlog"
+                            id="<?php echo $rs['blogID'].$rs['blogDesID'] ?>"><?php echo $rs['description'] ?></textarea>
+                        <!-- //Todo set text Edit -->
+                        <?php echo "<script>setTexteidt('".$rs['blogID'].$rs['blogDesID']."')</script>" ?>
+                        <!-- //Todo set text Edit -->
+                        <div class="deleteBlog btn_remove btn_removeimg"
+                            id="<?php echo $rs['blogID'].$rs['blogDesID'] ?>">
+                            Delete <i class="bx bx-up-arrow-alt "></i>
                         </div>
                     </div>
                 </div>
-                <br>
-                <div class="subjectblog">
-                    <?php if(@$rs['subjectDes'] != '') { ?>
-                    <input type="text" name="subject<?php echo $rs['blogDesID'] ?>" class="subject"
-                        placeholder="Subject" required value="<?php echo $rs['subjectDes'] ?>">
-                    <?php } ?>
+                <input type="hidden" name="deletetext<?php echo $rs['blogDesID'] ?>" value=""
+                    id="deletetext<?php echo $rs['blogID'].$rs['blogDesID'] ?>">
+                <?php } ?>
+            </div>
 
-                    <textarea name="description<?php echo $rs['blogDesID'] ?>" rows="5"
-                        class="textareaBlog"><?php echo $rs['description'] ?></textarea>
-                    <div class="deleteBlog btn_remove btn_removeimg" id="<?php echo $rs['blogID'].$rs['blogDesID'] ?>">
-                        Delete <i class="bx bx-up-arrow-alt "></i>
-                    </div>
+            <div class="addBlogMore" id="added">
+                +
+            </div>
+
+            <br>
+            <div class="col-12">
+                <div class="btnsave">
+                    <input type="submit" id="submit" class="btn btn-success"></input>
+                    <input type="hidden" name="blogID" value="<?php echo $row['blogID'] ?>">
                 </div>
             </div>
-            <input type="hidden" name="deletetext<?php echo $rs['blogDesID'] ?>" value=""
-                id="deletetext<?php echo $rs['blogID'].$rs['blogDesID'] ?>">
-            <?php } ?>
-        </div>
-
-        <div class="addBlogMore" id="added">
-            +
-        </div>
-
-        <br>
-        <div class="col-12">
-            <div class="btnsave">
-                <input type="submit" id="submit" class="btn btn-success"></input>
-                <input type="hidden" name="blogID" value="<?php echo $row['blogID'] ?>">
-            </div>
-        </div>
-        <br>
-        <iframe id="iframe_target" name="iframe_target" src="#"
-            style="width:0;height:0;border:0px solid #fff;"></iframe>
-    </form>
+            <br>
+            <iframe id="iframe_target" name="iframe_target" src="#"
+                style="width:0;height:0;border:0px solid #fff;"></iframe>
+        </form>
+    </div>
+    <br><br>
 </body>
-
-
 
 <script>
 document.addEventListener("DOMContentLoaded", function(event) {
@@ -454,6 +478,10 @@ $(document).ready(function() {
         $('#deletetext' + button_id + '').val("Delete");
     });
 });
+</script>
+
+<script>
+
 </script>
 
 </html>
