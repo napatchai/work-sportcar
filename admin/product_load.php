@@ -47,6 +47,7 @@
             <th scope="col">Year</th>
             <th scope="col">Price(Bath)</th>
             <th scope="col">Publice at</th>
+            <th scope="col">View</th>
             <th scope="col"></th>
             <th scope="col"></th>
         </tr>
@@ -63,10 +64,12 @@
             <td class="align-middle"><?php echo $row['year'] ?></td>
             <td class="align-middle"><?php echo $row['price'] ?></td>
             <td class="align-middle"><?php echo strtoupper(date('d M Y H:m:s', strtotime(@$row['date']))); ?></td>
+            <td class="align-middle"><?php echo $row['View'] ?></td>
             <td class="align-middle">
                 <form action="./productEdit.php" method="post" id="formedit">
-                    <input type="hidden" name="productID" value="<?php echo $row['productID'] ?>" id="productID1">
-                    <a style="cursor: pointer;" onclick="document.getElementById('formedit').submit();"><i
+                    <input type="hidden" name="productID" value="" id="productID123">
+                    <a style="cursor: pointer;"
+                        onclick="document.getElementById('productID123').value = '<?php echo $row['productID'] ?>';document.getElementById('formedit').submit();"><i
                             class="fas fa-edit"></i></a>
                 </form>
             </td>

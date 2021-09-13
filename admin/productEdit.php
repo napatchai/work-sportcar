@@ -223,63 +223,10 @@ function setBackgroundproduct(id, url) {
                 style="width:0;height:0;border:0px solid #fff;"></iframe>
             <br>
             <div class="addicon">
-                <h4 id="modelIcon"><?php echo $row['model'] ?></h4>
-                <h5 style="margin-top: 30px"><input type="text" name="headTexticon" style="text-align: center;" required
-                        id="" value="<?php echo $row['textHeadIcon'] ?>"></h5>
-                <p style="margin-top: 30px"><input type="text" name="descriptionicon" style="text-align: center;"
-                        required id="" value="<?php echo $row['descriptionIcon'] ?>"></p>
-                <div class="wrapper">
-                    <div class="box" style="height: 300px">
-                        <h5 style="margin-top: 20px;margin-left: 10px">Icon Car</h5>
-                        <div class="js--image-preview" style="height: 65%" id="iconProduct"></div>
-                        <!-- //Todo set background -->
-                        <?php echo '<script>setBackgroundproduct("iconProduct","' . $row['iconproduct'] .'")</script>' ?>
-                        <!-- //Todo set background -->
-                        <div class="upload-options" style="margin-top: 20px;">
-                            <label>
-                                <input type="file" name="iconProduct" class="image-upload form-control"
-                                    accept="image/*" />
-                                <br><br>
-                                <br>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="wrapper">
-                <div class="box" style="height: 80vh">
-                    <h4 style="margin-top: 20px;margin-left: 10px">Banner Desktop</h4>
-                    <div class="js--image-preview" id="bannerDesktop"></div>
-                    <!-- //Todo set background -->
-                    <?php echo '<script>setBackgroundproduct("bannerDesktop","' . $row['product_desktop'] .'")</script>' ?>
-                    <!-- //Todo set background -->
-                    <div class="upload-options" style="margin-top: 20px;">
-                        <label>
-                            <input type="file" name="bannerDesktop" class="image-upload form-control"
-                                accept="image/*" />
-                            <br><br>
-                            <br>
-                        </label>
-                    </div>
-                </div>
-                <div class="box" style="height: 80vh">
-                    <h4 style="margin-top: 20px;margin-left: 10px">Banner Mobile</h4>
-                    <div class="js--image-preview" id="bannerMobile"></div>
-                    <!-- //Todo set background -->
-                    <?php echo '<script>setBackgroundproduct("bannerMobile","' . $row['product_Mobile'] .'")</script>' ?>
-                    <!-- //Todo set background -->
-                    <div class="upload-options" style="margin-top: 20px;">
-                        <label>
-                            <input type="file" name="bannerMobile" class="image-upload form-control" accept="image/*" />
-                            <br><br>
-                            <br>
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="price">
-                <h3 class="brand">
-                    <select name="brand" class="form-select" aria-label="Default select example" id="">
+                <h5 class="brand">
+                    Brand <br>
+                    <select name="brand" class="form-select" style="margin-top: 10px"
+                        aria-label="Default select example" id="">
                         <option value="<?php echo $row['brand'] ?>"><?php echo $row['brand'] ?></option>
                         <option value="Geo">Geo</option>
                         <option value="VOLKSWAGEN">VOLKSWAGEN</option>
@@ -331,22 +278,84 @@ function setBackgroundproduct(id, url) {
                         <option value="Citroen">Citroen</option>
                         <option value="Chevrolet">Chevrolet</option>
                     </select>
-                    <br>
-                    <select id="" class="form-select" name="year" style="width: 150px;margin: auto" required>
-                        <option value="<?php echo $row['year'] ?>"><?php echo $row['year'] ?></option>
-                        <?php 
+
+                </h5>
+                <h5 style="margin-top: 20px">
+                    Model <br>
+                    <input type="text" name="headTexticon" style="text-align: center;margin-top: 10px"
+                        value="<?php echo $row['model'] ?>" required id="">
+                </h5>
+                <p style="margin-top: 30px">
+                <h5>Short Description</h5><input type="text" name="descriptionicon"
+                    style="text-align: center;width: 30%" value="<?php echo $row['descriptionIcon'] ?>" required id="">
+                </p>
+                <div class="" style="margin-top: 30px"></div>
+                <h5 style="margin-bottom: 10px">Year</h5>
+                <select id="" class="form-select" name="year" style="width: 150px;margin: auto" required>
+                    <option value="<?php echo $row['year'] ?>"><?php echo $row['year'] ?></option>
+                    <?php 
                     $now=date("Y")+543; 
                     $start = $now - 100;
                     echo $start;
                     echo $now;
                     for($i = $now; $i >= $start; $i--){
                         ?>
-                        <option value="<?php echo $i ?>"><?php echo $i ?></option>
-                        <?php  }
+                    <option value="<?php echo $i ?>"><?php echo $i ?></option>
+                    <?php  }
                     ?>
 
-                    </select>
-                </h3>
+                </select>
+                <br>
+                <div class="wrapper">
+                    <div class="box" style="height: 300px">
+                        <h5 style="margin-top: 20px;margin-left: 10px">Icon Car</h5>
+                        <div class="js--image-preview" style="height: 65%" id="iconProduct"></div>
+                        <!-- //Todo set background -->
+                        <?php echo '<script>setBackgroundproduct("iconProduct","' . $row['iconproduct'] .'")</script>' ?>
+                        <!-- //Todo set background -->
+                        <div class="upload-options" style="margin-top: 20px;">
+                            <label>
+                                <input type="file" name="iconProduct" class="image-upload form-control"
+                                    accept="image/*" />
+                                <br><br>
+                                <br>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="wrapper">
+                <div class="box" style="height: 80vh">
+                    <h4 style="margin-top: 20px;margin-left: 10px">Banner Desktop</h4>
+                    <div class="js--image-preview" id="bannerDesktop"></div>
+                    <!-- //Todo set background -->
+                    <?php echo '<script>setBackgroundproduct("bannerDesktop","' . $row['product_desktop'] .'")</script>' ?>
+                    <!-- //Todo set background -->
+                    <div class="upload-options" style="margin-top: 20px;">
+                        <label>
+                            <input type="file" name="bannerDesktop" class="image-upload form-control"
+                                accept="image/*" />
+                            <br><br>
+                            <br>
+                        </label>
+                    </div>
+                </div>
+                <div class="box" style="height: 80vh">
+                    <h4 style="margin-top: 20px;margin-left: 10px">Banner Mobile</h4>
+                    <div class="js--image-preview" id="bannerMobile"></div>
+                    <!-- //Todo set background -->
+                    <?php echo '<script>setBackgroundproduct("bannerMobile","' . $row['product_Mobile'] .'")</script>' ?>
+                    <!-- //Todo set background -->
+                    <div class="upload-options" style="margin-top: 20px;">
+                        <label>
+                            <input type="file" name="bannerMobile" class="image-upload form-control" accept="image/*" />
+                            <br><br>
+                            <br>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="price">
 
                 <h2 class="bannertext"><input type="text" class="inputbannertext" onkeyup="setModelIcon()"
                         placeholder="Model" name="model" id="model" value="<?php echo $row['model'] ?>" required></h2>
@@ -489,8 +498,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 })
 
 function setModelIcon() {
-    var model = document.getElementById("model").value;
-    document.getElementById("modelIcon").innerHTML = model
+    // var model = document.getElementById("model").value;
+    // document.getElementById("modelIcon").innerHTML = model
 }
 
 function showResult(result) {

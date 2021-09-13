@@ -254,6 +254,26 @@ $resultmore = mysqli_query($conn, $querymore) or die ("Error sql = $quequerymore
                         style="width: 250px;margin:auto" placeholder="Price" name="price" id="" required>
                 </h3>
             </div>
+            <br>
+            <div class="wrapper">
+                <div class="box" style="height: 300px">
+                    <h5 style="margin-top: 20px;margin-left: 10px">Thumbnail</h5>
+                    <div class="js--image-preview" style="height: 65%" id="iconProduct"></div>
+                    <!-- //Todo set background -->
+                    <?php echo '<script>setBackgroundproduct("iconProduct","' . $row['thumbnail'] .'")</script>' ?>
+                    <!-- //Todo set background -->
+                    <div class="upload-options" style="margin-top: 20px;">
+                        <label>
+                            <input type="file" name="Thumbnail" id="thumbnail" class="image-upload form-control"
+                                accept="image/*" />
+
+                            <br><br>
+                            <br>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
             <div id="addmore">
                 <?php 
             $z = 0;

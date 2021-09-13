@@ -111,7 +111,7 @@ function showResult(result) {
             icon: "success",
         });
         setTimeout(function() {
-            window.location = "./product.php"
+            window.location = "./blog.php"
         }, 1500);
     } else if (result == 2) {
         swal("Error", "Some Thing Warnning", "error");

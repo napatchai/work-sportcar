@@ -272,12 +272,11 @@ i.material-icons {
 
                 <h5 style="margin-top: 20px">
                     Model <br>
-                    <input type="text" name="headTexticon" style="text-align: center;margin-top: 10px"
-                        placeholder="HeaderText" required id="">
+                    <input type="text" name="headTexticon" style="text-align: center;margin-top: 10px" required id="">
                 </h5>
 
                 <p style="margin-top: 30px">
-                <h5>Short Description</h5><input type="text" name="descriptionicon" placeholder="dsa"
+                <h5>Short Description</h5><input type="text" name="descriptionicon"
                     style="text-align: center;width: 30%" required id=""></p>
                 <div class="" style="margin-top: 30px"></div>
                 <h5 style="margin-bottom: 10px">Year</h5>
@@ -475,8 +474,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 })
 
 function setModelIcon() {
-    var model = document.getElementById("model").value;
-    document.getElementById("modelIcon").innerHTML = model
+    // var model = document.getElementById("model").value;
+    // document.getElementById("modelIcon").innerHTML = model
 }
 
 function showResult(result) {

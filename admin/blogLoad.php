@@ -23,6 +23,7 @@ $newDate = date("Y-m-d", strtotime($search));
             <th scope="col">Shot Description</th>
             <th scope="col">Public at</th>
             <th scope="col">Pin</th>
+            <th scope="col">View</th>
             <th scope="col"></th>
             <th scope="col"></th>
         </tr>
@@ -44,17 +45,21 @@ $newDate = date("Y-m-d", strtotime($search));
             <td class="align-middle"><input type="radio" name="pin" onchange="changepin('<?php echo $row['blogID'] ?>')"
                     id="<?php echo $row['blogID'] ?>"></td>
             <?php } ?>
+            <td class="align-middle"><?php echo $row['view'] ?></td>
+
             <td class="align-middle">
                 <form action="./blogEdit.php" method="post" id="formedit">
-                    <input type="hidden" name="productID" value="<?php echo $row['blogID'] ?>" id="productID1">
-                    <a style="cursor: pointer;" onclick="document.getElementById('formedit').submit();"><i
+                    <input type="hidden" name="productID" value="" id="productID123">
+                    <a style="cursor: pointer;"
+                        onclick="document.getElementById('productID123').value = '<?php echo $row['blogID'] ?>';document.getElementById('formedit').submit();"><i
                             class="fas fa-edit"></i></a>
                 </form>
             </td>
             <td class="align-middle">
                 <form action="./blogsql.php?type=delete" method="post" id="myForm" target="iframe_target">
-                    <input type="hidden" name="productID" value="<?php echo $row['blogID'] ?>" id="productID">
-                    <a style="cursor: pointer;" onclick="document.getElementById('myForm').submit();"><i
+                    <input type="hidden" name="blogID" id="productID1234">
+                    <a style="cursor: pointer;"
+                        onclick="document.getElementById('productID1234').value = '<?php echo $row['blogID'] ?>';document.getElementById('myForm').submit();"><i
                             class="far fa-trash-alt"></i></a>
                 </form>
             </td>
