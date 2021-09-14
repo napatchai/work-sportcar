@@ -501,11 +501,31 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                 </div>
             </form>
-
-            <div class="message">
-                <img src="./img/messenger.png" width=" 50px" alt="" style="cursor: pointer;" onclick="togglePopup()">
-            </div>
             <!-- //? End popup booking -->
+
+            <!-- //? Start popup Promotion -->
+            <?php 
+            $sqlpromotion = "SELECT * FROM blog b inner join blog_detail d on d.blogID = b.blogID WHERE promotion = '2' AND d.blogDesID = '0'";
+            $resultpromotion = mysqli_query($conn, $sqlpromotion) or die ("ERROR $sql " . mysqli_error());
+            $rowpromotion = mysqli_fetch_array($resultpromotion);
+            ?>
+            <div class="popupbooking active" id="popup-promotion">
+                <div class="overlaybooking promotion" onclick="togglePopupPromotion()"></div>
+                <div class="contentbooking contentPromotion" style="background: none;">
+                    <div class="close-btnbooking" style="color: #fff;border: 0px" onclick="togglePopupPromotion()">x
+                    </div>
+                    <div style="position: relative;">
+                        <img src="./blog/<?php echo $rowpromotion['blog_desktop'] ?>"
+                            class="imgdesktop imgpromotionDesktop" alt=" Snow" style="width:100%;margin-top: 20px">
+                        <img src="./blog/<?php echo $rowpromotion['blog_mobile'] ?>"
+                            class="imgmobile imgpromotionMobile" alt=" Snow" style="width:100%;margin-top: 20px">
+                        <a href="./blogDetail.php?ID=<?php echo $rowpromotion['blogID'] ?>">
+                            <div class="bottom-center">Enter Site</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- //? End popup Promotion -->
 
             <!-- //? Start footer -->
             <?php include('./contentfooter.php') ?>
@@ -536,6 +556,10 @@ document.addEventListener("DOMContentLoaded", () => {
             <script>
             function togglePopupBooking() {
                 document.getElementById("popup-1booking").classList.toggle("active");
+            }
+
+            function togglePopupPromotion() {
+                document.getElementById("popup-promotion").classList.toggle("active");
             }
 
             function pleaselogin() {

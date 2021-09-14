@@ -119,6 +119,12 @@ if($type == 'add'){
     mysqli_query($conn, $sqlupdatepin);
     $updatepin1 = "UPDATE blog set blogpin = '1' WHERE blogID = '$blogID'";
     mysqli_query($conn, $updatepin1);
+}else if ($type == 'changepromotion'){
+    $blogID = $_POST['id'];
+    $sqlupdatepromotion = "UPDATE blog set promotion = '1'";
+    mysqli_query($conn, $sqlupdatepromotion);
+    $updatepromotion = "UPDATE blog set promotion = '2' WHERE blogID = '$blogID'";
+    mysqli_query($conn, $updatepromotion);
 }
 
 function img($file){

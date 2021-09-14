@@ -20,7 +20,8 @@ $result = mysqli_query($conn, $query);
         <?php }  ?>
         <div class="blogimgheader">
             <!-- <img src="./blog/<?php echo $rs['blog_desktop'] ?>" width="100%" alt=""> -->
-            <img src="./blog/<?php echo $rs['blog_desktop'] ?>" class="imgdesktop" style="width: 100%" alt="...">
+            <img src="./blog/<?php echo $rs['blog_desktop'] ?>" class="imgdesktop"
+                style="width: 100%;object-fit: contain;" alt="...">
             <img src="./blog/<?php echo $rs['blog_mobile'] ?>" class="imgmobile" style="width: 100%" alt="...">
         </div>
         <div class="textheader" style="word-break: break-all;">

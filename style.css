@@ -1630,6 +1630,10 @@ select {
     display: none;
 }
 
+.popupbooking .promotion{
+    background: rgba(255, 255, 255, 0.7);
+}
+
 .popupbooking .contentbooking {
     position: fixed;
     top: 50%;
@@ -1645,6 +1649,61 @@ select {
     color: #000;
     border-radius: 20px;
     text-align: center;
+}
+
+.popupbooking .contentbooking .contentPromotion{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: #fff;
+    width: 40%;
+    height: auto;
+    z-index: 2;
+    text-align: left;
+    padding: 20px;
+    box-sizing: border-box;
+    color: #000;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.bottom-center {
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    padding: 10px 45px;
+    background-color: #000;
+    transition: .5s;
+    cursor: pointer;
+  }
+
+  .bottom-center:hover{
+      background-color: #fff;
+      color: #000;
+  }
+
+  @media (max-width: 500px){
+      .bottom-center{
+          padding: 5px 20px;
+      }
+  }
+
+  @media (max-width: 400px){
+    .bottom-center{
+        padding: 5px 10px;
+    }
+}
+
+.popupbooking .contentPromotion{
+    width: 80% !important;
+}
+
+.imgpromotionDesktop, .imgpromotionMobile{
+    max-height: 80vh;
 }
 
 .btn-primarybooking {

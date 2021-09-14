@@ -20,10 +20,11 @@ $newDate = date("Y-m-d", strtotime($search));
         <thead style="color: #4723D9">
             <tr>
                 <th style="width:10%">#</th>
-                <th style="width:15%">Name</th>
-                <th style="width:50%">Shot Description</th>
+                <th style="width:10%">Name</th>
+                <th style="width:45%">Shot Description</th>
                 <th style="width:15%">Public at</th>
                 <th style="width:5%">Pin</th>
+                <th style="width:10%">Promotion</th>
                 <th style="width:5%">View</th>
                 <th style="width:5%"></th>
                 <th style="width:5%"></th>
@@ -45,6 +46,15 @@ $newDate = date("Y-m-d", strtotime($search));
                 <?php }else{ ?>
                 <td class="align-middle"><input type="radio" name="pin"
                         onchange="changepin('<?php echo $row['blogID'] ?>')" id="<?php echo $row['blogID'] ?>"></td>
+                <?php } ?>
+                <?php if($row['promotion'] == 2) {?>
+                <td class="align-middle"><input type="radio" name="promotion" checked
+                        onchange="changepromotion('<?php echo $row['blogID'] ?>')" id="<?php echo $row['blogID'] ?>">
+                </td>
+                <?php }else{ ?>
+                <td class="align-middle"><input type="radio" name="promotion"
+                        onchange="changepromotion('<?php echo $row['blogID'] ?>')" id="<?php echo $row['blogID'] ?>">
+                </td>
                 <?php } ?>
                 <td class="align-middle"><?php echo $row['view'] ?></td>
 
@@ -76,6 +86,16 @@ $newDate = date("Y-m-d", strtotime($search));
 function changepin(id) {
     $.ajax({
         url: "./blogsql.php?type=changepin",
+        method: "POST",
+        data: {
+            id: id
+        }
+    });
+}
+
+function changepromotion(id) {
+    $.ajax({
+        url: "./blogsql.php?type=changepromotion",
         method: "POST",
         data: {
             id: id
