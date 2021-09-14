@@ -49,11 +49,15 @@ if($type == 'add'){
     $pinblog = $_POST['pinblog'];
     $price = $_POST['price'];
     $newNamethumbnail = img('Thumbnail');
+    $sqlmore1 = "";
+    if(Strlen($newNamethumbnail) > 5){
+        $sqlmore1 .= ", thumbnail = '$newNamethumbnail'";
+    }
     if($pinblog == '1'){
         $updatepin = "UPDATE blog set blogpin = 2";
         $resultpin = mysqli_query($conn, $updatepin);
     }
-    $query = "UPDATE blog SET subject = '$Subject', blogpin = '$pinblog', price = '$price', thumbnail = '$newNamethumbnail'  WHERE blogID = '$blogID'";
+    $query = "UPDATE blog SET subject = '$Subject', blogpin = '$pinblog', price = '$price' $sqlmore1  WHERE blogID = '$blogID'";
     echo $query;
     mysqli_query($conn, $query) or die ('ERROR $sql ' . mysqli_error());
     $querycheck = "SELECT * FROM blog_detail WHERE blogID = '$blogID'";

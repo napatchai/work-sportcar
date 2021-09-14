@@ -19,9 +19,11 @@ $result = mysqli_query($conn, $query);
         <h2><?php echo $rs['subject'] ?></h2>
         <?php }  ?>
         <div class="blogimgheader">
-            <img src="./blog/<?php echo $rs['blog_desktop'] ?>" width="100%" alt="">
+            <!-- <img src="./blog/<?php echo $rs['blog_desktop'] ?>" width="100%" alt=""> -->
+            <img src="./blog/<?php echo $rs['blog_desktop'] ?>" class="imgdesktop" style="width: 100%" alt="...">
+            <img src="./blog/<?php echo $rs['blog_mobile'] ?>" class="imgmobile" style="width: 100%" alt="...">
         </div>
-        <div class="textheader">
+        <div class="textheader" style="word-break: break-all;">
             <?php if($z == 0) { ?>
             <h5><?php echo strtoupper(date('d M Y', strtotime($rs['date']))); ?></h5>
             <?php } ?>

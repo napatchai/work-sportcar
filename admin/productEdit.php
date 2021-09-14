@@ -225,7 +225,7 @@ function setBackgroundproduct(id, url) {
             <div class="addicon">
                 <h5 class="brand">
                     Brand <br>
-                    <select name="brand" class="form-select" style="margin-top: 10px"
+                    <!-- <select name="brand" class="form-select" style="margin-top: 10px"
                         aria-label="Default select example" id="">
                         <option value="<?php echo $row['brand'] ?>"><?php echo $row['brand'] ?></option>
                         <option value="Geo">Geo</option>
@@ -277,7 +277,10 @@ function setBackgroundproduct(id, url) {
                         <option value="Buick">Buick</option>
                         <option value="Citroen">Citroen</option>
                         <option value="Chevrolet">Chevrolet</option>
-                    </select>
+                    </select> -->
+
+                    <input type="text" name="brand" value="<?php echo $row['brand']  ?>"
+                        style="text-align: center;margin-top: 10px">
 
                 </h5>
                 <h5 style="margin-top: 20px">

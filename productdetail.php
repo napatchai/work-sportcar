@@ -10,7 +10,7 @@ $resultProduct = mysqli_query($conn, $sqlProduct);
 $rowProduct = mysqli_fetch_array($resultProduct);
 ?>
 <?php 
-$newView = $rowProduct['view'] + 1;
+$newView = $rowProduct['View'] + 1;
 $sqlUpdate = "UPDATE product SET view = $newView WHERE productID = '$productID'";
 $resultUpdate = mysqli_query($conn, $sqlUpdate);
 ?>

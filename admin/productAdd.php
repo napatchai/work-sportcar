@@ -206,7 +206,7 @@ i.material-icons {
     <div class="boxtest">
         <form name="add_product" method="post" style="padding-left: 20px;padding-right: 20px"
             action="./productsql.php?type=add" id="add_product" enctype="multipart/form-data" name="frmMain"
-            target="iframe_target1">
+            target="iframe_target">
             <iframe id="iframe_target" name="iframe_target" src="#"
                 style="width:0;height:0;border:0px solid #fff;"></iframe>
             <br>
@@ -214,7 +214,7 @@ i.material-icons {
                 <!-- <h4 id="modelIcon"></h4> -->
                 <h5 class="brand">
                     Brand <br>
-                    <select name="brand" class="form-select" style="margin-top: 10px"
+                    <!-- <select name="brand" class="form-select" style="margin-top: 10px"
                         aria-label="Default select example" id="">
                         <option value="">Select Brand</option>
                         <option value="Geo">Geo</option>
@@ -266,7 +266,8 @@ i.material-icons {
                         <option value="Buick">Buick</option>
                         <option value="Citroen">Citroen</option>
                         <option value="Chevrolet">Chevrolet</option>
-                    </select>
+                    </select> -->
+                    <input type="text" name="brand" style="text-align: center;margin-top: 10px">
 
                 </h5>
 

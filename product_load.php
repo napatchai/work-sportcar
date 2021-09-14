@@ -78,7 +78,7 @@ $output .= '<div class="product-contentend">';
              }
     $output .= '<label for="" class="labelmed">'.$rs["textHeadIcon"] .'</label> <br>
 <p class="pevent">'. $rs["descriptionIcon"] .'</p>
-<img src="./product/'. $rs["iconproduct"] .'" width="100%" style="padding: 20px" alt=""> <br>
+<img src="./product/'. $rs["iconproduct"] .'" width="100%" style="padding: 20px" class="productIcon" alt=""> <br>
 </div>
 <a href="./productdetail.php?id='. $rs['productID'] .'">
     <div class=" discovermore">

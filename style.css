@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 * {
     padding: 0;
-    margin: 0;
+    /* margin: 0; */
     text-decoration: none !important;
     list-style: none;
     box-sizing: border-box;
+    font-family: 'Prompt', sans-serif;
 }
 
 body {
@@ -1190,6 +1193,10 @@ select {
     margin-bottom: 20px;
     width: 80%;
     margin-top: 20px;
+    word-break: break-all;
+    line-height: 1.5em;
+    height: 4.5em;
+    overflow: hidden;
 }
 
 .paddingnews {
@@ -1420,8 +1427,9 @@ select {
 /* ? Start Product detail */
 .generation {
     width: 100%;
-    text-align: center;
+    /* text-align: center; */
     margin: 100px 0px;
+    padding: 0px 50px;
 }
 
 .bannertext {
@@ -1789,9 +1797,9 @@ select {
 }
 
 .test1234 {
-    width: 60%;
+    width: 100%;
     margin: auto;
-    text-align: left;
+    text-align: center;
 }
 
 .inputbooking {
@@ -1829,3 +1837,32 @@ select {
 /* ? End Blog Detail */
 
 
+/* //? start edit index */
+.col-8{
+    padding: 0px 0px 0px 4px !important;
+}
+
+.imgfooterright, .imgfooterleft{
+    object-fit: cover;
+}
+
+.productIcon{
+    height: 250px;
+    object-fit: cover;
+}
+
+.setimagesize{
+    height: 248px;
+}
+
+@media (max-width: 600px){
+    .productIcon{
+        height: 160px;
+    }
+
+    .setimagesize{
+        height: 200px
+    }
+}
+
+/* //? end Edit index */

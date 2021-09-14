@@ -56,7 +56,7 @@ if(@$_GET['page']==""){
                     <h4 style="margin-top: 20px"><?php echo strtoupper($rowpin['subjectDes']) ?></h4>
                 </a>
                 <h4 style="margin-top: 20px" id="headerunlink"><?php echo strtoupper($rowpin['subjectDes']) ?></h4>
-                <p class="discriptionnew"><?php echo $rowpin['description'] ?></p>
+                <!-- <p class="discriptionnew"><?php echo $rowpin['description'] ?></p> -->
             </div>
             <div class="col-sm-2">
                 <a href="./blogDetail.php?ID=<?php echo $rowpin['blogID'] ?>">

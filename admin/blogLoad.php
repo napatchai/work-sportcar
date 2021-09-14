@@ -15,60 +15,62 @@ $newDate = date("Y-m-d", strtotime($search));
 ?>
 
 <?php if($numresult > 0) { ?>
-<table class="table" id="table1" style="overflow-x:auto;white-space: nowrap;">
-    <thead style="color: #4723D9">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Shot Description</th>
-            <th scope="col">Public at</th>
-            <th scope="col">Pin</th>
-            <th scope="col">View</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php 
+<div class="table-responsive">
+    <table class="table" id="table1" style="display: block;max-width: 100vw;word-break: break-all;">
+        <thead style="color: #4723D9">
+            <tr>
+                <th style="width:10%">#</th>
+                <th style="width:15%">Name</th>
+                <th style="width:50%">Shot Description</th>
+                <th style="width:15%">Public at</th>
+                <th style="width:5%">Pin</th>
+                <th style="width:5%">View</th>
+                <th style="width:5%"></th>
+                <th style="width:5%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php 
         
         foreach($result as $row) { ?>
-        <tr>
-            <th scope="row"><a href="../blog/<?php echo $row['thumbnail'] ?>" target="_blank"><img
-                        src="../blog/<?php echo $row['thumbnail'] ?>" width="100px" alt=""></a></th>
-            <td class="align-middle"><?php echo $row['subject'] ?></td>
-            <td class="align-middle"><?php echo $row['subjectDes'] ?></td>
-            <td class="align-middle"><?php echo strtoupper(date('d M Y H:m:s', strtotime(@$row['date']))); ?></td>
-            <?php if($row['blogpin'] == 1) {?>
-            <td class="align-middle"><input type="radio" name="pin" checked
-                    onchange="changepin('<?php echo $row['blogID'] ?>')" id="<?php echo $row['blogID'] ?>"></td>
-            <?php }else{ ?>
-            <td class="align-middle"><input type="radio" name="pin" onchange="changepin('<?php echo $row['blogID'] ?>')"
-                    id="<?php echo $row['blogID'] ?>"></td>
-            <?php } ?>
-            <td class="align-middle"><?php echo $row['view'] ?></td>
+            <tr>
+                <th scope="row"><a href="../blog/<?php echo $row['thumbnail'] ?>" target="_blank"><img
+                            src="../blog/<?php echo $row['thumbnail'] ?>" width="100px" alt=""></a></th>
+                <td class="align-middle"><?php echo $row['subject'] ?></td>
+                <td class="align-middle"><?php echo $row['subjectDes'] ?></td>
+                <td class="align-middle"><?php echo strtoupper(date('d M Y H:m:s', strtotime(@$row['date']))); ?></td>
+                <?php if($row['blogpin'] == 1) {?>
+                <td class="align-middle"><input type="radio" name="pin" checked
+                        onchange="changepin('<?php echo $row['blogID'] ?>')" id="<?php echo $row['blogID'] ?>"></td>
+                <?php }else{ ?>
+                <td class="align-middle"><input type="radio" name="pin"
+                        onchange="changepin('<?php echo $row['blogID'] ?>')" id="<?php echo $row['blogID'] ?>"></td>
+                <?php } ?>
+                <td class="align-middle"><?php echo $row['view'] ?></td>
 
-            <td class="align-middle">
-                <form action="./blogEdit.php" method="post" id="formedit">
-                    <input type="hidden" name="productID" value="" id="productID123">
-                    <a style="cursor: pointer;"
-                        onclick="document.getElementById('productID123').value = '<?php echo $row['blogID'] ?>';document.getElementById('formedit').submit();"><i
-                            class="fas fa-edit"></i></a>
-                </form>
-            </td>
-            <td class="align-middle">
-                <form action="./blogsql.php?type=delete" method="post" id="myForm" target="iframe_target">
-                    <input type="hidden" name="blogID" id="productID1234">
-                    <a style="cursor: pointer;"
-                        onclick="document.getElementById('productID1234').value = '<?php echo $row['blogID'] ?>';document.getElementById('myForm').submit();"><i
-                            class="far fa-trash-alt"></i></a>
-                </form>
-            </td>
-        </tr>
-        <?php }} else {
+                <td class="align-middle">
+                    <form action="./blogEdit.php" method="post" id="formedit">
+                        <input type="hidden" name="productID" value="" id="productID123">
+                        <a style="cursor: pointer;"
+                            onclick="document.getElementById('productID123').value = '<?php echo $row['blogID'] ?>';document.getElementById('formedit').submit();"><i
+                                class="fas fa-edit"></i></a>
+                    </form>
+                </td>
+                <td class="align-middle">
+                    <form action="./blogsql.php?type=delete" method="post" id="myForm" target="iframe_target">
+                        <input type="hidden" name="blogID" id="productID1234">
+                        <a style="cursor: pointer;"
+                            onclick="document.getElementById('productID1234').value = '<?php echo $row['blogID'] ?>';document.getElementById('myForm').submit();"><i
+                                class="far fa-trash-alt"></i></a>
+                    </form>
+                </td>
+            </tr>
+            <?php }} else {
             echo "<div style='width: 100%;text-align: center'>Data Not Found</div>";
         } ?>
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
 
 <script>
 function changepin(id) {

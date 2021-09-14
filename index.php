@@ -51,12 +51,16 @@ function setlinkbeforeFooter(src) {
 </script>
 <?php include('./navbar.php') ?>
 <?php 
-include('./condb.php');
 $query = "SELECT * FROM banner ORDER BY number ASC";
 $result = mysqli_query($conn, $query);
 $queryProduct = "SELECT * FROM product ORDER BY RAND() LIMIT 10";
 $resultProduct = mysqli_query($conn, $queryProduct);
 $numresult = mysqli_num_rows($resultProduct);
+?>
+<?php 
+    $cip = $_SERVER['REMOTE_ADDR'];
+    $saveLog = "INSERT INTO log_user (cip) VALUE ('$cip')";
+    mysqli_query($conn, $saveLog) or die ("ERROR sql $saveLog" . mysqli_error());
 ?>
 
 <script>
@@ -231,7 +235,7 @@ document.addEventListener("DOMContentLoaded", () => {
 <div id="carouselExampleControls" class="carousel slide slide1" data-bs-ride="carousel">
     <div class="carousel-inner">
         <?php 
-                    $widthScreen =  (int)$_COOKIE['cookieName'];
+                    @$widthScreen =  (int)$_COOKIE['cookieName'];
                     $setNumPro;
                     if($widthScreen > 1200){
                         $setNumPro = 4;
@@ -260,7 +264,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                     <br>
                                     <p class="pevent"><?php echo $rsp['descriptionIcon'] ?> </p>
                                     <img src="./product/<?php echo $rsp['iconproduct'] ?>" width="100%"
-                                        style="padding: 20px" alt="">
+                                        style="padding: 20px" class="productIcon" alt="">
                                     <br>
                                 </div>
                                 <a href="./productdetail.php?id=<?php echo $rsp['productID'] ?>">
@@ -396,51 +400,53 @@ document.addEventListener("DOMContentLoaded", () => {
 </div> -->
             <!-- //? end index product -->
             <!-- //? Start image before footer -->
+            <?php 
+            $queryblogpin = "SELECT * from blog WHERE blogpin = '1'"; 
+            $resultblogpin = mysqli_query($conn, $queryblogpin);
+            $rowpin = mysqli_fetch_array($resultblogpin);
+            ?>
             <div class="containerimglast">
                 <div class="row" style="border: 0px solid #707070">
-                    <?php 
-                    $c = 0;
-                $querybeforeFooter = "SELECT * FROM blog order by date DESC LIMIT 3";
-                $resultbrforeFooter = mysqli_query($conn, $querybeforeFooter);
-                foreach($resultbrforeFooter as $rsbf){
-                    $c++;
-                    if($c == 1 ){
-                ?>
                     <div class="col-12" id="rightclone" style="padding: 0px">
-                        <a href="" id="rightclonelink">
-                            <img src="./blog/<?php echo $rsbf['thumbnail'] ?>" id="rightcloneimg" width="100%"
+                        <a href="./blogDetail.php?ID=<?php echo $rowpin['blogID'] ?>" id="rightclonelink">
+                            <img src="./blog/<?php echo $rowpin['thumbnail'] ?>" id="rightcloneimg" width="100%"
                                 height="100%" style="object-fit: cover;" alt="">
                         </a>
                     </div>
 
-                    <div class="col-12 col-sm-6" style="padding: 0px">
+                    <div class="col-12 col-sm-4" style="padding: 0px">
                         <div class="row" style="padding: 0px;margin-left: 0px">
+                            <?php 
+                        $queryBlognew = "SELECT * FROM blog WHERE blogpin = '2' order by date DESC LIMIT 2";
+                        $resultblognew = mysqli_query($conn, $queryBlognew);
+                        $c = 0;
+                        foreach($resultblognew as $rsbn){
+                            $c++;
+                            if($c == 1){
+                        ?>
                             <div class="col-6 col-sm-12">
-                                <a href="./blogDetail.php?ID=<?php echo $rsbf['blogID'] ?>">
-                                    <img src="./blog/<?php echo $rsbf['thumbnail'] ?>" width="100%" alt=""
-                                        class="imgfooterleft">
+                                <a href="./blogDetail.php?ID=<?php echo $rsbn['blogID'] ?>">
+                                    <img src="./blog/<?php echo $rsbn['thumbnail'] ?>" width="100%" alt=""
+                                        class="imgfooterleft setimagesize">
                                 </a>
                             </div>
-                            <?php } if($c == 2) {?>
-                            <div class="col-6 col-sm-12">
-                                <a href="./blogDetail.php?ID=<?php echo $rsbf['blogID'] ?>">
-                                    <img src="./blog/<?php echo $rsbf['thumbnail'] ?>" width="100%" alt=""
-                                        class="imgfooterright">
+                            <?php } else { ?>
+                            <div class="col-6 col-sm-12" style="margin-top: 4px">
+                                <a href="./blogDetail.php?ID=<?php echo $rsbn['blogID'] ?>">
+                                    <img src="./blog/<?php echo $rsbn['thumbnail'] ?>" width="100%" alt=""
+                                        class="imgfooterright setimagesize">
                                 </a>
                             </div>
+                            <?php } ?>
+                            <?php } ?>
                         </div>
                     </div>
-                    <?php } if($c == 3 ) { ?>
-                    <div class="col-6" id="rightimg">
-                        <a href="./blogDetail.php?ID=<?php echo $rsbf['blogID'] ?>">
-                            <img src="./blog/<?php echo $rsbf['thumbnail'] ?>" width="100%" height="100%"
+                    <div class="col-8" id="rightimg">
+                        <a href="./blogDetail.php?ID=<?php echo $rowpin['blogID'] ?>">
+                            <img src="./blog/<?php echo $rowpin['thumbnail'] ?>" width="100%" height="500px"
                                 style="object-fit: cover;" alt="">
                         </a>
                     </div>
-                    <?php echo "<script>setimgbeforeFooter('".$rsbf['thumbnail']."')</script>" ?>
-                    <?php echo "<script>setlinkbeforeFooter('".$rsbf['blogID']."')</script>" ?>
-                    <?php } ?>
-                    <?php } ?>
                 </div>
             </div>
             <!-- //? End image before footer -->
@@ -465,16 +471,20 @@ document.addEventListener("DOMContentLoaded", () => {
                             <?php include('./testcalendar.php') ?>
                         </div>
                         <div class="row test1234">
-                            <div class="col-6">
+                            <div class="col-1 col-sm-2"></div>
+                            <div class="col-5 col-sm-4">
                                 <input type="text" name="Name" id="namepop" required placeholder="Name"
                                     class="inputbooking">
                             </div>
-                            <div class="col-6">
+                            <!-- <div class="col-1"></div> -->
+                            <div class="col-5 col-sm-4">
                                 <input type="text" name="phone" id="phone" required placeholder="Phone"
                                     class="inputbooking">
                             </div>
+                            <div class="col-1 col-sm-2"></div>
                             <input type="hidden" name="Date" id="app">
-                            <div class="col-6" style="margin-top: 20px">
+                            <div class="col-1 col-sm-2"></div>
+                            <div class="col-5 col-sm-4" style="margin-top: 20px">
                                 <select name="Time" id="time" class="inputbooking">
                                     <option value="">Time</option>
                                     <option value="13:00-15:00">13:00-15:00</option>
@@ -482,7 +492,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                     <option value="18:00-20:00">18:00-20:00</option>
                                 </select>
                             </div>
-                            <div class="col-6"></div>
+                            <div class="col-6 col-sm-6"></div>
                         </div>
                         <div class="col-12 formsubmit" style="margin-bottom: 0px">
                             <button type="button" class="btn btn-dark" onclick="SubForm()"

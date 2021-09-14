@@ -6,7 +6,7 @@
         <a href="./product.php">
             <span class="footerleft-content">Product</span>
         </a>
-        <a href="/service.php">
+        <a href="./service.php">
             <span class="footerleft-content">Service</span>
         </a>
         <a href="./blog.php">
@@ -16,7 +16,7 @@
             <span class="footerleft-content">Contact</span>
         </a>
         <br>
-        <div class="copyright">
+        <div class="copyright" style="width: 100%">
             Copyright@ 2021
         </div>
     </div>
@@ -26,5 +26,7 @@
         <span class="footerleft-content-social"><img src="./img/line.png" class="imgsocial" alt=""></span>
         <span class="footerleft-content-social footerrightlast"><img src="./img/instagram.png" class="imgsocial"
                 alt=""></span>
+        <br>
+        <span style="float: right;margin-right: 100px">dsa</span>
     </div>
 </div>

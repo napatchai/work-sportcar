@@ -38,18 +38,18 @@
 
 <?php if($numresult > 0) { ?>
 
-<table class="table" id="table1" style="overflow-x:auto;white-space: nowrap;">
+<table class="table" id="table1" style="display: block;max-width: 100vw;word-break: break-all;">
     <thead style="color: #4723D9">
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">Brand</th>
-            <th scope="col">Model</th>
-            <th scope="col">Year</th>
-            <th scope="col">Price(Bath)</th>
-            <th scope="col">Publice at</th>
-            <th scope="col">View</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
+            <th style="width: 10%">#</th>
+            <th style="width: 10%">Brand</th>
+            <th style="width: 25%">Model</th>
+            <th style="width: 5%">Year</th>
+            <th style="width: 10%">Price(Bath)</th>
+            <th style="width: 10%">Publice at</th>
+            <th style="width: 10%">View</th>
+            <th style="width: 10%"></th>
+            <th style="width: 10%"></th>
         </tr>
     </thead>
     <tbody>
