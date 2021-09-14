@@ -15,11 +15,11 @@
         <li><a href="./contact.php">Contact</a></li>
         <?php 
         session_start();
-        if(!@$_SESSION["mem_id"]){ 
+        if(!@$_COOKIE["mem_id"]){ 
         ?>
         <li><a href="./login.php">Login </a><span class="btnlogin-sign">|</span><a href="./signup.php">Sign up</a></li>
         <?php }else{ 
-            if($_SESSION['level'] == 1){    
+            if($_COOKIE['level'] == 1){    
         ?>
         <li><a href="./admin">Back End</a></li>
         <?php } ?>

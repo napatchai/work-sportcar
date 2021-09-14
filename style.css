@@ -635,6 +635,7 @@ select {
 .footerright {
     float: right;
     line-height: 50px;
+    text-align: right;
 }
 
 .footerleft-content {
@@ -683,6 +684,7 @@ select {
 
     .copyright {
         padding-left: 20px;
+        font-size: 10px !important;
     }
 
     .imgsocial {
@@ -690,7 +692,7 @@ select {
     }
 
     .footerrightlast {
-        padding-right: 10px;
+        padding-right: 15px;
     }
 }
 
@@ -1226,8 +1228,11 @@ select {
 }
 
 .discriptionnew {
-    width: 60%;
-    margin-top: 20px
+    width: 100%;
+    margin-top: 20px;
+    line-height: 1.5em;
+    height: 4.5em;
+    overflow: hidden;
 }
 
 @media (max-width: 1000px) {
@@ -1432,6 +1437,11 @@ select {
     padding: 0px 50px;
 }
 
+@media (max-width: 600px){
+    .generation {
+        padding: 0px 20px;
+    }
+}
 .bannertext {
     margin-top: 80px;
 }
@@ -1445,6 +1455,22 @@ select {
     margin-top: 50px;
     margin-bottom: 80px;
     font-weight: lighter;
+}
+
+.newlineprice{
+    display: none;
+}
+
+
+
+@media (max-width: 450px){
+    .newlineprice {
+        display: block;
+    }
+
+    .orblock{
+        display: none;
+    }
 }
 
 .ref {
@@ -1631,7 +1657,7 @@ select {
 }
 
 .popupbooking .promotion{
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(0, 0, 0, 0.7);
 }
 
 .popupbooking .contentbooking {
@@ -1905,13 +1931,14 @@ select {
     object-fit: cover;
 }
 
-.productIcon{
-    height: 250px;
-    object-fit: cover;
-}
+/* .productIcon{ */
+    /* height: 250px; */
+    /* object-fit: cover; */
+/* } */
 
 .setimagesize{
     height: 248px;
+    object-fit: contain;
 }
 
 @media (max-width: 600px){

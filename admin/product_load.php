@@ -59,7 +59,7 @@
         <tr>
             <th scope="row"><a href="../product/<?php echo $row['product_desktop'] ?>" target="_blank"><img
                         src="../product/<?php echo $row['product_desktop'] ?>" width="100px" alt=""></a></th>
-            <td class="align-middle"><?php echo $row['productID'] ?></td>
+            <td class="align-middle"><?php echo $row['brand'] ?></td>
             <td class="align-middle"><?php echo $row['model'] ?></td>
             <td class="align-middle"><?php echo $row['year'] ?></td>
             <td class="align-middle"><?php echo $row['price'] ?></td>

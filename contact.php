@@ -1,6 +1,45 @@
 <?php include('./header.php') ?>
 <!-- //? Start popup booking -->
+<script>
+function SubForm() {
+    var name = document.getElementById('namepop').value;
+    var phone = document.getElementById('phone').value;
+    var time = document.getElementById('time').value;
+    if (name == '') {
+        swal("Error", "Please Enter Name", "error");
+        return
+    } else if (phone == '') {
+        swal("Error", "Please Enter Phone", "error");
+        return
+    } else if (time == '') {
+        swal("Error", "Please Select Time", "error");
+        return
+    }
+    var date = $("#datepicker").datepicker("getDate");
+    var app = $.datepicker.formatDate("dd-MM-yy", date);
+    document.getElementById('app').value = app;
+    console.log($("#popForm").serializeArray())
 
+    $.ajax({
+        url: "https://api.apispreadsheets.com/data/17962/",
+        type: "post",
+        data: $("#popForm").serializeArray(),
+        success: function() {
+            swal({
+                title: "Send Success",
+                type: "success",
+                icon: "success",
+            });
+            setTimeout(function() {
+                window.location = "./index.php"
+            }, 1500);
+        },
+        error: function() {
+            swal("Error", "Some Thing Warnning", "error");
+        }
+    });
+}
+</script>
 <?php include('./navbar.php') ?>
 <!-- //? Start Banner -->
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
@@ -40,7 +79,8 @@
         </div>
     </div>
 </div>
-<form action="./sendEmail.php" method="post" name="add_product">
+<form action="./sendEmail.php" method="post" name="add_product" target="iframe_target">
+    <iframe id="iframe_target" name="iframe_target" src="#" style="width:0;height:0;border:0px solid #fff;"></iframe>
     <div class="container" style="margin-top: 30px">
         <div class="" style="margin-bottom:70px;margin-left: 10px">
             <div class="row">
@@ -149,5 +189,21 @@
 <script>
 function togglePopupBooking() {
     document.getElementById("popup-1booking").classList.toggle("active");
+}
+
+function showResult(result) {
+    if (result != 1) {
+        swal({
+            title: "Send Success",
+            type: "success",
+            icon: "success",
+        });
+        setTimeout(function() {
+            window.location = "./contact.php"
+        }, 1500);
+    }
+    if (result == 2) {
+        swal("Error", "Some Thing Warnning", "error");
+    }
 }
 </script>

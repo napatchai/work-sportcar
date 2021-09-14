@@ -50,6 +50,10 @@ $alluser = $getalluser['userall'];
 $today = date("y-m-d");
 $sqluseronlinedate = "SELECT COUNT(cip) as userbydate FROM log_user WHERE date like '%$today%' ";
 $resultuserbydate = mysqli_query($conn, $sqluseronlinedate);
+
+// todo จำนวนตยดูจ่อวัน
 $getuserbydate = mysqli_fetch_array($resultuserbydate);
+// todo จำนวนตยดูจ่อวัน
+$userbydate = $getuserbydate['userbydate'];
 
 ?>

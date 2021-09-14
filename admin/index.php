@@ -21,11 +21,11 @@ $result = mysqli_query($conn, $sql);
                     <label for="">Banner Desktop</label>
                     <input type="file" name="bannerDesktop" class="form-control" required>
                     <br>
-                    <label for="">Link</label>
-                    <input type="text" name="link" class="form-control" required>
-                    <br>
                     <label for="">Banner Mobile</label>
                     <input type="file" name="bannerMobile" class="form-control" required>
+                    <br>
+                    <label for="">Link</label>
+                    <input type="text" name="link" class="form-control" required>
                     <br>
                     <label for="">Subject</label>
                     <input type="text" name="subject" class="form-control" required required>
@@ -66,6 +66,9 @@ $result = mysqli_query($conn, $sql);
                     <br>
                     <input type="file" style="margin-top:20px" name="bannerMobile" class="form-control">
                     <br>
+                    <label for="">Link</label>
+                    <input type="text" name="link" class="form-control" required id="link">
+                    <br>
                     <label for="">Subject</label>
                     <input type="text" name="subject" class="form-control" required id="subject1">
                     <br>
@@ -103,10 +106,11 @@ $result = mysqli_query($conn, $sql);
              $subject = "'" . $row['subject'] . "'";
              $description = "'" . $row['description'] . "'";
              $banner_id = "'" . $row['banner_id'] . "'";
+             $link = "'" . $row['link'] . "'";
             ?>
         <div class="col-md-4 test">
             <a href="#" data-bs-toggle="modal"
-                onclick="setinput(<?php echo  $banner_id . ',' . $subject . ',' . $description . ',' . $row['number'] ?>)"
+                onclick="setinput(<?php echo  $banner_id . ',' . $subject . ',' . $description . ',' . $row['number'] . ',' . $link ?>)"
                 data-bs-target="#exampleModal1">
                 <div class="managerbanner">
                     <img src="../banner/<?php echo $row['banner_desktop'] ?>" class="imgbanner" alt="">
@@ -151,11 +155,12 @@ function showResult(result) {
     }
 }
 
-function setinput(banner_id, subject, description, number) {
+function setinput(banner_id, subject, description, number, link) {
     document.getElementById('subject1').value = subject;
     document.getElementById('description1').value = description;
     document.getElementById('banner_id2').value = banner_id;
     document.getElementById('banner_id').value = banner_id;
+    document.getElementById('link').value = link;
     document.getElementById('number').value = number;
 }
 </script>

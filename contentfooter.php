@@ -17,7 +17,9 @@
         </a>
         <br>
         <div class="copyright" style="width: 100%">
-            Copyright@ 2021
+            Vistis Today: <?php echo $userbydate ?> Total Visits:
+            <?php echo $alluser ?> Total Countries:
+            <?php echo $useronlinerealtime ?>
         </div>
     </div>
     <div class="footerright">
@@ -27,6 +29,8 @@
         <span class="footerleft-content-social footerrightlast"><img src="./img/instagram.png" class="imgsocial"
                 alt=""></span>
         <br>
-        <span style="float: right;margin-right: 100px">dsa</span>
+        <!-- <span style="float: right;margin-right: 100px">Vistis Today: <?php echo $userbydate ?> Total Visits:
+            <?php echo $alluser ?> Total Countries:
+            <?php echo $useronlinerealtime ?> </span> -->
     </div>
 </div>

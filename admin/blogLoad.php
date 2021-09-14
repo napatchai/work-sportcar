@@ -24,7 +24,9 @@ $newDate = date("Y-m-d", strtotime($search));
                 <th style="width:45%">Shot Description</th>
                 <th style="width:15%">Public at</th>
                 <th style="width:5%">Pin</th>
-                <th style="width:10%">Promotion</th>
+                <th style="width:10%">Promotion<input type="radio" name="promotion" checked
+                        onchange="changepromotion('')" id="">
+                </th>
                 <th style="width:5%">View</th>
                 <th style="width:5%"></th>
                 <th style="width:5%"></th>
@@ -94,6 +96,7 @@ function changepin(id) {
 }
 
 function changepromotion(id) {
+    alert('test')
     $.ajax({
         url: "./blogsql.php?type=changepromotion",
         method: "POST",

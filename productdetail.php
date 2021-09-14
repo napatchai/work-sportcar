@@ -72,10 +72,13 @@ $resultUpdate = mysqli_query($conn, $sqlUpdate);
 <!-- //? End banner -->
 
 <!-- //? Start generation -->
-<div class="generation">
+<div class="generation" style="text-align: center">
     <h2 class="bannertext"><?php echo $rowProduct['model'] ?></h2>
-    <h5 class="pricetext">CONDITION: <span style="font-weight: bold;"><?php echo $rowProduct['conditionPro'] ?></span> |
-        PRICE: <?php echo $rowProduct['price'] ?> BAHT</h5>
+    <h5 class="pricetext">CONDITION: <span style="font-weight: bold;"><?php echo $rowProduct['conditionPro'] ?></span>
+        <span class="orblock">|</span>
+        <br class="newlineprice">
+        PRICE : <?php echo $rowProduct['price'] ?> BAHT
+    </h5>
 </div>
 <!-- //? End deneration -->
 

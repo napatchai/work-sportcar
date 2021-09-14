@@ -32,9 +32,9 @@ $err = curl_error($curl);
 
 curl_close($curl);
 
-if ($err) {
-	echo "cURL Error #:" . $err;
-} else {
-	echo $response;
+if($err){
+	echo "<script>window.top.window.showResult('1');</script>";
+}else{
+	echo "<script>window.top.window.showResult('2');</script>";
 }
 ?>

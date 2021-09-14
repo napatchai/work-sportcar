@@ -51,12 +51,14 @@ if(@$_GET['page']==""){
                     <?php echo strtoupper(date('d M Y', strtotime(@$rowpin['date']))); ?>
                 </h5>
             </div>
-            <div class="col-12 col-sm-10">
+            <div class="col-12 col-sm-10" style="word-break: break-all;">
                 <a href="./blogDetail.php?ID=<?php echo $rowpin['blogID'] ?>" id="headerlink">
-                    <h4 style="margin-top: 20px"><?php echo strtoupper($rowpin['subjectDes']) ?></h4>
+                    <h4 style="margin-top: 20px;"><?php echo strtoupper($rowpin['subjectDes']) ?></h4>
                 </a>
                 <h4 style="margin-top: 20px" id="headerunlink"><?php echo strtoupper($rowpin['subjectDes']) ?></h4>
-                <!-- <p class="discriptionnew"><?php echo $rowpin['description'] ?></p> -->
+                <div class="discriptionnew">
+                    <?php echo strtoupper($rowpin['description']) ?>
+                </div>
             </div>
             <div class="col-sm-2">
                 <a href="./blogDetail.php?ID=<?php echo $rowpin['blogID'] ?>">

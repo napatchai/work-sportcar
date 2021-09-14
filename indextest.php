@@ -176,7 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     </a>
                 </div>
                 <div class="col-4">
-                    <?php if(isset($_SESSION['mem_id'])) { ?>
+                    <?php if(isset($_COOKIE['mem_id'])) { ?>
                     <a onclick="togglePopupBooking()">
                         <?php }else { ?>
                         <a onclick="pleaselogin()">

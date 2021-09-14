@@ -16,7 +16,8 @@ if($type == 'add'){
     $newNameBannerDesktop = img('bannerDesktop');
     $newNameBannerMobile = img('bannerMobile');
     $banner_id = $_POST['banner_id'];
-    $column = "subject = '$subject', description = '$description', number = '$number'";
+    $link = $_POST['link'];
+    $column = "subject = '$subject', description = '$description', number = '$number', link = '$link'";
     if(strlen($newNameBannerDesktop) > 1){
         $column = $column . ", banner_desktop = '$newNameBannerDesktop'";
     }

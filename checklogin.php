@@ -9,6 +9,14 @@ include('./condb.php');
         
         if(mysqli_num_rows($result)==1){
             $row = mysqli_fetch_array($result);
+            setcookie("mem_id",$row["mem_id"],time()+3600*24*356);
+            setcookie("Fname",$row["Fname"],time()+3600*24*356);
+            setcookie("Lname",$row["Lname"],time()+3600*24*356);
+            setcookie("phone",$row["phone"],time()+3600*24*356);
+            setcookie("email",$row["email"],time()+3600*24*356);
+            setcookie("Objective",$row["Objective"],time()+3600*24*356);
+            setcookie("level",$row["level"],time()+3600*24*356);
+
             $_SESSION["mem_id"] = $row["mem_id"];
             $_SESSION["Fname"] = $row["Fname"];
             $_SESSION["Lname"] = $row["Lname"];

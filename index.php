@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     </a>
                 </div>
                 <div class="col-4">
-                    <?php if(isset($_SESSION['mem_id'])) { ?>
+                    <?php if(isset($_COOKIE['mem_id'])) { ?>
                     <a onclick="togglePopupBooking()">
                         <?php }else { ?>
                         <a onclick="pleaselogin()">
@@ -417,7 +417,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="col-12 col-sm-4" style="padding: 0px">
                         <div class="row" style="padding: 0px;margin-left: 0px">
                             <?php 
-                        $queryBlognew = "SELECT * FROM blog WHERE blogpin = '2' order by date DESC LIMIT 2";
+                        $queryBlognew = "SELECT * FROM blog WHERE blogpin = '2' AND promotion = '1' order by date DESC LIMIT 2";
                         $resultblognew = mysqli_query($conn, $queryBlognew);
                         $c = 0;
                         foreach($resultblognew as $rsbn){
@@ -508,69 +508,74 @@ document.addEventListener("DOMContentLoaded", () => {
             $sqlpromotion = "SELECT * FROM blog b inner join blog_detail d on d.blogID = b.blogID WHERE promotion = '2' AND d.blogDesID = '0'";
             $resultpromotion = mysqli_query($conn, $sqlpromotion) or die ("ERROR $sql " . mysqli_error());
             $rowpromotion = mysqli_fetch_array($resultpromotion);
+            $numpromotion = mysqli_num_rows($resultpromotion);
+            if($numpromotion > 0){
             ?>
             <div class="popupbooking active" id="popup-promotion">
-                <div class="overlaybooking promotion" onclick="togglePopupPromotion()"></div>
-                <div class="contentbooking contentPromotion" style="background: none;">
-                    <div class="close-btnbooking" style="color: #fff;border: 0px" onclick="togglePopupPromotion()">x
-                    </div>
-                    <div style="position: relative;">
-                        <img src="./blog/<?php echo $rowpromotion['blog_desktop'] ?>"
-                            class="imgdesktop imgpromotionDesktop" alt=" Snow" style="width:100%;margin-top: 20px">
-                        <img src="./blog/<?php echo $rowpromotion['blog_mobile'] ?>"
-                            class="imgmobile imgpromotionMobile" alt=" Snow" style="width:100%;margin-top: 20px">
-                        <a href="./blogDetail.php?ID=<?php echo $rowpromotion['blogID'] ?>">
-                            <div class="bottom-center">Enter Site</div>
-                        </a>
+                <?php }else{ ?>
+                <div class="popupbooking" id="popup-promotion">
+                    <?php } ?>
+                    <div class="overlaybooking promotion" onclick="togglePopupPromotion()"></div>
+                    <div class="contentbooking contentPromotion" style="background: none;">
+                        <div class="close-btnbooking" style="color: #fff;border: 0px" onclick="togglePopupPromotion()">x
+                        </div>
+                        <div style="position: relative;">
+                            <img src="./blog/<?php echo $rowpromotion['blog_desktop'] ?>"
+                                class="imgdesktop imgpromotionDesktop" alt=" Snow" style="width:100%;margin-top: 20px">
+                            <img src="./blog/<?php echo $rowpromotion['blog_mobile'] ?>"
+                                class="imgmobile imgpromotionMobile" alt=" Snow" style="width:100%;margin-top: 20px">
+                            <a href="./blogDetail.php?ID=<?php echo $rowpromotion['blogID'] ?>">
+                                <div class="bottom-center">Enter Site</div>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- //? End popup Promotion -->
+                <!-- //? End popup Promotion -->
 
-            <!-- //? Start footer -->
-            <?php include('./contentfooter.php') ?>
-            <!-- //? End footer -->
+                <!-- //? Start footer -->
+                <?php include('./contentfooter.php') ?>
+                <!-- //? End footer -->
 
-            <!-- //? Start popup message -->
-            <?php include('./message.php') ?>
-            <!-- //? pop message -->
-            <script>
-            var width1 = screen.width;
-            setimg(width1);
+                <!-- //? Start popup message -->
+                <?php include('./message.php') ?>
+                <!-- //? pop message -->
+                <script>
+                var width1 = screen.width;
+                setimg(width1);
 
-            window.addEventListener("resize", function(event) {
-                setimg(document.body.clientWidth);
-            })
+                window.addEventListener("resize", function(event) {
+                    setimg(document.body.clientWidth);
+                })
 
-            function setimg(size) {
-                if (size <= 600) {
-                    document.getElementById("rightimg").style.display = "none";
-                    document.getElementById("rightclone").style.display = "block";
-                } else {
-                    document.getElementById("rightimg").style.display = "block";
-                    document.getElementById("rightclone").style.display = "none";
+                function setimg(size) {
+                    if (size <= 600) {
+                        document.getElementById("rightimg").style.display = "none";
+                        document.getElementById("rightclone").style.display = "block";
+                    } else {
+                        document.getElementById("rightimg").style.display = "block";
+                        document.getElementById("rightclone").style.display = "none";
+                    }
                 }
-            }
-            </script>
+                </script>
 
-            <script>
-            function togglePopupBooking() {
-                document.getElementById("popup-1booking").classList.toggle("active");
-            }
+                <script>
+                function togglePopupBooking() {
+                    document.getElementById("popup-1booking").classList.toggle("active");
+                }
 
-            function togglePopupPromotion() {
-                document.getElementById("popup-promotion").classList.toggle("active");
-            }
+                function togglePopupPromotion() {
+                    document.getElementById("popup-promotion").classList.toggle("active");
+                }
 
-            function pleaselogin() {
-                swal({
-                    title: "Please Login",
-                    type: "info",
-                    icon: "warning",
-                });
-                setTimeout(function() {
-                    window.location = "./login.php"
-                }, 1500);
-            }
-            </script>
-            <?php include('./footer.php'); ?>
+                function pleaselogin() {
+                    swal({
+                        title: "Please Login",
+                        type: "info",
+                        icon: "warning",
+                    });
+                    setTimeout(function() {
+                        window.location = "./login.php"
+                    }, 1500);
+                }
+                </script>
+                <?php include('./footer.php'); ?>

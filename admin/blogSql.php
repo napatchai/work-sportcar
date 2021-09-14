@@ -123,8 +123,10 @@ if($type == 'add'){
     $blogID = $_POST['id'];
     $sqlupdatepromotion = "UPDATE blog set promotion = '1'";
     mysqli_query($conn, $sqlupdatepromotion);
+    if($blogID != ''){
     $updatepromotion = "UPDATE blog set promotion = '2' WHERE blogID = '$blogID'";
     mysqli_query($conn, $updatepromotion);
+    }
 }
 
 function img($file){
