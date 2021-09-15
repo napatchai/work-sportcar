@@ -184,10 +184,79 @@ a {
 }
 </style>
 
+<script>
+function setvalueProfile(mem_id, fname, lname, phone, email) {
+    document.getElementById('mem_id').value = mem_id;
+    document.getElementById('fname').value = fname;
+    document.getElementById('lname').value = lname;
+    document.getElementById('phone').value = phone;
+    document.getElementById('email').value = email;
+}
+</script>
+
+<!-- //?Start pop up Edit -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form name="frmMain" method="post" action="./profileSql.php" id="submitprofile" target="iframe_target"
+                enctype="multipart/form-data">
+                <div class="modal-body">
+                    <iframe id="iframe_target" name="iframe_target" src="#"
+                        style="width:0;height:0;border:0px solid #fff;"></iframe>
+                    <label for="">First Name</label>
+                    <input type="text" name="fname" id="fname" class="form-control" required>
+                    <br>
+                    <label for="">Last Name</label>
+                    <input type="text" name="lname" id="lname" class="form-control" required>
+                    <br>
+                    <label for="">Phone</label>
+                    <input type="text" name="phone" id="phone" class="form-control" required>
+                    <br>
+                    <label for="">Email</label>
+                    <input type="email" name="email" id="email" class="form-control" required>
+                    <br>
+                    <label for="">Old Password</label>
+                    <input type="password" name="oldpassword" id="oldpassword" class="form-control" required>
+                    <br>
+                    <label for="">New Password</label>
+                    <input type="password" name="newpassword" id="newpassword" class="form-control" required>
+                    <br>
+                    <label for="">Confirm Password</label>
+                    <input type="password" name="confirmpassword" id="confirmpassword" class="form-control" required>
+                    <!-- <br>
+                    <label for="">Password</label>
+                    <input type="password" name="password" class="form-control" required> -->
+                    <input type="hidden" name="mem_id" id="mem_id">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" onclick="saveProfile()" class="btn btn-primary">Save
+                        changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- //? End popup Edit -->
+
 <body id="body-pd">
     <header class="header" id="header">
+        <?php 
+        $mem_id = "'" . $_COOKIE['mem_id'] . "'";
+        $fname = "'" . $_COOKIE['Fname'] . "'";
+        $lname = "'" . $_COOKIE['Lname'] . "'";
+        $phone = "'" . $_COOKIE['phone'] . "'";
+        $email = "'" . $_COOKIE['email'] . "'";
+    ?>
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-        <!-- <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div> -->
+        <div class="header_img"><a href="" style="color: #000"
+                onclick="setvalueProfile(<?php echo $mem_id . ','. $fname . ','. $lname . ','. $phone . ','. $email ?>)"
+                data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                <i class="far fa-user-circle" style="font-size: 30px"></i></a> </div>
     </header>
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
@@ -251,4 +320,45 @@ a {
 
         // Your code to run since DOM is loaded and ready
     });
+
+    function saveProfile() {
+        if (document.getElementById('fname').value == '') {
+            swal("Error", "Please Fill First Name", "error");
+        } else if (document.getElementById('lname').value == '') {
+            swal("Error", "Please Fill Last Name", "error");
+        } else if (document.getElementById('phone').value == '') {
+            swal("Error", "Please Fill Phone", "error");
+        } else if (document.getElementById('email').value == '') {
+            swal("Error", "Please Fill Email", "error");
+        } else if (document.getElementById('oldpassword').value == '') {
+            swal("Error", "Please Fill Old Password", "error");
+        } else if (document.getElementById('newpassword').value == '') {
+            swal("Error", "Please Fill New Password", "error");
+        } else if (document.getElementById('newpassword').value.length < 4) {
+            swal("Error", "Please File Less 4 Alphabet", "error");
+        } else if (document.getElementById('confirmpassword').value == '') {
+            swal("Error", "Please Fill Confirm Password", "error");
+        } else if (document.getElementById('newpassword').value != document.getElementById('confirmpassword').value) {
+            swal("Error", "New Password And Confirm Password Not Match", "error");
+        } else {
+            document.getElementById("submitprofile").submit();
+        }
+    }
+
+    function showResultProfile(result) {
+        if (result == 1) {
+            swal({
+                title: "Save Success",
+                type: "success",
+                icon: "success",
+            });
+            setTimeout(function() {
+                location.reload();
+            }, 1500);
+        } else if (result == 0) {
+            swal("Error", "Old Password In Correct", "error");
+        } else if (result == 2) {
+            swal("Error", "Some Thing Warnning", "error");
+        }
+    }
     </script>

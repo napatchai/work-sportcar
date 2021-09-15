@@ -6,7 +6,7 @@
     text-decoration: none !important;
     list-style: none;
     box-sizing: border-box;
-    font-family: 'Prompt', sans-serif;
+    font-family: 'Prompt', sans-serif !important;
 }
 
 body {
