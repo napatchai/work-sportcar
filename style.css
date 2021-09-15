@@ -109,7 +109,7 @@ a:horver {
 
 @media(max-width: 600px) {
     ul {
-        width: 50% !important;
+        width: 53% !important;
     }
 
     nav ul li {
@@ -162,7 +162,7 @@ nav ul li a {
     } */
 
 #check:checked~ul {
-    right: -20px;
+    right: -15px;
 }
 
 /* } */
@@ -1937,14 +1937,14 @@ select {
 /* } */
 
 .setimagesize{
-    height: 248px;
-    object-fit: contain;
+    /* height: 248px; */
+    object-fit: cover;
 }
 
 @media (max-width: 600px){
-    .productIcon{
+    /* .productIcon{
         height: 160px;
-    }
+    } */
 
     .setimagesize{
         height: 200px

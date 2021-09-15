@@ -34,8 +34,8 @@ body {
     <script>
     function initMap() {
         const myLatLng = {
-            lat: 13.69975077955458,
-            lng: 100.4586459446204
+            lat: 13.782807518868351,
+            lng: 100.54208228580958
         };
         const map = new google.maps.Map(document.getElementById("map"), {
             zoom: 4,

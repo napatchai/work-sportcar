@@ -424,17 +424,17 @@ document.addEventListener("DOMContentLoaded", () => {
                             $c++;
                             if($c == 1){
                         ?>
-                            <div class="col-6 col-sm-12">
+                            <div class="col-6 col-sm-12" style="height: 50%">
                                 <a href="./blogDetail.php?ID=<?php echo $rsbn['blogID'] ?>">
                                     <img src="./blog/<?php echo $rsbn['thumbnail'] ?>" width="100%" alt=""
                                         class="imgfooterleft setimagesize">
                                 </a>
                             </div>
                             <?php } else { ?>
-                            <div class="col-6 col-sm-12" style="margin-top: 4px">
-                                <a href="./blogDetail.php?ID=<?php echo $rsbn['blogID'] ?>">
-                                    <img src="./blog/<?php echo $rsbn['thumbnail'] ?>" width="100%" alt=""
-                                        class="imgfooterright setimagesize">
+                            <div class="col-6 col-sm-12" style="margin-top: 4px;height: 50%"">
+                                <a href=" ./blogDetail.php?ID=<?php echo $rsbn['blogID'] ?>">
+                                <img src="./blog/<?php echo $rsbn['thumbnail'] ?>" width="100%" alt=""
+                                    class="imgfooterright setimagesize">
                                 </a>
                             </div>
                             <?php } ?>
@@ -443,7 +443,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                     <div class="col-8" id="rightimg">
                         <a href="./blogDetail.php?ID=<?php echo $rowpin['blogID'] ?>">
-                            <img src="./blog/<?php echo $rowpin['thumbnail'] ?>" width="100%" height="500px"
+                            <img src="./blog/<?php echo $rowpin['thumbnail'] ?>" width="100%" height="100%"
                                 style="object-fit: cover;" alt="">
                         </a>
                     </div>

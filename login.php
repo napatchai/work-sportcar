@@ -20,9 +20,9 @@
                 <div class="col-7 col-sm-9 form" style="padding-right: 40px;text-align: right">
                     <input name="password" type="password" class="forminput" required><br>
                     <a href="#" style="color: #000">
-                        <span style="font-size: 13px">
+                        <!-- <span style="font-size: 13px">
                             Forgot password
-                        </span>
+                        </span> -->
                     </a>
                 </div>
                 <div class="col-12 formsubmit-login">
