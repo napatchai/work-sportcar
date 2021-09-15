@@ -212,7 +212,7 @@ i.material-icons {
             <br>
             <div class="addicon">
                 <!-- <h4 id="modelIcon"></h4> -->
-                <h5 class="brand">
+                <h5 style="margin-top: 20px">
                     Brand <br>
                     <!-- <select name="brand" class="form-select" style="margin-top: 10px"
                         aria-label="Default select example" id="">
