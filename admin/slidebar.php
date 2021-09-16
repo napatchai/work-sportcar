@@ -185,7 +185,40 @@ a {
 </style>
 
 <script>
+function checkrepassword() {
+    var checkbox = document.getElementById('changepassword')
+    if (checkbox.checked == false) {
+        document.getElementById('oldpassword').type = 'hidden';
+        document.getElementById('laoldpassword').style.display = 'none';
+        document.getElementById('newpassword').type = 'hidden';
+        document.getElementById('lanewpassword').style.display = 'none';
+        document.getElementById('confirmpassword').type = 'hidden';
+        document.getElementById('laconfirmpassword').style.display = 'none';
+        document.getElementById('br1').style.display = 'none';
+        document.getElementById('br2').style.display = 'none';
+    } else {
+        document.getElementById('oldpassword').type = 'password';
+        document.getElementById('laoldpassword').style.display = 'block';
+        document.getElementById('newpassword').type = 'password';
+        document.getElementById('lanewpassword').style.display = 'block';
+        document.getElementById('confirmpassword').type = 'password';
+        document.getElementById('laconfirmpassword').style.display = 'block';
+        document.getElementById('br1').style.display = 'block';
+        document.getElementById('br2').style.display = 'block';
+    }
+}
+</script>
+
+<script>
 function setvalueProfile(mem_id, fname, lname, phone, email) {
+    document.getElementById('oldpassword').type = 'hidden';
+    document.getElementById('laoldpassword').style.display = 'none';
+    document.getElementById('newpassword').type = 'hidden';
+    document.getElementById('lanewpassword').style.display = 'none';
+    document.getElementById('confirmpassword').type = 'hidden';
+    document.getElementById('laconfirmpassword').style.display = 'none';
+    document.getElementById('br1').style.display = 'none';
+    document.getElementById('br2').style.display = 'none';
     document.getElementById('mem_id').value = mem_id;
     document.getElementById('fname').value = fname;
     document.getElementById('lname').value = lname;
@@ -195,7 +228,7 @@ function setvalueProfile(mem_id, fname, lname, phone, email) {
 </script>
 
 <!-- //?Start pop up Edit -->
-<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModalprofile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -219,13 +252,16 @@ function setvalueProfile(mem_id, fname, lname, phone, email) {
                     <label for="">Email</label>
                     <input type="email" name="email" id="email" class="form-control" required>
                     <br>
-                    <label for="">Old Password</label>
+                    <input type="checkbox" onchange="checkrepassword()" name="" id="changepassword"><span> Change
+                        Password</span>
+                    <br id="br1"><br id="br2">
+                    <label for="" id="laoldpassword">Old Password</label>
                     <input type="password" name="oldpassword" id="oldpassword" class="form-control" required>
                     <br>
-                    <label for="">New Password</label>
+                    <label for="" id="lanewpassword">New Password</label>
                     <input type="password" name="newpassword" id="newpassword" class="form-control" required>
                     <br>
-                    <label for="">Confirm Password</label>
+                    <label for="" id="laconfirmpassword">Confirm Password</label>
                     <input type="password" name="confirmpassword" id="confirmpassword" class="form-control" required>
                     <!-- <br>
                     <label for="">Password</label>
@@ -255,7 +291,7 @@ function setvalueProfile(mem_id, fname, lname, phone, email) {
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
         <div class="header_img"><a href="" style="color: #000"
                 onclick="setvalueProfile(<?php echo $mem_id . ','. $fname . ','. $lname . ','. $phone . ','. $email ?>)"
-                data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                data-bs-toggle="modal" data-bs-target="#exampleModalprofile">
                 <i class="far fa-user-circle" style="font-size: 30px"></i></a> </div>
     </header>
     <div class="l-navbar" id="nav-bar">
@@ -322,6 +358,7 @@ function setvalueProfile(mem_id, fname, lname, phone, email) {
     });
 
     function saveProfile() {
+        var checkbox = document.getElementById('changepassword')
         if (document.getElementById('fname').value == '') {
             swal("Error", "Please Fill First Name", "error");
         } else if (document.getElementById('lname').value == '') {
@@ -330,16 +367,21 @@ function setvalueProfile(mem_id, fname, lname, phone, email) {
             swal("Error", "Please Fill Phone", "error");
         } else if (document.getElementById('email').value == '') {
             swal("Error", "Please Fill Email", "error");
-        } else if (document.getElementById('oldpassword').value == '') {
-            swal("Error", "Please Fill Old Password", "error");
-        } else if (document.getElementById('newpassword').value == '') {
-            swal("Error", "Please Fill New Password", "error");
-        } else if (document.getElementById('newpassword').value.length < 4) {
-            swal("Error", "Please File Less 4 Alphabet", "error");
-        } else if (document.getElementById('confirmpassword').value == '') {
-            swal("Error", "Please Fill Confirm Password", "error");
-        } else if (document.getElementById('newpassword').value != document.getElementById('confirmpassword').value) {
-            swal("Error", "New Password And Confirm Password Not Match", "error");
+        } else if (checkbox.checked == true) {
+            if (document.getElementById('oldpassword').value == '') {
+                swal("Error", "Please Fill Old Password", "error");
+            } else if (document.getElementById('newpassword').value == '') {
+                swal("Error", "Please Fill New Password", "error");
+            } else if (document.getElementById('newpassword').value.length < 4) {
+                swal("Error", "Please File Less 4 Alphabet", "error");
+            } else if (document.getElementById('confirmpassword').value == '') {
+                swal("Error", "Please Fill Confirm Password", "error");
+            } else if (document.getElementById('newpassword').value != document.getElementById('confirmpassword')
+                .value) {
+                swal("Error", "New Password And Confirm Password Not Match", "error");
+            } else {
+                document.getElementById("submitprofile").submit();
+            }
         } else {
             document.getElementById("submitprofile").submit();
         }

@@ -1,5 +1,5 @@
 <?php 
-    include('../condb.php');
+    include('./condb.php');
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
     $phone = $_POST['phone'];
