@@ -302,14 +302,17 @@ function setvalueProfile(mem_id, fname, lname, phone, email) {
                 <a href="../index.php" class="nav_logo"> <img src="../img/logo.png" width="25px" alt=""> <span
                         class="nav_logo-name"></span>
                 </a>
-                <div class="nav_list"> <a href="./index.php" id="banner" class="nav_link"> <i
-                            class='bx bx-grid-alt nav_icon'></i>
-                        <span class="nav_name">Banner</span> </a> <a href="./product.php" id="product" class="nav_link">
-                        <i class='bx bx-car nav_icon'></i> <span class="nav_name">Product</span> </a> <a
-                        href="./blog.php" id="blog" class="nav_link"> <i class='bx bx-news nav_icon'></i> <span
-                            class="nav_name">Blog</span> </a><a href="./user.php" id="user" class="nav_link">
-                        <i class='bx bx-user'></i> <span class="nav_name">User</span> </a> <a href="../index.php"
-                        class="nav_link"> <i class='bx bx-show-alt nav_icon'></i> <span class="nav_name">Preview</span>
+                <div class="nav_list">
+                    <a href="./index.php" id="banner" class="nav_link"> <i class='bx bx-grid-alt nav_icon'></i>
+                        <span class="nav_name">Banner</span> </a>
+                    <a href="./product.php" id="product" class="nav_link">
+                        <i class='bx bx-car nav_icon'></i> <span class="nav_name">Product</span> </a>
+                    <a href="./blog.php" id="blog" class="nav_link"> <i class='bx bx-news nav_icon'></i> <span
+                            class="nav_name">Blog</span> </a>
+                    <a href="./user.php" id="user" class="nav_link">
+                        <i class='bx bx-user'></i> <span class="nav_name">User</span> </a>
+                    <a href="../index.php" class="nav_link"> <i class='bx bx-show-alt nav_icon'></i> <span
+                            class="nav_name">Preview</span>
                     </a>
                 </div>
             </div> <a href="../signOut.php" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span
