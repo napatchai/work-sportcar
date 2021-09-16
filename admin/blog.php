@@ -44,7 +44,11 @@ $result = mysqli_query($conn, $sql);
 </form>
 <!-- //? End form Delete -->
 <br>
-<h4>List of Blog<a href="./blogAdd.php"><span class="btnadd">+ Create Blog</span></a></h4>
+<h4>List of Blog
+    <?php if($_COOKIE['level'] != '4') {?>
+    <a href="./blogAdd.php"><span class="btnadd">+ Create Blog</span></a>
+    <?php } ?>
+</h4>
 <br>
 <div class="row">
     <div class="col-sm-5">

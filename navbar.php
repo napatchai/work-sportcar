@@ -91,11 +91,11 @@ function setvalueProfile(mem_id, fname, lname, phone, email) {
 }
 </script>
 <?php 
-        $mem_id = "'" . $_COOKIE['mem_id'] . "'";
-        $fname = "'" . $_COOKIE['Fname'] . "'";
-        $lname = "'" . $_COOKIE['Lname'] . "'";
-        $phone = "'" . $_COOKIE['phone'] . "'";
-        $email = "'" . $_COOKIE['email'] . "'";
+        @$mem_id = "'" . $_COOKIE['mem_id'] . "'";
+        @$fname = "'" . $_COOKIE['Fname'] . "'";
+        @$lname = "'" . $_COOKIE['Lname'] . "'";
+        @$phone = "'" . $_COOKIE['phone'] . "'";
+        @$email = "'" . $_COOKIE['email'] . "'";
     ?>
 <nav>
     <input type="checkbox" id="check" onclick="calc()">
@@ -118,7 +118,7 @@ function setvalueProfile(mem_id, fname, lname, phone, email) {
         ?>
         <li><a href="./login.php">Login </a><span class="btnlogin-sign">|</span><a href="./signup.php">Sign up</a></li>
         <?php }else{ 
-            if($_COOKIE['level'] == 1){    
+            if($_COOKIE['level'] != 2){    
         ?>
         <li><a href="./admin">Back End</a></li>
         <?php } ?>

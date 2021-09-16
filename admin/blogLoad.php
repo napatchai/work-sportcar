@@ -28,8 +28,10 @@ $newDate = date("Y-m-d", strtotime($search));
                         onchange="changepromotion('')" id="">
                 </th>
                 <th style="width:5%">View</th>
+                <?php if($_COOKIE['level'] != 4) {?>
                 <th style="width:5%"></th>
                 <th style="width:5%"></th>
+                <?php } ?>
             </tr>
         </thead>
         <tbody>
@@ -59,7 +61,7 @@ $newDate = date("Y-m-d", strtotime($search));
                 </td>
                 <?php } ?>
                 <td class="align-middle"><?php echo $row['view'] ?></td>
-
+                <?php if($_COOKIE['level'] != 4) {?>
                 <td class="align-middle">
                     <form action="./blogEdit.php" method="post" id="formedit">
                         <input type="hidden" name="productID" value="" id="productID123">
@@ -76,6 +78,7 @@ $newDate = date("Y-m-d", strtotime($search));
                                 class="far fa-trash-alt"></i></a>
                     </form>
                 </td>
+                <?php } ?>
             </tr>
             <?php }} else {
             echo "<div style='width: 100%;text-align: center'>Data Not Found</div>";

@@ -21,20 +21,29 @@ if($_POST['level'] != '' ){
                     <iframe id="iframe_target" name="iframe_target" src="#"
                         style="width:0;height:0;border:0px solid #fff;"></iframe>
                     <label for="">First Name</label>
-                    <input type="text" name="fname" id="fname" class="form-control" required>
+                    <input type="text" name="fname" id="fname1" class="form-control" required>
                     <br>
                     <label for="">Last Name</label>
-                    <input type="text" name="lname" id="lname" class="form-control" required>
+                    <input type="text" name="lname" id="lname1" class="form-control" required>
                     <br>
                     <label for="">Phone</label>
-                    <input type="text" name="phone" id="phone" class="form-control" required>
+                    <input type="text" name="phone" id="phone1" class="form-control" required>
                     <br>
                     <label for="">Email</label>
-                    <input type="email" name="email" id="email" class="form-control" required>
+                    <input type="email" name="email" id="email1" class="form-control" required>
+                    <br>
+                    <label for="">Level</label>
+                    <select name="level" class="form-select" id="levelsend" required>
+                        <option value="">Select Level</option>
+                        <option value="1">Admin</option>
+                        <option value="2">User</option>
+                        <option value="3">Editer</option>
+                        <option value="4">Sale</option>
+                    </select>
                     <!-- <br>
                     <label for="">Password</label>
                     <input type="password" name="password" class="form-control" required> -->
-                    <input type="hidden" name="mem_id" id="mem_id">
+                    <input type="hidden" name="mem_id" id="mem_id1">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -50,11 +59,12 @@ if($_POST['level'] != '' ){
     <table class="table" id="table1" style="width: 100%">
         <thead style="color: #4723D9">
             <tr>
-                <th style="width:10%">#</th>
+                <th style="width:5%">#</th>
                 <th style="width:20%">First Name</th>
                 <th style="width:20%">Last Name</th>
-                <th style="width:20%">Phone</th>
+                <th style="width15%">Phone</th>
                 <th style="width:20%">Email</th>
+                <th style="width:10%">Level</th>
                 <th style="width:5%"></th>
                 <th style="width:5%"></th>
             </tr>
@@ -71,6 +81,17 @@ if($_POST['level'] != '' ){
                     $lname = "'".$rsa['Lname']."'";
                     $phone = "'".$rsa['phone']."'";
                     $email = "'".$rsa['email']."'";
+                    $levelsend = "'".$rsa['level']."'";
+                    $level = '';
+                    if($rsa['level'] == '1'){
+                        $level = 'Admin';
+                    }else if ($rsa['level'] == '2'){
+                        $level = 'User';
+                    }else if ($rsa['level'] == '3'){
+                        $level = 'Editer';
+                    }else if ($rsa['level'] == '4'){
+                        $level = 'Sale';
+                    }
                 ?>
             <tr>
                 <td class="align-middle"><?php echo $i ?></td>
@@ -78,8 +99,9 @@ if($_POST['level'] != '' ){
                 <td class="align-middle"><?php echo $rsa['Lname'] ?></td>
                 <td class="align-middle"><?php echo $rsa['phone'] ?></td>
                 <td class="align-middle"><?php echo $rsa['email'] ?></td>
+                <td class="align-middle"><?php echo $level ?></td>
                 <td class="align-middle"><a href=""
-                        onclick="setvalue(<?php echo $mem_id . ',' . $fname . ',' . $lname . ',' . $phone . ',' . $email ?>)"
+                        onclick="setvalue(<?php echo $mem_id . ',' . $fname . ',' . $lname . ',' . $phone . ',' . $email . ',' . $levelsend ?>)"
                         style="color: #000" data-bs-toggle="modal" data-bs-target="#exampleModal1"><i
                             class="fas fa-edit"></i></a></td>
                 <td class="align-middle">
@@ -99,12 +121,13 @@ if($_POST['level'] != '' ){
 </div>
 
 <script>
-function setvalue(mem_id, fname, lname, phone, email) {
-    document.getElementById('mem_id').value = mem_id;
-    document.getElementById('fname').value = fname;
-    document.getElementById('lname').value = lname;
-    document.getElementById('phone').value = phone;
-    document.getElementById('email').value = email;
+function setvalue(mem_id, fname, lname, phone, email, level) {
+    document.getElementById('mem_id1').value = mem_id;
+    document.getElementById('fname1').value = fname;
+    document.getElementById('lname1').value = lname;
+    document.getElementById('phone1').value = phone;
+    document.getElementById('email1').value = email;
+    document.getElementById('levelsend').value = level;
 
 }
 

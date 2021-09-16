@@ -44,7 +44,11 @@ $result = mysqli_query($conn, $sql);
 </form>
 <!-- //? End form Delete -->
 <br>
-<h4>List of product<a href="./productAdd.php"><span class="btnadd">+ Create Product</span></a></h4>
+<h4>List of product
+    <?php if($_COOKIE['level'] != '4') {?>
+    <a href="./productAdd.php"><span class="btnadd">+ Create Product</span></a>
+    <?php } ?>
+</h4>
 <br>
 <div class="row">
     <div class="col-sm-4">

@@ -303,14 +303,22 @@ function setvalueProfile(mem_id, fname, lname, phone, email) {
                         class="nav_logo-name"></span>
                 </a>
                 <div class="nav_list">
+                    <?php if($_COOKIE['level'] == '1' || $_COOKIE['level'] == '3') {?>
                     <a href="./index.php" id="banner" class="nav_link"> <i class='bx bx-grid-alt nav_icon'></i>
-                        <span class="nav_name">Banner</span> </a>
+                        <span class="nav_name">Banner</span>
+                    </a>
+                    <?php } ?>
                     <a href="./product.php" id="product" class="nav_link">
-                        <i class='bx bx-car nav_icon'></i> <span class="nav_name">Product</span> </a>
+                        <i class='bx bx-car nav_icon'></i> <span class="nav_name">Product</span>
+                    </a>
                     <a href="./blog.php" id="blog" class="nav_link"> <i class='bx bx-news nav_icon'></i> <span
-                            class="nav_name">Blog</span> </a>
+                            class="nav_name">Blog</span>
+                    </a>
+                    <?php if($_COOKIE['level'] == '1') { ?>
                     <a href="./user.php" id="user" class="nav_link">
-                        <i class='bx bx-user'></i> <span class="nav_name">User</span> </a>
+                        <i class='bx bx-user'></i> <span class="nav_name">User</span>
+                    </a>
+                    <?php } ?>
                     <a href="../index.php" class="nav_link"> <i class='bx bx-show-alt nav_icon'></i> <span
                             class="nav_name">Preview</span>
                     </a>

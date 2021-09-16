@@ -30,6 +30,14 @@ $result = mysqli_query($conn, $sql);
                     <label for="">Email</label>
                     <input type="email" name="email" class="form-control" required>
                     <br>
+                    <label for="">Level</label>
+                    <select name="level" class="form-select" id="" required>
+                        <option value="">Select Level</option>
+                        <option value="1">Admin</option>
+                        <option value="3">Editer</option>
+                        <option value="4">Sale</option>
+                    </select>
+                    <br>
                     <label for="">Password</label>
                     <input type="password" name="password" class="form-control" required>
                 </div>
@@ -61,6 +69,8 @@ $result = mysqli_query($conn, $sql);
             <option value="">All type</option>
             <option value="1">Admin</option>
             <option value="2">User</option>
+            <option value="3">Editer</option>
+            <option value="4">Sale</option>
         </select>
     </div>
 

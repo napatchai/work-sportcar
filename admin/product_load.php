@@ -48,8 +48,10 @@
             <th style="width: 10%">Price(Bath)</th>
             <th style="width: 10%">Publice at</th>
             <th style="width: 10%">View</th>
+            <?php if($_COOKIE['level'] != 4) {?>
             <th style="width: 10%"></th>
             <th style="width: 10%"></th>
+            <?php } ?>
         </tr>
     </thead>
     <tbody>
@@ -65,6 +67,7 @@
             <td class="align-middle"><?php echo $row['price'] ?></td>
             <td class="align-middle"><?php echo strtoupper(date('d M Y H:m:s', strtotime(@$row['date']))); ?></td>
             <td class="align-middle"><?php echo $row['View'] ?></td>
+            <?php if($_COOKIE['level'] != 4) {?>
             <td class="align-middle">
                 <form action="./productEdit.php" method="post" id="formedit">
                     <input type="hidden" name="productID" value="" id="productID123">
@@ -81,6 +84,7 @@
                             class="far fa-trash-alt"></i></a>
                 </form>
             </td>
+            <?php } ?>
         </tr>
         <?php }} else {
             echo "<div style='width: 100%;text-align: center'>Data Not Found</div>";

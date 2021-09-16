@@ -25,7 +25,7 @@ include('./condb.php');
             $_SESSION["Objective"] = $row["Objective"];
             $_SESSION["level"] = $row["level"];
 
-            if($row['level'] == '1' ){
+            if($row['level'] == '1' || $row['level'] == '3' || $row['level'] == '4' ){
                 echo "<script>window.top.window.showResult('0');</script>";
             }elseif($row['level'] == '2'){
                 echo "<script>window.top.window.showResult('2');</script>";

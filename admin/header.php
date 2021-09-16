@@ -2,7 +2,7 @@
 <html lang="en">
 <?php 
 session_start();
-if($_COOKIE["level"] != '1') {
+if($_COOKIE["level"] == '2') {
     header( "Location: ../" );
 }
 ?>
